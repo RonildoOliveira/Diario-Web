@@ -21,7 +21,7 @@ public class NoticiaController {
 
 	@RequestMapping("/noticias")
 	public String save(Noticia noticia){
-		noticiaDAO.save(noticia);
+		noticiaDAO.inserir(noticia);
 		return "noticias/ok";
 	}
 

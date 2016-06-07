@@ -14,13 +14,32 @@ public class NoticiaDAO {
 
 	@PersistenceContext
 	private EntityManager manager;
-
-	public void save(Noticia noticia){
-		manager.persist(noticia);
+	
+	public void inserir(Noticia n){		
+		this.manager.persist(n);
+		
+	}
+	
+	public void alterar(Noticia n){		
+		this.manager.merge(n);
+		
 	}
 
-	public List<Noticia> listar() {
-		return manager.createQuery("select n from Noticia as n",
-				Noticia.class).getResultList();
+	public List<Noticia> listar(){
+		
+		String hql = "select n from NOTICIA n";
+		List<Noticia> noticias = this.manager.createQuery(hql, Noticia.class).getResultList();
+		
+		return noticias;
 	}
+	
+	public void remover(Noticia n){
+		Noticia not = this.manager.find(Noticia.class, n.getNoticiaId());
+		this.manager.remove(not);
+	}
+	
+	public Noticia getNoticia(Long id){
+		return this.manager.find(Noticia.class, id);
+	}
+	
 }

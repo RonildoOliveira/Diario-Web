@@ -9,21 +9,31 @@
 </head>
 <body>
 	<form method="post" action="/diarioweb/noticias">
-		<div>
-			<label for="title">Titulo</label> <input type="text" name="titulo"
-				id="titulo" />
-		</div>
-		
-		<div>
-			<label for="description">Descrição</label>
-			<br>
-			<textarea rows="10" cols="24" name="descricao" id="descricao">
-			</textarea>
-		</div>
-		<br>
-		<div>
-			<input type="submit" value="Enviar">
-		</div>
+		<table>
+			<thead>
+
+				<tr>
+					<td>Titulo:</td>
+					<td><input type="text" name="titulo" /></td>
+				</tr>
+
+				<tr>
+					<td>Subtitulo:</td>
+					<td><input type="text" name="subtitulo" /></td>
+				</tr>
+
+				<tr>
+					<td>Texto:</td>
+					<td><input type="text" name="texto" /></td>
+				</tr>
+
+				<tr>
+					<td><input type="submit" value="Cadastrar" /></td>
+				</tr>
+
+			</thead>
+
+		</table>
 	</form>
 </body>
 </html>

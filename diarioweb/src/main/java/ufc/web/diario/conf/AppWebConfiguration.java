@@ -7,13 +7,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import ufc.web.diario.controller.HomeController;
+import ufc.web.diario.dao.ComentarioDAO;
 import ufc.web.diario.dao.NoticiaDAO;
 
 @EnableWebMvc
 @ComponentScan(basePackageClasses = 
 {
 		HomeController.class,
-		NoticiaDAO.class
+		NoticiaDAO.class,
+		ComentarioDAO.class
 })
 public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 	

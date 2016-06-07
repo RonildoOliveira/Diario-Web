@@ -18,7 +18,7 @@
 </br>
 
 <h2>Comentátios</h2>
-<a href="comentarios/form">Cadastrar Comentário</a>
+<a href="comentarios/listar">Listar Comentários</a>
 </br>
 </body>
 </html>

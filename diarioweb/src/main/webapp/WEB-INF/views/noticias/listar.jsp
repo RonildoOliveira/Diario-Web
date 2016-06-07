@@ -12,7 +12,7 @@
 	<c:forEach var="noticia" items="${noticias}">
 	<tr>
 		<td>${noticia.titulo}</td>
-		<td>${noticia.descricao}</td>
+		<td>${noticia.texto}</td>
 	</tr>
 	</c:forEach>
 </table>
