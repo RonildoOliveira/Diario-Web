@@ -7,10 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Diário Web</title>
+
+<link href="resources/css/main.css" rel="stylesheet" type="text/css" />  
    
 </head>
 <body>
-
+ 
+ <img alt="" src="resources/img/icon.png">
+ 
 <h2>Notícias</h2>
 <a href="noticias/form">Cadastrar Notícia</a>
 </br>
