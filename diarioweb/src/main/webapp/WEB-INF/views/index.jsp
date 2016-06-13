@@ -25,5 +25,12 @@
 <h2>Comentátios</h2>
 <a href="comentarios/listar">Listar Comentários</a>
 </br>
+
+<h2>Secoes</h2>
+<a href="secoes/form">Cadastrar Secão</a>
+</br>
+
+<a href="secoes/listar">Listar Secões</a>
+</br>
 </body>
 </html>

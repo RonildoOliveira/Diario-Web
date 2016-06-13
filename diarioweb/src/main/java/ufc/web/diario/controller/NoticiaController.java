@@ -9,8 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ufc.web.diario.dao.ComentarioDAO;
 import ufc.web.diario.dao.NoticiaDAO;
+import ufc.web.diario.dao.SecaoDAO;
 import ufc.web.diario.models.Noticia;
+import ufc.web.diario.models.Secao;
 
 @Controller
 @Transactional
@@ -18,22 +21,37 @@ public class NoticiaController {
 
 	@Autowired
 	private NoticiaDAO noticiaDAO;
-
+	
+	@Autowired
+	private SecaoDAO secaoDAO;
+	
+	@Autowired
+	private ComentarioDAO comentarioDAO;
+	
+	@RequestMapping("/noticias/form")
+	public String form(Model model){
+		
+		List<Secao> secoes = secaoDAO.listar();
+		model.addAttribute("secoes", secoes);
+		
+		return "noticias/form";
+	}
+	
 	@RequestMapping("/noticias")
 	public String save(Noticia noticia){
+		
+		noticia.setSecao(secaoDAO.getSecao(noticia.getSecaoId()));
 		noticiaDAO.inserir(noticia);
+		
 		return "noticias/ok";
-	}
-
-	@RequestMapping("/noticias/form")
-	public String form(){
-		return "noticias/form";
 	}
 	
 	@RequestMapping("/noticias/listar")
 	public String listarUsuario(Model model){
+		
 		List<Noticia> noticias = this.noticiaDAO.listar();
-		model.addAttribute("noticias", noticias);		
+		model.addAttribute("noticias", noticias);
+		
 		return "noticias/listar";
 	}	
 	

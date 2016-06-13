@@ -3,7 +3,6 @@ package ufc.web.diario.conf;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -11,13 +10,15 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import ufc.web.diario.controller.HomeController;
 import ufc.web.diario.dao.ComentarioDAO;
 import ufc.web.diario.dao.NoticiaDAO;
+import ufc.web.diario.dao.SecaoDAO;
 
 @EnableWebMvc
 @ComponentScan(basePackageClasses = 
 {
 		HomeController.class,
 		NoticiaDAO.class,
-		ComentarioDAO.class
+		ComentarioDAO.class,
+		SecaoDAO.class
 })
 public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 

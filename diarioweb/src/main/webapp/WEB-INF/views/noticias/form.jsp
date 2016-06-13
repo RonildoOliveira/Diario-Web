@@ -28,6 +28,14 @@
 				</tr>
 
 				<tr>
+					<td><select name="secaoId">
+							<c:forEach var="secao" items="${secoes}">
+								<option value="${secao.secaoId}">${secao.titulo}</option>
+							</c:forEach>
+					</select> Seção:</td>
+				</tr>
+
+				<tr>
 					<td><input type="submit" value="Cadastrar" /></td>
 				</tr>
 

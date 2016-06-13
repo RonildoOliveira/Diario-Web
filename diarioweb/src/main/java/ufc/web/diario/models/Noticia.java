@@ -1,17 +1,18 @@
 package ufc.web.diario.models;
 
-import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Version;
 
 @Entity(name = "NOTICIA")
 @Table(name = "NOTICIA")
@@ -34,6 +35,38 @@ public class Noticia {
 	// Um noticia pode ter várias comentários..
 	@OneToMany(mappedBy = "noticiaDeOrigem", targetEntity = Comentario.class, fetch = FetchType.LAZY)
 	private List<Comentario> comentarios;
+	
+	@Column (name = "SECAO_ID", nullable = false, insertable=false, updatable=false)
+	private Long secaoId;
+	
+	// Muitas notícias podem estar para uma única seção
+	@ManyToOne(optional = false, cascade=CascadeType.ALL)
+	@JoinColumn(name = "secao_id", referencedColumnName = "secao_id") // ID_SECAO referencia ID
+	private Secao secao;
+		
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+
+	public Long getSecaoId() {
+		return secaoId;
+	}
+
+	public void setSecaoId(Long secaoId) {
+		this.secaoId = secaoId;
+	}
+
+	public Secao getSecao() {
+		return secao;
+	}
+
+	public void setSecao(Secao secao) {
+		this.secao = secao;
+	}
 
 	public Long getNoticiaId() {
 		return noticiaId;
