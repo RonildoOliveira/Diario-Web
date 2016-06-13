@@ -12,8 +12,12 @@
    
 </head>
 <body>
+ <div class="topo">
+ 	<img alt="" src="resources/img/icon.png">
+ 	<h1>Diário WEB</h1> <h3>Slogan Legal</h3>
+ </div>
  
- <img alt="" src="resources/img/icon.png">
+ 
  
 <h2>Notícias</h2>
 <a href="noticias/form">Cadastrar Notícia</a>
@@ -23,6 +27,8 @@
 </br>
 
 <h2>Comentátios</h2>
+<a href="comentarios/form">Cadastrar Comentário</a>
+</br>
 <a href="comentarios/listar">Listar Comentários</a>
 </br>
 

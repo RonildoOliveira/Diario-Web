@@ -1,2 +1,15 @@
 body { color: purple }
-body { background-color: #d8da3d }
+body { background-color: #e3e3e3 }
+
+div.topo {
+    background-color:#005000;
+    color:white;
+    
+    padding:20px;
+    width: 97%;
+    height: 120px;
+}
+
+img{
+	float: right;
+}
