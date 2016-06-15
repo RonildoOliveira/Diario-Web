@@ -12,12 +12,22 @@
    
 </head>
 <body>
+
  <div class="topo">
  	<img alt="" src="resources/img/icon.png">
  	<h1>Diário WEB</h1> <h3>Slogan Legal</h3>
  </div>
- 
- 
+
+<h3>Noticias Recentes</h3> 
+ <div class="recentes">
+ 	<ul>
+		<c:forEach var="noticia" items="${noticiasRecentes}">
+			<li>
+				${noticia.titulo}
+			</li>
+		</c:forEach>
+	</ul>
+ </div>
  
 <h2>Notícias</h2>
 <a href="noticias/form">Cadastrar Notícia</a>

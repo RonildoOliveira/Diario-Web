@@ -33,6 +33,14 @@ public class NoticiaDAO {
 		return noticias;
 	}
 	
+	public List<Noticia> listarNoticiasRecentes(){
+		
+		String hql = "select n from NOTICIA n";
+		List<Noticia> noticias = this.manager.createQuery(hql, Noticia.class).setFirstResult(0).setMaxResults(5).getResultList();
+		
+		return noticias;
+	}
+
 	public void remover(Noticia n){
 		Noticia not = this.manager.find(Noticia.class, n.getNoticiaId());
 		this.manager.remove(not);

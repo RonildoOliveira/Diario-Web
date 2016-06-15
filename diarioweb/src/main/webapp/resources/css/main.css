@@ -2,11 +2,20 @@ body { color: purple }
 body { background-color: #e3e3e3 }
 
 div.topo {
-    background-color:#005000;
+    background-color:#004000;
     color:white;
     
     padding:20px;
     width: 97%;
+    height: 120px;
+}
+
+div.recentes {
+    background-color:#004000;
+    color:white;
+    
+    padding:20px;
+    width: 300px;
     height: 120px;
 }
 
