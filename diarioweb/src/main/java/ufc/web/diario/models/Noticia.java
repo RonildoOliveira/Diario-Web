@@ -1,5 +1,6 @@
 package ufc.web.diario.models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 @Entity(name = "NOTICIA")
 @Table(name = "NOTICIA")
@@ -32,6 +36,11 @@ public class Noticia {
 	@Column (name = ("TEXTO"), nullable = false)
 	private String texto;
 
+	@Version
+	@Column (name = ("DATA_NOTICIA"), nullable = false, columnDefinition="DATETIME")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataNoticia;
+	
 	// Um noticia pode ter várias comentários..
 	@OneToMany(mappedBy = "noticiaDeOrigem", targetEntity = Comentario.class, fetch = FetchType.LAZY)
 	private List<Comentario> comentarios;
@@ -99,5 +108,15 @@ public class Noticia {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
+
+	public Date getDataNoticia() {
+		return dataNoticia;
+	}
+
+	public void setDataNoticia(Date dataNoticia) {
+		this.dataNoticia = dataNoticia;
+	}
+
+	
 
 }

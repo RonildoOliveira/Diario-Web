@@ -35,7 +35,7 @@ public class NoticiaDAO {
 	
 	public List<Noticia> listarNoticiasRecentes(){
 		
-		String hql = "select n from NOTICIA n";
+		String hql = "select n from NOTICIA n order by n.dataNoticia desc";
 		List<Noticia> noticias = this.manager.createQuery(hql, Noticia.class).setFirstResult(0).setMaxResults(5).getResultList();
 		
 		return noticias;

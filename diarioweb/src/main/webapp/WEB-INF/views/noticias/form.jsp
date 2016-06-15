@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<form method="post" action="/diarioweb/noticias">
 		<table>
 			<thead>
@@ -28,6 +29,11 @@
 				</tr>
 
 				<tr>
+					<td>Data da Noticia:</td>
+					<td><input id="data" type="date" name="data" /></td>
+				</tr>
+
+				<tr>
 					<td><select name="secaoId">
 							<c:forEach var="secao" items="${secoes}">
 								<option value="${secao.secaoId}">${secao.titulo}</option>
@@ -36,7 +42,7 @@
 				</tr>
 
 				<tr>
-					<td><input type="submit" value="Cadastrar" /></td>
+					<td><input id="cadNot" type="submit" value="Cadastrar" /></td>
 				</tr>
 
 			</thead>
