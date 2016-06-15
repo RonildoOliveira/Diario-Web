@@ -18,6 +18,13 @@
  	<h1>Diário WEB</h1> <h3>Slogan Legal</h3>
  </div>
 
+<h3>Menu Bar</h3> 
+ <div class="menu">
+		<c:forEach var="secao" items="${secoes}">
+				<strong>${secao.titulo} |</strong>
+		</c:forEach>
+ </div>
+ 
 <h3>Noticias Recentes</h3> 
  <div class="recentes">
  	<ul>
@@ -31,22 +38,27 @@
  
 <h2>Notícias</h2>
 <a href="noticias/form">Cadastrar Notícia</a>
-</br>
+<br>
 
 <a href="noticias/listar">Listar Notícias</a>
-</br>
+<br>
 
 <h2>Comentátios</h2>
 <a href="comentarios/form">Cadastrar Comentário</a>
-</br>
+<br>
 <a href="comentarios/listar">Listar Comentários</a>
-</br>
+<br>
 
 <h2>Secoes</h2>
 <a href="secoes/form">Cadastrar Secão</a>
-</br>
+<br>
 
 <a href="secoes/listar">Listar Secões</a>
-</br>
+<br>
+
+ <div class="footer">
+ 	Desenvolvido Por: HUEBR
+ </div>
+ 
 </body>
 </html>
