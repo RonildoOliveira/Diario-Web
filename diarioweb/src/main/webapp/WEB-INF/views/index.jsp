@@ -31,6 +31,7 @@
 		<c:forEach var="noticia" items="${noticiasRecentes}">
 			<li>
 				${noticia.titulo}
+				<img alt="" src="${noticia.nomeImagem}">
 			</li>
 		</c:forEach>
 	</ul>

@@ -47,7 +47,7 @@ public class Noticia {
 	
 	@Column (name = "SECAO_ID", nullable = false, insertable=false, updatable=false)
 	private Long secaoId;
-	
+
 	// Muitas notícias podem estar para uma única seção
 	@ManyToOne(optional = false, cascade=CascadeType.ALL)
 	@JoinColumn(name = "secao_id", referencedColumnName = "secao_id") // ID_SECAO referencia ID
@@ -116,7 +116,5 @@ public class Noticia {
 	public void setDataNoticia(Date dataNoticia) {
 		this.dataNoticia = dataNoticia;
 	}
-
-	
 
 }
