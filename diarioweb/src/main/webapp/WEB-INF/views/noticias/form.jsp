@@ -41,6 +41,8 @@
 					</select> Seção:</td>
 				</tr>
 
+		
+				
 				<tr>
 					<td><input id="cadNot" type="submit" value="Cadastrar" /></td>
 				</tr>

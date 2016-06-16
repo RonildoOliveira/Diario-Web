@@ -5,17 +5,20 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import ufc.web.diario.models.Noticia;
 
 @Repository
 public class NoticiaDAO {
-
-	@PersistenceContext
+    
+    @PersistenceContext
 	private EntityManager manager;
 	
 	public void inserir(Noticia n){		
+		
 		this.manager.persist(n);
 		
 	}

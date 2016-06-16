@@ -52,7 +52,7 @@ public class Noticia {
 	@ManyToOne(optional = false, cascade=CascadeType.ALL)
 	@JoinColumn(name = "secao_id", referencedColumnName = "secao_id") // ID_SECAO referencia ID
 	private Secao secao;
-		
+    
 	public List<Comentario> getComentarios() {
 		return comentarios;
 	}
