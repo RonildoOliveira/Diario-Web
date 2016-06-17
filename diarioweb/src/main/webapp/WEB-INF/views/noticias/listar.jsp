@@ -20,10 +20,10 @@
 
 			<table border="2">
 				<tr>
-					<td><strong>Id</strong></td>
-					<td><strong>Título</strong></td>
-					<td><strong>Texto</strong></td>
-					<td><strong>Publicado em:</strong></td>
+					<td><strong>ID:</strong></td>
+					<td><strong>TÍTULO:</strong></td>
+					<td><strong>TEXTO:</strong></td>
+					<td><strong>PUBLICADO EM:</strong></td>
 				</tr>
 				<c:forEach var="noticia" items="${noticias}">
 					<tr>

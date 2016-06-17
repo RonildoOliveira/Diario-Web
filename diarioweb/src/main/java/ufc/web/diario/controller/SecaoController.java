@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import ufc.web.diario.dao.NoticiaDAO;
 import ufc.web.diario.dao.SecaoDAO;
 import ufc.web.diario.models.Secao;
 
