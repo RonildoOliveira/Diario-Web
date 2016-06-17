@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ufc.web.diario.dao.NoticiaDAO;
 import ufc.web.diario.dao.SecaoDAO;
 import ufc.web.diario.models.Secao;
 
@@ -19,6 +20,7 @@ public class SecaoController {
 		
 	@Autowired
 	private SecaoDAO secaoDao;
+	
 	
 	@RequestMapping("/secoes/form")
 	public String formularioSecao(){

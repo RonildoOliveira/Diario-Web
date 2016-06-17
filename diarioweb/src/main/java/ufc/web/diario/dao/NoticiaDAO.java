@@ -30,7 +30,7 @@ public class NoticiaDAO {
 
 	public List<Noticia> listar(){
 		
-		String hql = "select n from NOTICIA n";
+		String hql = "select n from NOTICIA n order by n.dataNoticia desc";
 		List<Noticia> noticias = this.manager.createQuery(hql, Noticia.class).getResultList();
 		
 		return noticias;

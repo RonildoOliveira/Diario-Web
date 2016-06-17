@@ -79,4 +79,23 @@ public class NoticiaController {
 		
 		return "noticias/exibir";
 	}
+
+	@RequestMapping(value = "/noticias/listarsec", params = {"id"}, method = RequestMethod.GET)
+	public String exibirNoticiaPorSecao(Model model, @RequestParam(value = "id") int id){
+		
+		List<Noticia> noticias = this.noticiaDAO.listar();
+		
+		List<Noticia> noticiaResult = new ArrayList<Noticia>();
+		
+		System.out.println("HUE------");
+		for (Noticia noticia : noticias) {
+			if(noticia.getSecaoId() == id){
+				noticiaResult.add(noticia);
+			}
+		}
+		
+		model.addAttribute("noticias", noticiaResult);
+		
+		return "noticias/listarsec";
+	}
 }
