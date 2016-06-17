@@ -8,23 +8,31 @@
 
 <title>Diário Web</title>
 
-<link href="resources/css/foundation.css" rel="stylesheet"	type="text/css" />
+<link href="resources/css/foundation.css" rel="stylesheet"
+	type="text/css" />
 
 </head>
 <body>
-	<div class="row">
-		<div class="large-12 columns">
+
+	<div class="large-12 columns">
+		<div class="row">
 			<h1>Diário WEB</h1>
 			<h3>Slogan Legal</h3>
 		</div>
+
+		<div class="row">
+			<ul class="vertical medium-horizontal menu">
+				<li><a href="/diarioweb/" title="Volte à página inicial">Início</a></li>
+				<c:forEach var="secao" items="${secoes}">
+					<li><a href="" title="${secao.descricao}">${secao.titulo}</a></li>
+				</c:forEach>
+				<!-- 				<li><input type="search" placeholder="Buscar"></li> -->
+				<!-- 				<li><button type="button" class="button">Buscar</button></li> -->
+			</ul>
+		</div>
+
 	</div>
 
-	<h3>Menu Bar</h3>
-	<div>
-		<c:forEach var="secao" items="${secoes}">
-			<strong>${secao.titulo} |</strong>
-		</c:forEach>
-	</div>
 
 </body>
 </html>

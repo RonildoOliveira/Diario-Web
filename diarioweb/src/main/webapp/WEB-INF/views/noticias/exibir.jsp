@@ -26,11 +26,14 @@
 					<td><strong>Publicado em:</strong></td>
 				</tr>
 				<c:forEach var="noticia" items="${noticias}">
-					<tr>
+					
 						<td>${noticia.noticiaId}</td>
 						<td>${noticia.titulo}</td>
 						<td>${noticia.texto}</td>
 						<td>${noticia.dataNoticia}</td>
+					
+					<tr>
+						
 					</tr>
 				</c:forEach>
 			</table>

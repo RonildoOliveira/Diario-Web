@@ -1,5 +1,6 @@
 package ufc.web.diario.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import ufc.web.diario.dao.ComentarioDAO;
@@ -51,7 +53,7 @@ public class NoticiaController {
 	}
 	
 	@RequestMapping("/noticias/listar")
-	public String listarUsuario(Model model){
+	public String listarNoticia(Model model){
 		
 		List<Noticia> noticias = this.noticiaDAO.listar();
 		model.addAttribute("noticias", noticias);
@@ -59,4 +61,23 @@ public class NoticiaController {
 		return "noticias/listar";
 	}	
 	
+	@RequestMapping(value = "/noticias/exibir", params = {"id"}, method = RequestMethod.GET)
+	public String exibirNoticia(Model model, @RequestParam(value = "id") int id){
+		
+		List<Noticia> noticias = this.noticiaDAO.listar();
+		
+		List<Noticia> noticiaResulList = new ArrayList<Noticia>();
+		
+		for (Noticia noticia : noticias) {
+			System.out.println(noticia.getNoticiaId());
+			
+			if(noticia.getNoticiaId() == id)
+				noticiaResulList.add(noticia);
+				
+		}
+		
+		model.addAttribute("noticias", noticiaResulList);
+		
+		return "noticias/exibir";
+	}
 }

@@ -431,7 +431,8 @@ button {
 .row {
   max-width: 75rem;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto; 
+  }
   .row::before, .row::after {
     content: ' ';
     display: table; }
@@ -1065,12 +1066,14 @@ button {
   .large-offset-10 {
     margin-left: 83.33333%; }
   .large-12 {
+  background-color: #eeeeee; 
     width: 100%; }
   .large-offset-11 {
     margin-left: 91.66667%; }
   .large-up-1 > .column, .large-up-1 > .columns {
     width: 100%;
-    float: left; }
+    float: left;
+    }
     .large-up-1 > .column:nth-of-type(1n), .large-up-1 > .columns:nth-of-type(1n) {
       clear: none; }
     .large-up-1 > .column:nth-of-type(1n+1), .large-up-1 > .columns:nth-of-type(1n+1) {

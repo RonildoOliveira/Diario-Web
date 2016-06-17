@@ -5,54 +5,76 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="../resources/css/foundation.css" rel="stylesheet" type="text/css" />
+<link href="../resources/css/foundation.css" rel="stylesheet"
+	type="text/css" />
 <title>Insert title here</title>
 </head>
 <body>
 
-<%@ include file="../topo.jsp" %>
- 
+	<%@ include file="../topo.jsp"%>
+
 	<form method="post" action="/diarioweb/noticias">
-		<table>
-			<thead>
+		<div class="large-12 columns">
 
-				<tr>
-					<td>Titulo:</td>
-					<td><input type="text" name="titulo" /></td>
-				</tr>
+			<div class="large-6 medium-6 columns">
+				<div class="primary callout">
+					<p>Título:</p>
+					<input type="text" name="titulo" />
+				</div>
+			</div>
 
-				<tr>
-					<td>Subtitulo:</td>
-					<td><input type="text" name="subtitulo" /></td>
-				</tr>
+			<div class="large-6 medium-6 columns">
+				<div class="primary callout">
+					<p>Subtítulo:</p>
+					<input type="text" name="subtitulo" />
+				</div>
+			</div>
 
-				<tr>
-					<td>Texto:</td>
-					<td><input type="text" name="texto" /></td>
-				</tr>
 
-				<tr>
-					<td>Data da Noticia:</td>
-					<td><input id="data" type="date" name="data" /></td>
-				</tr>
+			<div class="large-12 medium-12 columns">
+				<div class="primary callout">
+					<p>Texto:</p>
+					<textarea placeholder="Texto da Notícia" name="texto"></textarea>
+				</div>
+			</div>
 
-				<tr>
-					<td><select name="secaoId">
-							<c:forEach var="secao" items="${secoes}">
-								<option value="${secao.secaoId}">${secao.titulo}</option>
-							</c:forEach>
-					</select> Seção:</td>
-				</tr>
+			<div class="large-6 medium-6 columns">
+				<div class="primary callout">
+					<p>Data da Noticia:</p>
+					<input id="data" type="date" name="data" />
+				</div>
+			</div>
 
-		
-				
-				<tr>
-					<td><input id="cadNot" type="submit" value="Cadastrar" /></td>
-				</tr>
+			<div class="large-6 medium-6 columns">
+				<div class="primary callout">
+					<p>Seção:</p>
+					<select name="secaoId">
+						<c:forEach var="secao" items="${secoes}">
+							<option value="${secao.secaoId}">${secao.titulo}</option>
+						</c:forEach>
+					</select>
+				</div>
+			</div>
 
-			</thead>
+			<div class="large-12 medium-12 columns">
+				<div class="primary callout">
 
-		</table>
+					<p>
+						<input class="success button" id="cadNot" type="submit"
+							value="Cadastrar" />
+					</p>
+
+					<p>
+						<a href="/diarioweb/" class="button">Voltar</a>
+					</p>
+				</div>
+			</div>
+
+
+		</div>
+
+
+
 	</form>
 </body>
 </html>

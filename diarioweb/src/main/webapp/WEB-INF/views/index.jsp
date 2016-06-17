@@ -19,13 +19,15 @@
  	<ul>
 		<c:forEach var="noticia" items="${noticiasRecentes}">
 			<li>
-				${noticia.titulo}
+			<a href="noticias/exibir?id=${noticia.noticiaId}">${noticia.titulo}</a>
+				
 			</li>
 		</c:forEach>
 	</ul>
  </div>
  
 <h2>Notícias</h2>
+
 <a href="noticias/form">Cadastrar Notícia</a>
 <br>
 
