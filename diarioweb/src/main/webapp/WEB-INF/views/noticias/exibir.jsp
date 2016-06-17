@@ -14,9 +14,14 @@
 
 	<div class="large-12 columns">
 		<div class="row">
-				<h3>${noticiaResult.titulo}</h3>
-				<h6>${noticiaResult.dataNoticia}</h6>
-				<p>${noticiaResult.texto}</p>
+			<h3>${noticiaResult.titulo}</h3>
+			<h6>${noticiaResult.dataNoticia}</h6>
+			<p>${noticiaResult.texto}</p>
+			<div class="primary callout">
+				<c:forEach var="comentario" items="${comentarios}">
+					<p>${comentario.texto}</p>
+				</c:forEach>
+			</div>
 			<div class="primary callout">
 				<p>
 					<a href="/diarioweb/" class="button">Voltar</a>

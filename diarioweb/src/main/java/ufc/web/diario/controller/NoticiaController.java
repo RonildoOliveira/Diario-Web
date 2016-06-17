@@ -62,7 +62,6 @@ public class NoticiaController {
 	public String exibirNoticia(Model model, @RequestParam(value = "id") int id){
 		
 		List<Noticia> noticias = this.noticiaDAO.listar();
-		
 		Noticia noticiaResult = new Noticia();
 		
 		for (Noticia noticia : noticias) {
@@ -73,6 +72,10 @@ public class NoticiaController {
 		}
 		
 		model.addAttribute("noticiaResult", noticiaResult);
+		model.addAttribute("secoes", secaoDAO.listar());
+		
+		if(noticiaResult.getComentarios().size() > 0)
+			model.addAttribute("comentarios", noticiaResult.getComentarios());
 		
 		return "noticias/exibir";
 	}
@@ -90,6 +93,8 @@ public class NoticiaController {
 				noticiaResult.add(noticia);
 			}
 		}
+		
+		
 		
 		model.addAttribute("noticias", noticiaResult);
 		
