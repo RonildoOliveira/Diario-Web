@@ -8,22 +8,11 @@
 
 <title>Diário Web</title>
 
-<link href="resources/css/main.css" rel="stylesheet" type="text/css" />  
+<link href="resources/css/foundation.css" rel="stylesheet" type="text/css" />  
    
 </head>
 <body>
-
- <div class="topo">
- 	<img alt="" src="resources/img/icon.png">
- 	<h1>Diário WEB</h1> <h3>Slogan Legal</h3>
- </div>
-
-<h3>Menu Bar</h3> 
- <div class="menu">
-		<c:forEach var="secao" items="${secoes}">
-				<strong>${secao.titulo} |</strong>
-		</c:forEach>
- </div>
+<%@ include file="topo.jsp" %> 
  
 <h3>Noticias Recentes</h3> 
  <div class="recentes">
@@ -31,7 +20,6 @@
 		<c:forEach var="noticia" items="${noticiasRecentes}">
 			<li>
 				${noticia.titulo}
-				<img alt="" src="${noticia.nomeImagem}">
 			</li>
 		</c:forEach>
 	</ul>
