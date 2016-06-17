@@ -5,14 +5,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../resources/css/foundation.css" rel="stylesheet"	type="text/css" />
 <title>Insert title here</title>
 </head>
 <body>
 	<table border="1">
+			<tr>
+				<td><strong>Id</strong></td>
+				<td><strong>Título</strong></td>
+				<td><strong>Texto</strong></td>
+				<td><strong>Publicado em:</strong></td>
+			</tr>
 		<c:forEach var="noticia" items="${noticias}">
 			<tr>
+				<td>${noticia.noticiaId}</td>
 				<td>${noticia.titulo}</td>
 				<td>${noticia.texto}</td>
+				<td>${noticia.dataNoticia}</td>
 			</tr>
 		</c:forEach>
 	</table>
