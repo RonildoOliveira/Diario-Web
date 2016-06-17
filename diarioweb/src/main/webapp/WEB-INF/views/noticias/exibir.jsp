@@ -10,41 +10,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<%@ include file="../topo.jsp"%>
 
 	<div class="large-12 columns">
-
-
-		<div class="large-12 medium-12 columns">
-
-			<table border="2">
-				<tr>
-					<td><strong>Id</strong></td>
-					<td><strong>Título</strong></td>
-					<td><strong>Texto</strong></td>
-					<td><strong>Publicado em:</strong></td>
-				</tr>
-				<c:forEach var="noticia" items="${noticias}">
-					
-						<td>${noticia.noticiaId}</td>
-						<td>${noticia.titulo}</td>
-						<td>${noticia.texto}</td>
-						<td>${noticia.dataNoticia}</td>
-					
-					<tr>
-						
-					</tr>
-				</c:forEach>
-			</table>
-			
+		<div class="row">
+				<h3>${noticiaResult.titulo}</h3>
+				<h6>${noticiaResult.dataNoticia}</h6>
+				<p>${noticiaResult.texto}</p>
 			<div class="primary callout">
 				<p>
 					<a href="/diarioweb/" class="button">Voltar</a>
 				</p>
 			</div>
 		</div>
-
 
 	</div>
 

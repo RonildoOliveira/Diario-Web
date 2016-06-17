@@ -66,17 +66,16 @@ public class NoticiaController {
 		
 		List<Noticia> noticias = this.noticiaDAO.listar();
 		
-		List<Noticia> noticiaResulList = new ArrayList<Noticia>();
+		Noticia noticiaResult = new Noticia();
 		
 		for (Noticia noticia : noticias) {
-			System.out.println(noticia.getNoticiaId());
-			
-			if(noticia.getNoticiaId() == id)
-				noticiaResulList.add(noticia);
-				
+			if(noticia.getNoticiaId() == id){
+				noticiaResult = noticia;
+				break;
+			}
 		}
 		
-		model.addAttribute("noticias", noticiaResulList);
+		model.addAttribute("noticiaResult", noticiaResult);
 		
 		return "noticias/exibir";
 	}
