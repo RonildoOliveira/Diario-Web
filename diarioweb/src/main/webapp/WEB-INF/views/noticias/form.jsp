@@ -61,7 +61,7 @@
 
 					<p>
 						<input class="success button" id="cadNot" type="submit"
-							value="Cadastrar" />
+							value="Cadastrar Notícia" />
 					</p>
 
 					<p>

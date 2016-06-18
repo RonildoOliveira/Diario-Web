@@ -54,6 +54,7 @@ public class NoticiaController {
 
 		List<Noticia> noticias = this.noticiaDAO.listar();
 		model.addAttribute("noticias", noticias);
+		model.addAttribute("secoes",secaoDAO.listar());
 
 		return "noticias/listar";
 	}	
