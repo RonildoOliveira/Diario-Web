@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ufc.web.diario.dao.ComentarioDAO;
 import ufc.web.diario.dao.NoticiaDAO;
 import ufc.web.diario.models.Comentario;
-import ufc.web.diario.models.Noticia;
 
 @Controller
 @Transactional
@@ -20,7 +19,7 @@ public class ComentarioController {
 
 	@Autowired
 	private ComentarioDAO comentarioDAO;
-	
+
 	@Autowired
 	private NoticiaDAO noticiaDAO;
 
@@ -31,20 +30,11 @@ public class ComentarioController {
 		return "comentarios/ok";
 	}
 
-	@RequestMapping("/comentarios/form")
-	public String form(Model model){
-		
-		List<Noticia> noticias = this.noticiaDAO.listar();
-		model.addAttribute("noticias", noticias);
-		
-		return "comentarios/form";
-	}
-	
 	@RequestMapping("/comentarios/listar")
 	public String listarUsuario(Model model){
 		List<Comentario> comentarios = this.comentarioDAO.listar();
 		model.addAttribute("comentarios", comentarios);		
 		return "comentarios/listar";
 	}	
-	
+
 }

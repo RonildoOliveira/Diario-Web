@@ -16,10 +16,11 @@
 		
 		<div class="large-12 medium-12 columns">
 			<div class="row">
-				
+				<h3>${secao.titulo}</h3>
+				<h6>${secao.descricao}</h6>		
 				<c:forEach var="noticia" items="${noticias}">
 					<div class="primary callout">
-						<h3>${noticia.titulo}</h3>
+						<h3><a href="/diarioweb/noticias/exibir?id=${noticia.noticiaId}">${noticia.titulo}</a></h3>
 						<h6>${noticia.dataNoticia}</h6>
 						<p>${noticia.texto}</p>
 					</div>

@@ -19,12 +19,13 @@
 			<h1>Diário WEB</h1>
 			<h3><i>Slogan Legal</i></h3>
 		</div>
-
+		
+		
 		<div class="row">
 			<ul class="vertical medium-horizontal menu">
 				<li><a href="/diarioweb/" title="Volte à página inicial">Início</a></li>
 				<c:forEach var="secao" items="${secoes}">
-					<li><a href="noticias/listarsec?id=${secao.secaoId}" title="${secao.descricao}">${secao.titulo}</a></li>
+					<li><a href="/diarioweb/noticias/listarsec?id=${secao.secaoId}" title="${secao.descricao}">${secao.titulo}</a></li>
 				</c:forEach>
 				<!-- 				<li><input type="search" placeholder="Buscar"></li> -->
 				<!-- 				<li><button type="button" class="button">Buscar</button></li> -->

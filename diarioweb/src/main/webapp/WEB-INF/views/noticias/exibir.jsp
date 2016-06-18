@@ -16,12 +16,21 @@
 		<div class="row">
 			<h3>${noticiaResult.titulo}</h3>
 			<h6>${noticiaResult.dataNoticia}</h6>
-			<p>${noticiaResult.texto}</p>
-			<div class="primary callout">
-				<c:forEach var="comentario" items="${comentarios}">
-					<p>${comentario.texto}</p>
-				</c:forEach>
+			<div class="large-12w columns">
+				<p>${noticiaResult.texto}</p>
 			</div>
+
+			<%@ include file="../comentarios/form.jsp"%>
+
+			<h5>
+				<strong>Comentários</strong>
+			</h5>
+			<c:forEach var="comentario" items="${comentarios}">
+				<div class="primary callout">
+					<p>${comentario.texto}</p>
+				</div>
+			</c:forEach>
+
 			<div class="primary callout">
 				<p>
 					<a href="/diarioweb/" class="button">Voltar</a>

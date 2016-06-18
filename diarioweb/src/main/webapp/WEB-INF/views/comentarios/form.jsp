@@ -9,26 +9,10 @@
 </head>
 <body>
 	<form method="post" action="/diarioweb/comentarios">
-		<table>
-			<tr>
-				<td>Texto:</td>
-				<td><input type="text" name="texto" /></td>
-			</tr>
-
-			<tr>
-				<td><select name="noticiaId">
-						<c:forEach var="noticia" items="${noticias}">
-							<option value="${noticia.noticiaId}">${noticia.titulo}</option>
-						</c:forEach>
-				</select> Seção:</td>
-			</tr>
-
-
-			<tr>
-				<td><input type="submit" value="Cadastrar" /></td>
-			</tr>
-
-		</table>
+		<h3>Comentário:</h3>
+		<textarea placeholder="Seu Comentario" name="texto"></textarea>
+		<input type="hidden" name="noticiaId" value="${noticia.noticiaId}">
+		<input class="success button" type="submit" value="Comentar" />
 	</form>
 
 </body>
