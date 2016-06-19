@@ -41,11 +41,14 @@
 
 			<h2>Notícias</h2>
 
-			<a href="noticias/form">Cadastrar Notícia</a> <br> <a
-				href="noticias/listar">Listar Notícias</a> <br>
+			<a href="/diarioweb/noticias/form">Cadastrar Notícia</a> <br> <a
+				href="/diarioweb/noticias/listar">Listar Notícias</a> <br>
 
 			<h2>Secoes</h2>
-			<a href="secoes/form">Cadastrar Secão</a> <br>
+			<a href="/diarioweb/secoes/form">Cadastrar Secão</a> <br>
+			
+			<h2>User</h2>
+			<a href="/diarioweb/usuarios/login">Login</a> <br>
 			
 			<%    pageContext.setAttribute("monEnum", TipoUsuario.values()); %>
 			<c:forEach var="entry" items="${monEnum}">

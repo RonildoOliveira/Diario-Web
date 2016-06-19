@@ -23,16 +23,13 @@
 	<div class="row">
 		<div class="large-3 columns">
 			<!--  topo  logo-->
-			<h2>Diário WEB</h2>
+			<h2><a href="/diarioweb/">Diário WEB</a></h2>
 			<!-- <img src="http://placehold.it/400x100&text=Logo"/> -->
 		</div>
 
 		<div class="large-9 columns">
 			<ul class="right button-group">
-				<li><a href="#" class="button">Link 1</a></li>
-				<li><a href="#" class="button">Link 2</a></li>
-				<li><a href="#" class="button">Link 3</a></li>
-				<li><a href="#" class="button">Link 4</a></li>
+				<li><a href="/diario/usuarios/login" class="button">Login</a></li>
 			</ul>
 		</div>
 		<!--  topo  logo-->

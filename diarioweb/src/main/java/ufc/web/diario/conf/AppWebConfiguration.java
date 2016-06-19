@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import ufc.web.diario.controller.HomeController;
+import ufc.web.diario.controller.UsuarioController;
 import ufc.web.diario.dao.ComentarioDAO;
 import ufc.web.diario.dao.NoticiaDAO;
 import ufc.web.diario.dao.SecaoDAO;
@@ -16,6 +17,7 @@ import ufc.web.diario.dao.SecaoDAO;
 @ComponentScan(basePackageClasses = 
 {
 		HomeController.class,
+		UsuarioController.class,
 		NoticiaDAO.class,
 		ComentarioDAO.class,
 		SecaoDAO.class
