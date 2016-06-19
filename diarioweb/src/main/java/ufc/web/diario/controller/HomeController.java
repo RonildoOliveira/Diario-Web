@@ -21,6 +21,7 @@ public class HomeController {
 	@Autowired
 	private SecaoDAO secaoDAO;
 	
+	
 	@RequestMapping("/")
 	public String index(Model model) {
 		

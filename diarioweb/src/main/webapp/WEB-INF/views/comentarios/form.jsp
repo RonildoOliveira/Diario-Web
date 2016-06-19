@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form method="post" action="/diarioweb/comentarios">
-		<h3>Comentário:</h3>
+		<strong>Comentário:</strong>
 		<textarea placeholder="Seu Comentario" name="texto"></textarea>
 		<input type="hidden" name="noticiaId" value="${noticia.noticiaId}">
 		<input class="success button" type="submit" value="Comentar" />

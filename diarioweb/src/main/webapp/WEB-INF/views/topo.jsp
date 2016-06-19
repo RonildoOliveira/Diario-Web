@@ -6,34 +6,78 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Diário Web</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/normalize.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
+<link
+	href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css'
+	rel='stylesheet' type='text/css'>
 
-<link href="resources/css/foundation.css" rel="stylesheet"
-	type="text/css" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
+<title>Diário WEB</title>
 </head>
 <body>
-
-	<div class="large-12 columns">
-		<div class="row">
-			<h1>Diário WEB</h1>
-			<h3><i>Slogan Legal</i></h3>
+	<div class="row">
+		<div class="large-3 columns">
+			<!--  topo  logo-->
+			<h2>Diário WEB</h2>
+			<!-- <img src="http://placehold.it/400x100&text=Logo"/> -->
 		</div>
-		
-		
-		<div class="row">
-			<ul class="vertical medium-horizontal menu">
-				<li><a href="/diarioweb/" title="Volte à página inicial">Início</a></li>
-				<c:forEach var="secao" items="${secoes}">
-					<li><a href="/diarioweb/noticias/listarsec?id=${secao.secaoId}" title="${secao.descricao}">${secao.titulo}</a></li>
-				</c:forEach>
-				<!-- 				<li><input type="search" placeholder="Buscar"></li> -->
-				<!-- 				<li><button type="button" class="button">Buscar</button></li> -->
+
+		<div class="large-9 columns">
+			<ul class="right button-group">
+				<li><a href="#" class="button">Link 1</a></li>
+				<li><a href="#" class="button">Link 2</a></li>
+				<li><a href="#" class="button">Link 3</a></li>
+				<li><a href="#" class="button">Link 4</a></li>
 			</ul>
 		</div>
+		<!--  topo  logo-->
 
-	</div>
 
+		<div class="large-12 columns">
+			<!--  menu bar -->
 
+			<nav class="top-bar" data-topbar>
+			<ul class="title-area">
+
+				<li class="name">
+					<h1>
+						<a href="/diarioweb/">Home</a>
+					</h1>
+				</li>
+
+				<li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a>
+				</li>
+			</ul>
+
+			<section class="top-bar-section">
+			<ul class="left">
+				<c:forEach var="secao" items="${secoes}">
+					<li>
+					<a href="/diarioweb/noticias/listarsec?id=${secao.secaoId}"
+						title="${secao.descricao}"> ${secao.titulo}
+					</a>
+					</li>
+				</c:forEach>
+			</ul>
+
+			<ul class="right">
+				<li class="search">
+					<form>
+						<input type="search">
+					</form>
+				</li>
+
+				<li class="has-button"><a class="small button" href="#">Search</a>
+				</li>
+			</ul>
+			</section> </nav>
+		</div>
+		<!-- large-12 columns menu bar -->
+	</div><!-- row  -->
 </body>
 </html>
