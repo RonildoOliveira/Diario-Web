@@ -5,15 +5,26 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import ufc.web.diario.dao.ArquivoUploadDAO;
+import ufc.web.diario.models.ArquivoUpload;
+
+@Configuration
 @EnableTransactionManagement
 public class JPAConfiguration {
 
@@ -63,5 +74,29 @@ public class JPAConfiguration {
 		transactionManager.setEntityManagerFactory(emf);
 		return transactionManager;
 	}
-		
+	
+	/****/
+	@Bean(name = "multipartResolver")
+    public CommonsMultipartResolver getCommonsMultipartResolver() {
+    	CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+    	multipartResolver.setMaxUploadSize(20971520); // 20MB
+    	multipartResolver.setMaxInMemorySize(1048576);	// 1MB
+    	return multipartResolver;
+    }
+	
+	@Autowired
+    @Bean(name = "sessionFactory")
+    public SessionFactory getSessionFactory(DataSource dataSource) {
+    	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
+    	sessionBuilder.addProperties(additionalProperties());
+    	sessionBuilder.addAnnotatedClasses(ArquivoUpload.class);
+    	return sessionBuilder.buildSessionFactory();
+    }
+	
+	@Autowired
+    @Bean(name = "arquivoUploadDao")
+    public ArquivoUploadDAO getUserDao(SessionFactory sessionFactory) {
+    	return new ArquivoUploadDAO(sessionFactory);
+    }
+	
 }

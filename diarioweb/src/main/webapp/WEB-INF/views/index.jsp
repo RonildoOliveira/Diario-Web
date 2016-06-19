@@ -39,6 +39,12 @@
 
 			<hr />
 
+<!-- 			-----------------------------------------------------           -->
+			<h2>Arvuios</h2>
+
+			<a href="/diarioweb/arquivos/form">Upload</a>
+			<a href="/diarioweb/arquivos/listar">Listar</a>
+			
 			<h2>Notícias</h2>
 
 			<a href="/diarioweb/noticias/form">Cadastrar Notícia</a> <br> <a
