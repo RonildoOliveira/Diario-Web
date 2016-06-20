@@ -30,7 +30,7 @@
 				<!-- Slider -->
 				<c:forEach var="noticia" items="${noticiasRecentes}">
 					<li><img
-						src="http://placehold.it/1000x400&amp;text=[%20img%201%20]">
+						src="resources/img/news.png">
 						<a href="noticias/exibir?id=${noticia.noticiaId}">${noticia.titulo}</a>
 					</li>
 
