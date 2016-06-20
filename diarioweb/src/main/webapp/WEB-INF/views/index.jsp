@@ -7,15 +7,15 @@
 <head>
 
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/normalize.min.css">
+	href="resources/css/normalize.min.css">
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
+	href="resources/css/foundation.min.css">
 <link
-	href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css'
+	href='resources/css/foundation-icons.css'
 	rel='stylesheet' type='text/css'>
 
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	src="resources/js/modernizr.min.js"></script>
 
 <title>Diário WEB</title>
 </head>
@@ -66,9 +66,9 @@
 	</div>
 	<!-- ROWS -->
 
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="resources/js/jquery-2.1.4.min.js"></script>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
+		src="resources/js/foundation.min.js"></script>
 	<script>
 		$(document).foundation();
 	</script>

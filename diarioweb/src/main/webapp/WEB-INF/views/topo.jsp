@@ -7,15 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/normalize.min.css">
+	href="resources/css/normalize.min.css">
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
+	href="resources/css/foundation.min.css">
 <link
-	href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css'
+	href='resources/css/foundation-icons.css'
 	rel='stylesheet' type='text/css'>
 
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	src="resources/js/modernizr.min.js"></script>
 
 <title>Diário WEB</title>
 </head>
@@ -29,7 +29,7 @@
 
 		<div class="large-9 columns">
 			<ul class="right button-group">
-				<li><a href="/diario/usuarios/login" class="button">Login</a></li>
+				<li><a href="/diarioweb/usuarios/login" class="button">Login</a></li>
 			</ul>
 		</div>
 		<!--  topo  logo-->
