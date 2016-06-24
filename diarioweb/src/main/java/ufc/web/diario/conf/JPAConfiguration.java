@@ -1,15 +1,17 @@
 package ufc.web.diario.conf;
 
+import java.nio.charset.Charset;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -47,15 +49,15 @@ public class JPAConfiguration {
 
 	@Bean
 	public DataSource dataSource(){
-		DriverManagerDataSource dataSource =
-				new DriverManagerDataSource();
+		BasicDataSource dataSource =
+				new BasicDataSource();
 
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost:3306/diario"+UTF);
 		
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
-
+		dataSource.addConnectionProperty("characterEncoding", "UTF-8"); // make sure utf-8 charset
 		return dataSource;
 	}
 
@@ -101,4 +103,8 @@ public class JPAConfiguration {
     	return new ArquivoUploadDAO(sessionFactory);
     }
 	
+	@Bean
+	public StringHttpMessageConverter stringHttpMessageConverter() {
+	    return new StringHttpMessageConverter(Charset.forName("UTF-8"));
+	}
 }

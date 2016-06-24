@@ -1,17 +1,11 @@
 package ufc.web.diario.controller;
 
 import java.io.IOException;
-import java.io.OutputStream;
-import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import ufc.web.diario.dao.ArquivoUploadDAO;
 import ufc.web.diario.models.ArquivoUpload;
-
 
 @Controller
 public class ArquivoUploadController {
@@ -46,7 +39,6 @@ public class ArquivoUploadController {
 	public String save(
 			@ModelAttribute("document") ArquivoUpload arquivo,
 			@RequestParam("file") MultipartFile file) throws IOException {
-		
 			        
 	        arquivo.setNomeArquivo(file.getOriginalFilename());
 	        
@@ -77,7 +69,6 @@ public class ArquivoUploadController {
         response.setHeader("Content-Disposition","attachment; filename=\"" + arquivo.getNomeArquivo() +"\"");
   
         FileCopyUtils.copy(arquivo.getDadoArquivo(), response.getOutputStream());
-		
 		
 		return null;
 	}
