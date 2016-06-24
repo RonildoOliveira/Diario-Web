@@ -38,7 +38,6 @@ public class ArquivoUploadController {
 	SessionFactory sessionFactory;
 	
 	@RequestMapping(value = "/arquivos/form", method = RequestMethod.GET)
-	//@RequestMapping(value = "/arquivos/form")
 	public String showUploadForm(HttpServletRequest request) {
 		return "arquivos/form";
 	}

@@ -1,4 +1,22 @@
-/* 
+/*http://zurb.com/building-blocks/file-upload-button*/
+
+.file-upload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px; }
+
+.file-upload input.file-input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0); }
+  
+ /* 
  * Foundation Icons v 3.0
  * Made by ZURB 2013 http://zurb.com/playground/foundation-icon-fonts-3
  * MIT License

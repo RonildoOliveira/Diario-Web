@@ -23,8 +23,9 @@
 	<div class="row">
 		<div class="large-3 columns">
 			<!--  topo  logo-->
-			<h2><a href="/diarioweb/">Diário WEB</a></h2>
-			<!-- <img src="http://placehold.it/400x100&text=Logo"/> -->
+			<a href="/diarioweb/">
+			<img src="/diarioweb/resources/img/dweb_logo.png"/>
+			</a>
 		</div>
 
 		<div class="large-9 columns">

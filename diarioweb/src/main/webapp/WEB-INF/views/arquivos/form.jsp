@@ -14,9 +14,7 @@
 
 <script
 	src="../resources/js/modernizr.min.js"></script>
-
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	
 <title>Upload de Arquivo</title>
 </head>
 <body>
@@ -24,22 +22,31 @@
 	<%@ include file="../topo.jsp"%>
 	
 	<div class="row">
+	
 
 		<form method="post" action="/diarioweb/arquivos"
 			enctype="multipart/form-data">
+			<div class="large-6 columns">
 				Nome arqvuio:
 				<input type="text" nome="nomeArquivo" />
-						
+				</div>
+				<div class="large-6 columns">
 				
-				Escolha um Arquivo: <input type="file" name="file" size="50" />
-			
-			
+				Escolha uma imagem:
+				
+				<input type="file" name="file" size="50" />
+				
+				</div>
+				
+				<div class="large-12 columns">
 				<p>
 					<a href="/diarioweb/" class="button">Voltar</a>
 					<input class="success button" type="submit" value="Upload" />
 				</p>
+				</div>
 			
 		</form>
+		</div>
 	</div>
 </body>
 </html>
