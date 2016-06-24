@@ -78,8 +78,9 @@ public class NoticiaController {
 		model.addAttribute("noticiaResult", noticiaResult);
 		model.addAttribute("secoes", secaoDAO.listar());
 
-		if(noticiaResult.getComentarios().size() > 0)
+		if(noticiaResult.getComentarios().size() > 0){
 			model.addAttribute("comentarios", noticiaResult.getComentarios());
+		}
 
 		return "noticias/exibir";
 	}

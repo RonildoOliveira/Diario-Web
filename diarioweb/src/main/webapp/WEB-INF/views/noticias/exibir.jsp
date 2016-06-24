@@ -25,7 +25,7 @@
 	<div class="row">
 	
 	<div class="large-12 columns">
-		
+				
 			<h3>${noticiaResult.titulo}</h3>
 			<small>${noticiaResult.dataNoticia}</small>
 			<div class="large-12w columns">

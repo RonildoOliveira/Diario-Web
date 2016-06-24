@@ -27,6 +27,10 @@
 			<h3>${secao.titulo}</h3>
 			<h6>${secao.descricao}</h6>
 			
+			<c:if test="${fn:length(noticias) le 0}">
+				<%@ include file="../404.jsp"%>
+			</c:if>
+			
 			<c:forEach var="noticia" items="${noticias}">
 				<div class="panel">
 					<h3>
