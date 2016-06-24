@@ -11,12 +11,22 @@
 <body>
 	
     <table border="1">
+    <tr>
+		<td>NOME</td>
+		
+	</tr>
 	<c:forEach var="arquivo" items="${arquivos}">
 	<tr>
 		<td>${arquivo.nomeArquivo}</td>
-		
+		<td>
+		<img height="100px" width="200px" src="/diarioweb/download/${arquivo.idArquivo}.html">
+		<a href="${pageContext.request.contextPath}/download/${arquivo.idArquivo}.html">
+		Baixe
+		</a>
+		</td>		
 	</tr>
 	</c:forEach>
 </table>
+<a href="/diarioweb/">Voltar</a>
 </body>
 </html>

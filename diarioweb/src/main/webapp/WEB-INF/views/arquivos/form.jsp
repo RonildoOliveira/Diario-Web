@@ -27,15 +27,18 @@
 
 		<form method="post" action="/diarioweb/arquivos"
 			enctype="multipart/form-data">
-			<div class="large-6 columns">
-				Escolha um Arquivo: <input class="success button" type="file" name="fileUpload" size="50" />
-			</div>
-			<div class="large-6 columns">
+				Nome arqvuio:
+				<input type="text" nome="nomeArquivo" />
+						
+				
+				Escolha um Arquivo: <input type="file" name="file" size="50" />
+			
+			
 				<p>
 					<a href="/diarioweb/" class="button">Voltar</a>
 					<input class="success button" type="submit" value="Upload" />
 				</p>
-			</div>
+			
 		</form>
 	</div>
 </body>

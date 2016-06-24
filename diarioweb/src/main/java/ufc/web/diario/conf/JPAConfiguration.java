@@ -6,12 +6,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -28,6 +26,10 @@ import ufc.web.diario.models.ArquivoUpload;
 @EnableTransactionManagement
 public class JPAConfiguration {
 
+	String UTF = "?autoReconnect=true&amp;"
+			+ "useUnicode=true&amp;"
+			+ "createDatabaseIfNotExist=true&amp;"
+			+ "characterEncoding=utf-8";
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
 		LocalContainerEntityManagerFactoryBean em = new
@@ -49,7 +51,8 @@ public class JPAConfiguration {
 				new DriverManagerDataSource();
 
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/diario");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/diario"+UTF);
+		
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
 
@@ -62,7 +65,6 @@ public class JPAConfiguration {
 		properties.setProperty("hibernate.dialect",
 				"org.hibernate.dialect.MySQL5Dialect");
 		properties.setProperty("hibernate.show_sql", "true");
-
 		return properties;
 	}
 
