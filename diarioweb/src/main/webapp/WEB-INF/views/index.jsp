@@ -1,9 +1,9 @@
 <%@page import="ufc.web.diario.models.TipoUsuario"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html class="no-js" lang="pt-br">
+<!DOCTYPE>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -26,22 +26,34 @@
 	<div class="row">
 		<div class="large-12 columns">
 			<!--  12 columns -->
-			<ul class="example-orbit" data-orbit>
-				<!-- Slider -->
-				<c:forEach var="noticia" items="${noticiasRecentes}">
-					<li><img src="resources/img/news.png"> <a
-						href="noticias/exibir?id=${noticia.noticiaId}">${noticia.titulo}</a>
-					</li>
+			<c:choose>
+				<c:when test="${fn:length(noticiasRecentes) le 0}">
+					<%@ include file="404.jsp"%>
+				</c:when>
 
-				</c:forEach>
-			</ul>
-
+				<c:otherwise>
+					<ul class="example-orbit" data-orbit>
+						<!-- Slider -->
+						<c:forEach var="noticia" items="${noticiasRecentes}">
+							<li><img src="resources/img/news.png"> <a
+								href="noticias/exibir?id=${noticia.noticiaId}">${noticia.titulo}</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</c:otherwise>
+				
+			</c:choose>
 			<hr />
 		</div>
 		<!--  12 columns -->
 
 		<div class="large-12 columns">
 			<!-- 			-----------------------------------------------------           -->
+			<h2>Usuarios</h2>
+
+			<a href="/diarioweb/usuarios/form">Upload</a> <a
+				href="/diarioweb/usuarios/listar">Listar</a>
+				
 			<h2>Arvuios</h2>
 
 			<a href="/diarioweb/arquivos/form">Upload</a> <a

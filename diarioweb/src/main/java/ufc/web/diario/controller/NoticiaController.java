@@ -33,16 +33,15 @@ public class NoticiaController {
 
 	@RequestMapping("/noticias/form")
 	public String form(Model model){
-
-		List<Secao> secoes = secaoDAO.listar();
-		model.addAttribute("secoes", secoes);
+		
+		model.addAttribute("secoes", secaoDAO.listar());
 
 		return "noticias/form";
 	}
 
 	@RequestMapping(value="/noticias", method = RequestMethod.POST)
 	public String save(Noticia noticia){
-
+		
 		noticia.setSecao(secaoDAO.getSecao(noticia.getSecaoId()));
 		noticiaDAO.inserir(noticia);
 
@@ -52,8 +51,7 @@ public class NoticiaController {
 	@RequestMapping("/noticias/listar")
 	public String listarNoticia(Model model){
 
-		List<Noticia> noticias = this.noticiaDAO.listar();
-		model.addAttribute("noticias", noticias);
+		model.addAttribute("noticias", noticiaDAO.listar());
 		model.addAttribute("secoes",secaoDAO.listar());
 
 		return "noticias/listar";
