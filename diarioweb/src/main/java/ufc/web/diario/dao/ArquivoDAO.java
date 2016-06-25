@@ -13,10 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import ufc.web.diario.models.ArquivoUpload;
+import ufc.web.diario.models.Arquivo;
 
 @Repository
-public class ArquivoUploadDAO {
+public class ArquivoDAO {
 	
 	@PersistenceContext
 	private EntityManager manager;
@@ -24,16 +24,16 @@ public class ArquivoUploadDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public ArquivoUploadDAO() {
+	public ArquivoDAO() {
 
 	}
 	
-	public ArquivoUploadDAO(SessionFactory sessionFactory) {
+	public ArquivoDAO(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
 	@Transactional
-	public void save(ArquivoUpload arquivoUpload) {
+	public void save(Arquivo arquivoUpload) {
 		sessionFactory.getCurrentSession().save(arquivoUpload);
 	}
 	
@@ -47,11 +47,11 @@ public class ArquivoUploadDAO {
 	}
 	
 	@Transactional
-	public List<ArquivoUpload> list() {
+	public List<Arquivo> list() {
 		Session session = sessionFactory.getCurrentSession();
-		List<ArquivoUpload> documents = null;
+		List<Arquivo> documents = null;
 		try {
-			documents = (List<ArquivoUpload>)session.createQuery("from ArquivoUpload").list();
+			documents = (List<Arquivo>)session.createQuery("from Arquivo").list();
 
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -60,8 +60,8 @@ public class ArquivoUploadDAO {
 	}
 	
 	@Transactional
-	public ArquivoUpload get(Long arquivoId) {
+	public Arquivo get(Long arquivoId) {
 		Session session = sessionFactory.getCurrentSession();
-		return (ArquivoUpload)session.get(ArquivoUpload.class, arquivoId);
+		return (Arquivo)session.get(Arquivo.class, arquivoId);
 	}
 }

@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import ufc.web.diario.dao.ArquivoUploadDAO;
-import ufc.web.diario.models.ArquivoUpload;
+import ufc.web.diario.dao.ArquivoDAO;
+import ufc.web.diario.models.Arquivo;
 
 @Controller
-public class ArquivoUploadController {
+public class ArquivoController {
 
 	@Autowired
-	ArquivoUploadDAO arquivoUploadDAO;
+	ArquivoDAO arquivoDAO;
 	
 	@Autowired
 	SessionFactory sessionFactory;
@@ -37,15 +37,15 @@ public class ArquivoUploadController {
 	
 	@RequestMapping(value = "/arquivos", method = RequestMethod.POST)
 	public String save(
-			@ModelAttribute("document") ArquivoUpload arquivo,
+			@ModelAttribute("document") Arquivo arquivo,
 			@RequestParam("file") MultipartFile file) throws IOException {
 			        
 	        arquivo.setNomeArquivo(file.getOriginalFilename());
 	        
-	        arquivo.setConteudoArquivo(file.getContentType());
-	        arquivo.setDadoArquivo(file.getBytes());
+	        arquivo.setTipoArquivo(file.getContentType());
+	        arquivo.setConteudoArquivo(file.getBytes());
 	        
-	        arquivoUploadDAO.save(arquivo);
+	        arquivoDAO.save(arquivo);
 		
 		return "arquivos/ok";
 	}	
@@ -53,7 +53,7 @@ public class ArquivoUploadController {
 	@RequestMapping("/arquivos/listar")
 	public String listaeArqvuivos(Model model){
 
-		List<ArquivoUpload> arquivos = this.arquivoUploadDAO.list();
+		List<Arquivo> arquivos = this.arquivoDAO.list();
 		model.addAttribute("arquivos", arquivos);
 
 		return "arquivos/listar";
@@ -63,12 +63,12 @@ public class ArquivoUploadController {
 	public String download(@PathVariable("arquivoId")
 			Long arquivoId, HttpServletResponse response) throws IOException {
 		
-		ArquivoUpload arquivo = arquivoUploadDAO.get(arquivoId);
-        response.setContentType(arquivo.getConteudoArquivo());
-        response.setContentLength(arquivo.getDadoArquivo().length);
+		Arquivo arquivo = arquivoDAO.get(arquivoId);
+        response.setContentType(arquivo.getTipoArquivo());
+        response.setContentLength(arquivo.getConteudoArquivo().length);
         response.setHeader("Content-Disposition","attachment; filename=\"" + arquivo.getNomeArquivo() +"\"");
   
-        FileCopyUtils.copy(arquivo.getDadoArquivo(), response.getOutputStream());
+        FileCopyUtils.copy(arquivo.getConteudoArquivo(), response.getOutputStream());
 		
 		return null;
 	}

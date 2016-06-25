@@ -1,23 +1,49 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Categorias</title>
+<link rel="stylesheet"
+	href="../resources/css/normalize.min.css">
+<link rel="stylesheet"
+	href="../resources/css/foundation.min.css">
+<link
+	href='../resources/css/foundation-icons.css'
+	rel='stylesheet' type='text/css'>
+
+<script
+	src="../resources/js/modernizr.min.js"></script>
+<title>Listar todas as seções</title>
 </head>
 <body>
+	<%@ include file="../topo.jsp"%>
 
-	<table border="1">
-		<c:forEach var="secao" items="${secoes}">
-			<tr>
-				<td>${secao.titulo}</td>
-			</tr>
-		</c:forEach>
-	</table>
+	<div class="row">
+		<div class="large-12 columns">
 
-	<a href="/diarioweb/">Voltar</a>
+			<table border="2">
+				<tr>
+					<td><strong>ID:</strong></td>
+					<td><strong>TÍTULO:</strong></td>
+					<td><strong>DESCRIÇÃO:</strong></td>
+				</tr>
+				<c:forEach var="secao" items="${secoes}">
+					<tr>
+						<td>${secao.secaoId}</td>
+						<td><a
+							href="/diarioweb/noticias/listarsec?id=${secao.secaoId}">${fn:substring(secao.titulo, 0, 50)}</a></td>
+						<td>${fn:substring(secao.descricao, 0, 100)}</td>
+					</tr>
+				</c:forEach>
+			</table>
 
+			<div class="panel">
+				<p>
+					<a href="/diarioweb/" class="button">Voltar</a>
+				</p>
+			</div>
+		</div>
+
+	</div>
 </body>
 </html>

@@ -21,8 +21,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import ufc.web.diario.dao.ArquivoUploadDAO;
-import ufc.web.diario.models.ArquivoUpload;
+import ufc.web.diario.dao.ArquivoDAO;
+import ufc.web.diario.models.Arquivo;
 
 @Configuration
 @EnableTransactionManagement
@@ -93,14 +93,14 @@ public class JPAConfiguration {
     public SessionFactory getSessionFactory(DataSource dataSource) {
     	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
     	sessionBuilder.addProperties(additionalProperties());
-    	sessionBuilder.addAnnotatedClasses(ArquivoUpload.class);
+    	sessionBuilder.addAnnotatedClasses(Arquivo.class);
     	return sessionBuilder.buildSessionFactory();
     }
 	
 	@Autowired
-    @Bean(name = "arquivoUploadDao")
-    public ArquivoUploadDAO getUserDao(SessionFactory sessionFactory) {
-    	return new ArquivoUploadDAO(sessionFactory);
+    @Bean(name = "arquivoDao")
+    public ArquivoDAO getUserDao(SessionFactory sessionFactory) {
+    	return new ArquivoDAO(sessionFactory);
     }
 	
 	@Bean

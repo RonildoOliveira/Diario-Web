@@ -27,21 +27,11 @@ public class NoticiaDAO {
 	}
 
 	public List<Noticia> listar(){
-		
 		String hql = "select n from NOTICIA n order by n.dataNoticia desc";
 		List<Noticia> noticias = this.manager.createQuery(hql, Noticia.class).getResultList();
-		
 		return noticias;
 	}
 	
-	public List<Noticia> listarNoticiasRecentes(){
-		
-		String hql = "select n from NOTICIA n order by n.dataNoticia desc";
-		List<Noticia> noticias = this.manager.createQuery(hql, Noticia.class).setFirstResult(0).setMaxResults(5).getResultList();
-		
-		return noticias;
-	}
-
 	public void remover(Noticia n){
 		Noticia not = this.manager.find(Noticia.class, n.getNoticiaId());
 		this.manager.remove(not);

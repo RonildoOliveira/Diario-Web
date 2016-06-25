@@ -25,7 +25,7 @@ public class HomeController {
 	@RequestMapping("/")
 	public String index(Model model) {
 		
-		List<Noticia> noticias = this.noticiaDAO.listarNoticiasRecentes();
+		List<Noticia> noticias = this.noticiaDAO.listar();
 		model.addAttribute("noticiasRecentes", noticias);
 		
 		List<Secao> secoes = this.secaoDAO.listar();

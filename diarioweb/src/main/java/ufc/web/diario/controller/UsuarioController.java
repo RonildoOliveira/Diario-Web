@@ -30,16 +30,18 @@ public class UsuarioController {
 	
 	@RequestMapping("/usuarios/login")
 	public String login(Model model){
-
 		return "usuarios/login";
 	}
 	
 	@RequestMapping("/usuarios/listar")
 	public String listarUsuario(Model model){
-		
 		model.addAttribute("usuarios",usuarioDAO.listar());
-		
 		return "usuarios/listar";
 	}	
-
+	
+	@RequestMapping("/usuarios/homeadmin")
+	public String homeAdmin(){
+		
+		return "usuarios/homeadmin";
+	}
 }

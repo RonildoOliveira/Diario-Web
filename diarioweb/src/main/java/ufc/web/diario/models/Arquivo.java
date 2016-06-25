@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ARQUIVO")
-public class ArquivoUpload {
+public class Arquivo {
 	
 	@Id
 	@GeneratedValue
@@ -19,12 +19,12 @@ public class ArquivoUpload {
 	@Column(name = "NOME_ARQUIVO")
 	private String nomeArquivo;
 	
-	@Column(name = "DADO_ARQUIVO")
 	@Lob
-	private byte[] dadoArquivo;
+	@Column(name = "DADO_ARQUIVO")	
+	private byte[] conteudoArquivo;
 	
-	@Column(name="CONTEUDO_ARQUIVO")
-	private String conteudoArquivo;
+	@Column(name="TIPO_ARQUIVO")
+	private String tipoArquivo;
 
 	public Long getIdArquivo() {
 		return idArquivo;
@@ -42,19 +42,20 @@ public class ArquivoUpload {
 		this.nomeArquivo = nomeArquivo;
 	}
 
-	public byte[] getDadoArquivo() {
-		return dadoArquivo;
-	}
-
-	public void setDadoArquivo(byte[] dadoArquivo) {
-		this.dadoArquivo = dadoArquivo;
-	}
-
-	public String getConteudoArquivo() {
+	public byte[] getConteudoArquivo() {
 		return conteudoArquivo;
 	}
 
-	public void setConteudoArquivo(String conteudoArquivo) {
+	public void setConteudoArquivo(byte[] conteudoArquivo) {
 		this.conteudoArquivo = conteudoArquivo;
 	}
+
+	public String getTipoArquivo() {
+		return tipoArquivo;
+	}
+
+	public void setTipoArquivo(String tipoArquivo) {
+		this.tipoArquivo = tipoArquivo;
+	}
+
 }

@@ -33,27 +33,21 @@ public class NoticiaController {
 
 	@RequestMapping("/noticias/form")
 	public String form(Model model){
-		
 		model.addAttribute("secoes", secaoDAO.listar());
-
 		return "noticias/form";
 	}
 
 	@RequestMapping(value="/noticias", method = RequestMethod.POST)
 	public String save(Noticia noticia){
-		
 		noticia.setSecao(secaoDAO.getSecao(noticia.getSecaoId()));
 		noticiaDAO.inserir(noticia);
-
 		return "noticias/ok";
 	}
 
 	@RequestMapping("/noticias/listar")
 	public String listarNoticia(Model model){
-
 		model.addAttribute("noticias", noticiaDAO.listar());
 		model.addAttribute("secoes",secaoDAO.listar());
-
 		return "noticias/listar";
 	}	
 
@@ -85,10 +79,7 @@ public class NoticiaController {
 
 	@RequestMapping("/comentarios/form")
 	public String comentar(Model model, Noticia noticia){
-
-
 		model.addAttribute("noticia", noticia);
-
 		return "comentarios/form";
 	}
 

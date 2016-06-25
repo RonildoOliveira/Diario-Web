@@ -1,12 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="../resources/css/normalize.min.css">
+<link rel="stylesheet" href="../resources/css/foundation.min.css">
+<link href='../resources/css/foundation-icons.css' rel='stylesheet'
+	type='text/css'>
+
+<script src="../resources/js/modernizr.min.js"></script>
+<title>Área do Administrador</title>
 </head>
 <body>
+	<%@ include file="../topo.jsp"%>
+	<div class="row">
+		<div class="large-6 columns">
+			<div class="panel">
+				<h3>Notícias</h3>
+				<ul>
+					<li><a href="/diarioweb/noticias/listar">Listar Todas as
+							Notícias</a></li>
+					<li><a href="/diarioweb/secoes/form">Cadastrar Notícias</a></li>
+				</ul>
+			</div>
+		</div>
 
+		<div class="large-6 columns">
+			<div class="panel">
+				<h3>Seções</h3>
+				<ul>
+					<li><a href="/diarioweb/secoes/listar">Listar Todas as
+							Seções</a></li>
+					<li><a href="/diarioweb/secoes/form">Cadastrar Seções</a></li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
 </body>
 </html>

@@ -23,28 +23,14 @@
 <%@ include file="../topo.jsp"%>
 
 	<div class="row">
-		<form method="post" action="/diarioweb/usuarios">
-			<div class="large-6 columns">
-				<div class="panel">
-					Nome:
-					<input type="text" name="nome" />
-				</div>
-			</div>
-
+		<form method="post" action="">
 			<div class="large-6 columns">
 				<div class="panel">
 					Login:
 					<input type="text" name="login" />
 				</div>
 			</div>
-			
-			<div class="large-6 columns">
-				<div class="panel">
-					E-mail:
-					<input type="email" name="email" />
-				</div>
-			</div>
-			
+		
 			<div class="large-6 columns">
 				<div class="panel">
 					Senha:

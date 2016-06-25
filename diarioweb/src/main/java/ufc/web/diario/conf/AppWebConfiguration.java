@@ -7,10 +7,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import ufc.web.diario.controller.ArquivoUploadController;
+import ufc.web.diario.controller.ArquivoController;
 import ufc.web.diario.controller.HomeController;
 import ufc.web.diario.controller.UsuarioController;
-import ufc.web.diario.dao.ArquivoUploadDAO;
+import ufc.web.diario.dao.ArquivoDAO;
 import ufc.web.diario.dao.ComentarioDAO;
 import ufc.web.diario.dao.NoticiaDAO;
 import ufc.web.diario.dao.SecaoDAO;
@@ -20,8 +20,8 @@ import ufc.web.diario.dao.SecaoDAO;
 {
 		HomeController.class,
 		UsuarioController.class,
-		ArquivoUploadDAO.class,
-		ArquivoUploadController.class,
+		ArquivoDAO.class,
+		ArquivoController.class,
 		NoticiaDAO.class,
 		ComentarioDAO.class,
 		SecaoDAO.class

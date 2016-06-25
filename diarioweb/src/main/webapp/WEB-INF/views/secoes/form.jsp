@@ -1,30 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SeÃ§Ãµes</title>
+<link rel="stylesheet" href="../resources/css/normalize.min.css">
+<link rel="stylesheet" href="../resources/css/foundation.min.css">
+<link href='../resources/css/foundation-icons.css' rel='stylesheet'
+	type='text/css'>
+
+<script src="../resources/js/modernizr.min.js"></script>
+<title>Cadastrar Seções</title>
 </head>
 <body>
-	<form method="post" action="/diarioweb/secoes">
-		<table>
-			<tr>
-				<td>Titulo:</td>
-				<td><input type="text" name="titulo" /></td>
-			</tr>
-			<tr>
-				<td>DescriÃ§Ã£o:</td>
-				<td><input type="text" name="descricao" /></td>
-			</tr>
+	<%@ include file="../topo.jsp"%>
+	<div class="row">
+		<form method="post" action="/diarioweb/secoes">
+			<div class="large-6 columns">
+				<div class="panel">
+					<p>Nome da Seção:</p>
+					<input type="text" name="titulo" />
+				</div>
+			</div>
 
-			<tr>
-				<td><input type="submit" value="Cadastrar" /></td>
-			</tr>
+			<div class="large-6 columns">
+				<div class="panel">
+					<p>Descrição da Seção:</p>
+					 <input type="text" name="descricao" />
+				</div>
+			</div>
+			
+			<div class="large-12 columns">
+			<center>
+			<input class="success button" type="submit" value="Cadastrar" />
+			</center>
+			</div>
+			
 
-		</table>
-	</form>
-
+		</form>
+		<div class="large-12 medium-12 columns">
+			<p>
+				<a href="/diarioweb/" class="button">Voltar</a>
+			</p>
+		</div>
+	</div>
 </body>
 </html>

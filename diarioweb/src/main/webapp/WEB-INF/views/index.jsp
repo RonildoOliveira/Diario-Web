@@ -1,9 +1,8 @@
 <%@page import="ufc.web.diario.models.TipoUsuario"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE>
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -14,7 +13,7 @@
 
 <script src="resources/js/modernizr.min.js"></script>
 
-<title>Diário WEB</title>
+<title>Di�rio WEB</title>
 </head>
 <body>
 
@@ -59,16 +58,8 @@
 			<a href="/diarioweb/arquivos/form">Upload</a> <a
 				href="/diarioweb/arquivos/listar">Listar</a>
 
-			<h2>Notícias</h2>
-
-			<a href="/diarioweb/noticias/form">Cadastrar Notícia</a> <br> <a
-				href="/diarioweb/noticias/listar">Listar Notícias</a> <br>
-
-			<h2>Secoes</h2>
-			<a href="/diarioweb/secoes/form">Cadastrar Secão</a> <br>
-
 			<h2>User</h2>
-			<a href="/diarioweb/usuarios/login">Login</a> <br>
+			<a href="/diarioweb/usuarios/homeadmin">Home Admin</a> <br>
 
 			<%
 				pageContext.setAttribute("monEnum", TipoUsuario.values());

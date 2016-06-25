@@ -18,6 +18,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.Type;
+
 @Entity(name = "NOTICIA")
 @Table(name = "NOTICIA")
 public class Noticia {
@@ -33,6 +35,7 @@ public class Noticia {
 	@Column (name = ("SUBTITULO"), nullable = false)
 	private String subtitulo;
 
+	@Type(type="text")
 	@Column (name = ("TEXTO"), nullable = false)
 	private String texto;
 
