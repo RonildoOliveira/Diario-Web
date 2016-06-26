@@ -46,14 +46,14 @@ public class Noticia {
 	private Date dataNoticia;
 	
 	// Um noticia pode ter várias comentários..
-	@OneToMany(mappedBy = "noticiaDeOrigem", targetEntity = Comentario.class, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "noticiaDeOrigem", targetEntity = Comentario.class, cascade=CascadeType.REMOVE)
 	private List<Comentario> comentarios;
 	
 	@Column (name = "SECAO_ID", nullable = false, insertable=false, updatable=false)
 	private Long secaoId;
 
 	// Muitas notícias podem estar para uma única seção
-	@ManyToOne(optional = false, cascade=CascadeType.ALL)
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "secao_id", referencedColumnName = "secao_id") // ID_SECAO referencia ID
 	private Secao secao;
     

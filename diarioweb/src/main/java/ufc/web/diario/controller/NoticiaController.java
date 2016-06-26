@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class NoticiaController {
 
 	@Autowired
 	private ArquivoDAO arquivoDAO;
-	
+
 	@RequestMapping(value="/noticias/form", method = RequestMethod.GET)
 	public String form(Model model){
 		model.addAttribute("secoes", secaoDAO.listar());
@@ -56,7 +57,7 @@ public class NoticiaController {
 		noticia.setNomeArquivo(file.getOriginalFilename());        
 		noticia.setTipoArquivo(file.getContentType());
 		noticia.setConteudoArquivo(file.getBytes());
-        
+
 		noticia.setSecao(secaoDAO.getSecao(noticia.getSecaoId()));
 		noticiaDAO.inserir(noticia);
 		return "noticias/ok";
@@ -124,17 +125,26 @@ public class NoticiaController {
 
 		return "noticias/listarsec";
 	}
+
+	@RequestMapping(value = "/noticias", params = {"id"},
+			method = RequestMethod.GET)
+	public String excluirNoticia(Model model, @RequestParam(value = "id") Long id){
+		
+		noticiaDAO.remover(noticiaDAO.getNoticia(id));
+		
+		return "noticias/listar";
+	}
 	
 	@RequestMapping("/download/{arquivoId}")
 	public String download(@PathVariable("arquivoId")
-			Long arquivoId, HttpServletResponse response) throws IOException {
-				
-        response.setContentType(noticiaDAO.getNoticia(arquivoId).getTipoArquivo());
-        response.setContentLength(noticiaDAO.getNoticia(arquivoId).getConteudoArquivo().length);
-        response.setHeader("Content-Disposition","attachment; filename=\"" + noticiaDAO.getNoticia(arquivoId).getNomeArquivo() +"\"");
-  
-        FileCopyUtils.copy(noticiaDAO.getNoticia(arquivoId).getConteudoArquivo(), response.getOutputStream());
-		
+	Long arquivoId, HttpServletResponse response) throws IOException {
+
+		response.setContentType(noticiaDAO.getNoticia(arquivoId).getTipoArquivo());
+		response.setContentLength(noticiaDAO.getNoticia(arquivoId).getConteudoArquivo().length);
+		response.setHeader("Content-Disposition","attachment; filename=\"" + noticiaDAO.getNoticia(arquivoId).getNomeArquivo() +"\"");
+
+		FileCopyUtils.copy(noticiaDAO.getNoticia(arquivoId).getConteudoArquivo(), response.getOutputStream());
+
 		return null;
 	}
 }

@@ -1,11 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html class="no-js" lang="pt-br">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <link rel="stylesheet"
 	href="../resources/css/normalize.min.css">
 <link rel="stylesheet"
@@ -20,7 +16,7 @@
 <script
 	src="../resources/js/modernizr.min.js"></script>
 
-<title>Di√°rio WEB - ${noticiaResult.titulo}</title>
+<title>Di·rio WEB - ${noticiaResult.titulo}</title>
 </head>
 <body>
 	<%@ include file="../topo.jsp"%>
@@ -39,7 +35,7 @@
 			<%@ include file="../comentarios/form.jsp"%>
 
 			<h5>
-				<strong>Coment√°rios</strong>
+				<strong>Coment·rios</strong>
 			</h5>
 			<c:forEach var="comentario" items="${comentarios}">
 				<div class="panel">

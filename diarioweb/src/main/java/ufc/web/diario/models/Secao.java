@@ -28,7 +28,7 @@ public class Secao {
 	private String descricao;
 
 	// Um para Muitos.. Uma seção pode ter muitas Notícias
-	@OneToMany(mappedBy = "secao", targetEntity = Noticia.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "secao", targetEntity = Noticia.class, cascade = CascadeType.REMOVE)
 	private List<Noticia> noticias;
 
 	

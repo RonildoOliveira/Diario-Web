@@ -26,7 +26,7 @@ public class Comentario {
 	private String texto;
 
 	// Várias Comentarios podem ter o mesmo noticia
-	@ManyToOne(optional = false, cascade = CascadeType.ALL) //false
+	@ManyToOne(optional = false) //false
 	@JoinColumn(name = "noticia_id", referencedColumnName = "noticia_id")
 	private Noticia noticiaDeOrigem;
 
