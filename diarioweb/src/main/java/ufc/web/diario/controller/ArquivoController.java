@@ -59,6 +59,7 @@ public class ArquivoController {
 		return "arquivos/listar";
 	}
 	
+	/**
 	@RequestMapping("/download/{arquivoId}")
 	public String download(@PathVariable("arquivoId")
 			Long arquivoId, HttpServletResponse response) throws IOException {
@@ -72,4 +73,5 @@ public class ArquivoController {
 		
 		return null;
 	}
+	**/
 }

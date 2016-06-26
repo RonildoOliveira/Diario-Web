@@ -33,9 +33,11 @@
 				<c:otherwise>
 					<ul class="example-orbit" data-orbit>
 						<!-- Slider -->
-						<c:forEach var="noticia" items="${noticiasRecentes}">
-							<li><img src="resources/img/news.png"> <a
-								href="noticias/exibir?id=${noticia.noticiaId}">${noticia.titulo}</a>
+						
+						<c:forEach begin="0" end="4" var="noticia" items="${noticiasRecentes}">
+							<li>
+							<img height="400px" width="1000px" src="/diarioweb/download/${noticia.noticiaId}.html"/>
+							<a href="noticias/exibir?id=${noticia.noticiaId}">${noticia.titulo}</a>
 							</li>
 						</c:forEach>
 					</ul>

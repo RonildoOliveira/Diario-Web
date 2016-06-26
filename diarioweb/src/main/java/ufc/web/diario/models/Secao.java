@@ -27,14 +27,12 @@ public class Secao {
 	@Column(name = ("DESCRICAO"), nullable = false)
 	private String descricao;
 
-	// Relacionamentos
-
 	// Um para Muitos.. Uma seção pode ter muitas Notícias
 	@OneToMany(mappedBy = "secao", targetEntity = Noticia.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Noticia> noticias;
 
 	
-	// Getters and Setters
+	/** Getters n Setters **/
 	public Long getSecaoId() {
 		return secaoId;
 	}

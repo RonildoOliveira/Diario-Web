@@ -1,20 +1,28 @@
 package ufc.web.diario.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import ufc.web.diario.dao.ArquivoDAO;
 import ufc.web.diario.dao.ComentarioDAO;
 import ufc.web.diario.dao.NoticiaDAO;
 import ufc.web.diario.dao.SecaoDAO;
+import ufc.web.diario.models.Arquivo;
 import ufc.web.diario.models.Noticia;
 import ufc.web.diario.models.Secao;
 
@@ -31,14 +39,24 @@ public class NoticiaController {
 	@Autowired
 	private ComentarioDAO comentarioDAO;
 
-	@RequestMapping("/noticias/form")
+	@Autowired
+	private ArquivoDAO arquivoDAO;
+	
+	@RequestMapping(value="/noticias/form", method = RequestMethod.GET)
 	public String form(Model model){
 		model.addAttribute("secoes", secaoDAO.listar());
 		return "noticias/form";
 	}
 
 	@RequestMapping(value="/noticias", method = RequestMethod.POST)
-	public String save(Noticia noticia){
+	public String save(Noticia noticia,
+			@ModelAttribute("document") Arquivo arquivo,
+			@RequestParam("file") MultipartFile file) throws IOException {
+
+		noticia.setNomeArquivo(file.getOriginalFilename());        
+		noticia.setTipoArquivo(file.getContentType());
+		noticia.setConteudoArquivo(file.getBytes());
+        
 		noticia.setSecao(secaoDAO.getSecao(noticia.getSecaoId()));
 		noticiaDAO.inserir(noticia);
 		return "noticias/ok";
@@ -105,5 +123,18 @@ public class NoticiaController {
 		model.addAttribute("noticias", noticiaResult);
 
 		return "noticias/listarsec";
+	}
+	
+	@RequestMapping("/download/{arquivoId}")
+	public String download(@PathVariable("arquivoId")
+			Long arquivoId, HttpServletResponse response) throws IOException {
+				
+        response.setContentType(noticiaDAO.getNoticia(arquivoId).getTipoArquivo());
+        response.setContentLength(noticiaDAO.getNoticia(arquivoId).getConteudoArquivo().length);
+        response.setHeader("Content-Disposition","attachment; filename=\"" + noticiaDAO.getNoticia(arquivoId).getNomeArquivo() +"\"");
+  
+        FileCopyUtils.copy(noticiaDAO.getNoticia(arquivoId).getConteudoArquivo(), response.getOutputStream());
+		
+		return null;
 	}
 }

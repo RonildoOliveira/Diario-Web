@@ -18,7 +18,7 @@
 				<ul>
 					<li><a href="/diarioweb/noticias/listar">Listar Todas as
 							Notícias</a></li>
-					<li><a href="/diarioweb/secoes/form">Cadastrar Notícias</a></li>
+					<li><a href="/diarioweb/noticias/form">Cadastrar Notícias</a></li>
 				</ul>
 			</div>
 		</div>

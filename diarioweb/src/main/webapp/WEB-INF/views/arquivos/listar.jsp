@@ -20,9 +20,6 @@
 		<td>${arquivo.nomeArquivo}</td>
 		<td>
 		<img height="100px" width="200px" src="/diarioweb/download/${arquivo.idArquivo}.html">
-		<a href="${pageContext.request.contextPath}/download/${arquivo.idArquivo}.html">
-		Baixe
-		</a>
 		</td>		
 	</tr>
 	</c:forEach>

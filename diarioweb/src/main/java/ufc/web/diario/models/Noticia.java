@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -56,10 +57,52 @@ public class Noticia {
 	@JoinColumn(name = "secao_id", referencedColumnName = "secao_id") // ID_SECAO referencia ID
 	private Secao secao;
     
+	/******************/
+	@Column(name = "NOME_ARQUIVO")
+	private String nomeArquivo;
+	
+	@Lob
+	@Column(name = "DADO_ARQUIVO")	
+	private byte[] conteudoArquivo;
+	
+	@Column(name="TIPO_ARQUIVO")
+	private String tipoArquivo;
+
+	public String getNomeArquivo() {
+		return nomeArquivo;
+	}
+
+	public void setNomeArquivo(String nomeArquivo) {
+		this.nomeArquivo = nomeArquivo;
+	}
+
+	public byte[] getConteudoArquivo() {
+		return conteudoArquivo;
+	}
+
+
+	public void setConteudoArquivo(byte[] conteudoArquivo) {
+		this.conteudoArquivo = conteudoArquivo;
+	}
+
+
+	public String getTipoArquivo() {
+		return tipoArquivo;
+	}
+
+
+	public void setTipoArquivo(String tipoArquivo) {
+		this.tipoArquivo = tipoArquivo;
+	}
+
+
+	/******************/
+	
 	public List<Comentario> getComentarios() {
 		return comentarios;
 	}
 
+	
 	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}

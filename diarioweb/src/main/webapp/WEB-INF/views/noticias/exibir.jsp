@@ -14,6 +14,9 @@
 	href='../resources/css/foundation-icons.css'
 	rel='stylesheet' type='text/css'>
 
+<link rel="stylesheet"
+	href="../resources/css/rn.css">
+	
 <script
 	src="../resources/js/modernizr.min.js"></script>
 
@@ -29,7 +32,8 @@
 			<h3>${noticiaResult.titulo}</h3>
 			<small>${noticiaResult.dataNoticia}</small>
 			<div class="large-12w columns">
-				<p>${noticiaResult.texto}</p>
+				<img class="imagemNoticia" src="/diarioweb/download/${noticiaResult.noticiaId}.html">
+				<p class="textoNoticia">${noticiaResult.texto}</p>
 			</div>
 
 			<%@ include file="../comentarios/form.jsp"%>

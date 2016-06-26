@@ -24,7 +24,7 @@
 	<%@ include file="../topo.jsp"%>
 	
 	<div class="row">
-		<form id="formNot" method="post" action="/diarioweb/noticias">
+		<form id="formNot" method="post" action="/diarioweb/noticias" enctype="multipart/form-data">
 			<div class="large-6 columns">
 				<div class="panel">
 					<p>Título:</p>
@@ -64,6 +64,18 @@
 				</div>
 			</div>
 
+			<div class="large-6 columns">
+				Nome arqvuio:
+				<input type="text" nome="nomeArquivo" />
+				</div>
+				<div class="large-6 columns">
+				
+				Escolha uma imagem:
+				
+				<input type="file" name="file" size="50" />
+				
+				</div>
+				
 			<div class="large-12 medium-12 columns">
 				<div class="panel">
 					<center>
