@@ -9,7 +9,9 @@
 <link rel="stylesheet" href="../resources/css/foundation.min.css">
 <link href='../resources/css/foundation-icons.css' rel='stylesheet'
 	type='text/css'>
+<link rel="stylesheet" href="../resources/responsive-tables.css">
 
+<script src="../resources/responsive-tables.js"></script>
 <script src="../resources/js/modernizr.min.js"></script>
 
 <title>Diário WEB - Todas as Notícias</title>
@@ -21,7 +23,7 @@
 	<div class="row">
 		<div class="large-12 columns">
 
-			<table border="2">
+			<table class="responsive">
 				<tr>
 					<td><strong>ID:</strong></td>
 					<td><strong>TÍTULO:</strong></td>
