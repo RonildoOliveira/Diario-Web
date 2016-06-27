@@ -13,6 +13,7 @@ import ufc.web.diario.controller.UsuarioController;
 import ufc.web.diario.dao.ArquivoDAO;
 import ufc.web.diario.dao.ComentarioDAO;
 import ufc.web.diario.dao.NoticiaDAO;
+import ufc.web.diario.dao.RegraDAO;
 import ufc.web.diario.dao.SecaoDAO;
 
 @EnableWebMvc
@@ -21,6 +22,7 @@ import ufc.web.diario.dao.SecaoDAO;
 		HomeController.class,
 		UsuarioController.class,
 		ArquivoDAO.class,
+		RegraDAO.class, // Controller?
 		ArquivoController.class,
 		NoticiaDAO.class,
 		ComentarioDAO.class,

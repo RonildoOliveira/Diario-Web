@@ -27,7 +27,7 @@ public class ComentarioController {
 	public String save(Comentario comentario){
 		comentario.setNoticiaDeOrigem(noticiaDAO.getNoticia(comentario.getNoticiaId()));
 		comentarioDAO.inserir(comentario);
-		return "comentarios/ok";
+		return "redirect:noticias/exibir?id="+noticiaDAO.getNoticia(comentario.getNoticiaId()).getNoticiaId();
 	}
 
 	@RequestMapping("/comentarios/listar")

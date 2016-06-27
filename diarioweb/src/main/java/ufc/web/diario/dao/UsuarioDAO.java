@@ -12,11 +12,12 @@ import ufc.web.diario.models.Usuario;
 
 @Repository
 public class UsuarioDAO {
+
 	@PersistenceContext
 	private EntityManager manager;
 
-		public void adicionar(Usuario user) {
-			this.manager.persist(user);
+	public void adicionar(Usuario usuario) {
+		this.manager.persist(usuario);
 	}
 
 	public void remover(Usuario usuario) {
@@ -25,19 +26,19 @@ public class UsuarioDAO {
 	}
 
 	public List<Usuario> listar() {
-		
+
 		String hql = "select u from USUARIO u ";
-		List<Usuario> users = manager.createQuery(hql,Usuario.class).getResultList();
-		return users;
+		List<Usuario> usuarios = manager.createQuery(hql,Usuario.class).getResultList();
+		return usuarios;
 	}
 
-	public void alterar(Usuario user) {
-		this.manager.merge(user);
-		
+	public void alterar(Usuario usuario) {
+		this.manager.merge(usuario);
+
 	}
-	
+
 	public Usuario getUserId(Long id){
 		return this.manager.find(Usuario.class, id);
 	}
-	
+
 }

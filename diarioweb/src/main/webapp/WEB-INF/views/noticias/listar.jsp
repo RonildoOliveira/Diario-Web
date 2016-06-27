@@ -30,6 +30,7 @@
 					<td><strong>TEXTO:</strong></td>
 					<td><strong>PUBLICADO EM:</strong></td>
 					<td><strong>IMAGEM:</strong></td>
+					<td><strong><font color="red">CRUD:</font></strong></td>
 				</tr>
 				<c:forEach var="noticia" items="${noticias}">
 					<tr>

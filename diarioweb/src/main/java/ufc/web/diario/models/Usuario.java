@@ -1,10 +1,17 @@
 package ufc.web.diario.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity(name = "USUARIO")
@@ -18,16 +25,31 @@ public class Usuario {
 
 	@Column(name = ("LOGIN"), nullable = false, length = 50)
 	private String login;
-    
+
 	//
 	@Column(name = ("SENHA"), nullable = false, length = 100)
 	private String senha;
 
-    @Column(name = ("NOME"), nullable = false, length = 50)
+	@Column(name = ("NOME"), nullable = false, length = 50)
 	private String nome;
 
 	@Column(name = ("EMAIL"), nullable = false)
 	private String email;
+
+	// Usuário => Role
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinTable(name = "USUARIO_REGRA", 
+	joinColumns = @JoinColumn(name = "usuario_id" ,referencedColumnName = "usuario_id" ), 
+	inverseJoinColumns = @JoinColumn(name = "regra_id", referencedColumnName = "regra_id" ) )
+	private List<RegraUsuario> regras;
+
+	public List<RegraUsuario> getRegras() {
+		return regras;
+	}
+
+	public void setRegras(List<RegraUsuario> regras) {
+		this.regras = regras;
+	}
 
 	public Long getId() {
 		return id;
@@ -68,5 +90,5 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }

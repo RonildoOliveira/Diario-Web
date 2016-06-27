@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Seções</title>
+<title></title>
 </head>
 <body>
 	<form method="post" action="/diarioweb/comentarios">

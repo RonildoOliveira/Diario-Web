@@ -1,5 +1,7 @@
 package ufc.web.diario.models;
 
+import javax.persistence.Embeddable;
+
 public enum TipoUsuario {
 	
 	LEITOR("Leitor"), JORNALISTA("Jornalista"), EDITOR("Editor");

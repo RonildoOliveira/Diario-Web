@@ -3,16 +3,12 @@
 <html>
 <head>
 
-<link rel="stylesheet"
-	href="resources/css/normalize.min.css">
-<link rel="stylesheet"
-	href="resources/css/foundation.min.css">
-<link
-	href='resources/css/foundation-icons.css'
-	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="resources/css/normalize.min.css">
+<link rel="stylesheet" href="resources/css/foundation.min.css">
+<link href='resources/css/foundation-icons.css' rel='stylesheet'
+	type='text/css'>
 
-<script
-	src="resources/js/modernizr.min.js"></script>
+<script src="resources/js/modernizr.min.js"></script>
 
 <title>Diário WEB</title>
 </head>
@@ -20,8 +16,8 @@
 	<div class="row">
 		<div class="large-3 columns">
 			<!--  topo  logo-->
-			<a href="/diarioweb/">
-			<img src="/diarioweb/resources/img/dweb_logo.png"/>
+			<a href="/diarioweb/"> <img
+				src="/diarioweb/resources/img/dweb_logo.png" />
 			</a>
 		</div>
 
@@ -37,42 +33,42 @@
 			<!--  menu bar -->
 
 			<nav class="top-bar" data-topbar>
-			<ul class="title-area">
+				<ul class="title-area">
 
-				<li class="name">
-					<h1>
-						<a href="/diarioweb/">Home</a>
-					</h1>
-				</li>
-
-				<li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a>
-				</li>
-			</ul>
-
-			<section class="top-bar-section">
-			<ul class="left">
-				<c:forEach var="secao" items="${secoes}">
-					<li>
-					<a href="/diarioweb/noticias/listarsec?id=${secao.secaoId}"
-						title="${secao.descricao}"> ${secao.titulo}
-					</a>
+					<li class="name">
+						<h1>
+							<a href="/diarioweb/">Home</a>
+						</h1>
 					</li>
-				</c:forEach>
-			</ul>
 
-			<ul class="right">
-				<li class="search">
-					<form>
-						<input type="search" >
-					</form>
-				</li>
+					<li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a>
+					</li>
+				</ul>
 
-				<li class="has-button"><a class="small button" href="#">Search</a>
-				</li>
-			</ul>
-			</section> </nav>
+				<section class="top-bar-section">
+					<ul class="left">
+						<c:forEach var="secao" items="${secoes}">
+							<li><a
+								href="/diarioweb/noticias/listarsec?id=${secao.secaoId}"
+								title="${secao.descricao}"> ${secao.titulo} </a></li>
+						</c:forEach>
+					</ul>
+
+					<ul class="right">
+						<li class="search">
+							<form>
+								<input type="search">
+							</form>
+						</li>
+
+						<li class="has-button"><a class="small button" href="#">Search</a>
+						</li>
+					</ul>
+				</section>
+			</nav>
 		</div>
 		<!-- large-12 columns menu bar -->
-	</div><!-- row  -->
+	</div>
+	<!-- row  -->
 </body>
 </html>

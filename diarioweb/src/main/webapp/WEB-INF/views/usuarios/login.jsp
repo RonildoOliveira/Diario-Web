@@ -38,13 +38,12 @@
 				</div>
 			</div>
 
-			<%    pageContext.setAttribute("tiposUser", TipoUsuario.values()); %>
 			<div class="large-6 columns">
 				<div class="panel">
-					<p>Seção:</p>
-					<select name="tipoID">
-						<c:forEach var="entry" items="${tiposUser}">
-						    <option>${entry.nomeTipoUsuario}</option>
+					<p>Tipo Usuário:</p>
+					<select id="comboSecao" name="regraId">
+						<c:forEach var="regra" items="${regras}">
+							<option value="${regra.regraId}">${regra.nome}</option>
 						</c:forEach>
 					</select>
 				</div>

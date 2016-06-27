@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,25 +71,17 @@ public class NoticiaController {
 
 	@RequestMapping(value = "/noticias/exibir", params = {"id"},
 			method = RequestMethod.GET)
-	public String exibirNoticia(Model model, @RequestParam(value = "id") int id){
+	public String exibirNoticia(Model model, @RequestParam(value = "id") Long id){
 
-		List<Noticia> noticias = this.noticiaDAO.listar();
-		Noticia noticiaResult = new Noticia();
+	
 
-		for (Noticia noticia : noticias) {
-			if(noticia.getNoticiaId() == id){
-				noticiaResult = noticia;
-				break;
-			}
-		}
+		comentar(model, noticiaDAO.getNoticia(id));
 
-		comentar(model, noticiaResult);
-
-		model.addAttribute("noticiaResult", noticiaResult);
+		model.addAttribute("noticiaResult", noticiaDAO.getNoticia(id));
 		model.addAttribute("secoes", secaoDAO.listar());
 
-		if(noticiaResult.getComentarios().size() > 0){
-			model.addAttribute("comentarios", noticiaResult.getComentarios());
+		if(noticiaDAO.getNoticia(id).getComentarios().size() > 0){
+			model.addAttribute("comentarios", noticiaDAO.getNoticia(id).getComentarios());
 		}
 
 		return "noticias/exibir";
@@ -99,7 +90,7 @@ public class NoticiaController {
 	@RequestMapping("/comentarios/form")
 	public String comentar(Model model, Noticia noticia){
 		model.addAttribute("noticia", noticia);
-		return "comentarios/form";
+		return "comentarios";
 	}
 
 	@RequestMapping(value = "/noticias/listarsec", params = {"id"}, method = RequestMethod.GET)
@@ -132,7 +123,7 @@ public class NoticiaController {
 		
 		noticiaDAO.remover(noticiaDAO.getNoticia(id));
 		
-		return "noticias/listar";
+		return "redirect:noticias/listar";
 	}
 	
 	@RequestMapping("/download/{arquivoId}")

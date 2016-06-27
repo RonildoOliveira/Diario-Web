@@ -6,8 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.springframework.stereotype.Repository;
+
 import ufc.web.diario.models.RegraUsuario;
 
+@Repository
 public class RegraDAO {
 
 	@PersistenceContext
@@ -34,8 +37,8 @@ public class RegraDAO {
 		this.manager.remove(regra);
 	}
 	
-	public RegraUsuario getRoleId(Long id){
-		return this.manager.find(RegraUsuario.class, new Long(id)); // Criar um novo id
+	public RegraUsuario getRoleById(Long id){
+		return this.manager.find(RegraUsuario.class, id); // Criar um novo id
 	}
 	
 	public Long getRoleNome(String nome){
