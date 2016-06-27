@@ -35,7 +35,8 @@
 				<c:forEach var="noticia" items="${noticias}">
 					<tr>
 						<td>${noticia.noticiaId}</td>
-						<td><a href="/exibir?id=${noticia.noticiaId}">${fn:substring(noticia.titulo, 0, 50)}</a></td>
+						<td><a
+							href="/diarioweb/noticias/exibir?id=${noticia.noticiaId}">${fn:substring(noticia.titulo, 0, 50)}</a></td>
 						<td>${fn:substring(noticia.texto, 0, 100)}</td>
 						<td>${noticia.dataNoticia}</td>
 						<td><img height="50px" width="50px"
@@ -55,6 +56,7 @@
 			</div>
 		</div>
 
+		<%@ include file="../footer.jsp"%>
 	</div>
 
 </body>

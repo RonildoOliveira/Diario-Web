@@ -84,6 +84,8 @@
 				<a href="/diarioweb/" class="button">Voltar</a>
 			</p>
 		</div>
+
+		<%@ include file="../footer.jsp"%>
 	</div>
 
 </body>

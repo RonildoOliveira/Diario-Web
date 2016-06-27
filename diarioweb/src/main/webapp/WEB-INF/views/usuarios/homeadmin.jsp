@@ -12,7 +12,7 @@
 <body>
 	<%@ include file="../topo.jsp"%>
 	<div class="row">
-	
+
 		<div class="large-6 columns">
 			<div class="panel">
 				<h3>Notícias</h3>
@@ -45,13 +45,14 @@
 				</ul>
 			</div>
 		</div>
-		
+
 		<div class="large-6 columns">
 			<div class="panel">
 				<h3></h3>
-				
+
 			</div>
 		</div>
+		<%@ include file="../footer.jsp"%>
 	</div>
 </body>
 </html>

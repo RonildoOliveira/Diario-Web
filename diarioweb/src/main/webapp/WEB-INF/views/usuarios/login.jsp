@@ -6,35 +6,29 @@
 <html class="no-js" lang="pt-br">
 <head>
 
-<link rel="stylesheet"
-	href="../resources/css/normalize.min.css">
-<link rel="stylesheet"
-	href="../resources/css/foundation.min.css">
-<link
-	href='../resources/css/foundation-icons.css'
-	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../resources/css/normalize.min.css">
+<link rel="stylesheet" href="../resources/css/foundation.min.css">
+<link href='../resources/css/foundation-icons.css' rel='stylesheet'
+	type='text/css'>
 
-<script
-	src="../resources/js/modernizr.min.js"></script>
+<script src="../resources/js/modernizr.min.js"></script>
 
 <title>Login</title>
 </head>
 <body>
-<%@ include file="../topo.jsp"%>
+	<%@ include file="../topo.jsp"%>
 
 	<div class="row">
 		<form method="post" action="">
 			<div class="large-6 columns">
 				<div class="panel">
-					Login:
-					<input type="text" name="login" />
+					Login: <input type="text" name="login" />
 				</div>
 			</div>
-		
+
 			<div class="large-6 columns">
 				<div class="panel">
-					Senha:
-					<input type="password" name="senha" />
+					Senha: <input type="password" name="senha" />
 				</div>
 			</div>
 
@@ -53,12 +47,12 @@
 				<div class="panel">
 					<p>
 						<a href="/diarioweb/" class="button">Voltar</a> <input
-							class="success button" id="cadNot" type="submit"
-							value="Entrar" />
+							class="success button" id="cadNot" type="submit" value="Entrar" />
 					</p>
 				</div>
 			</div>
 		</form>
-		</div>
+		<%@ include file="../footer.jsp"%>
+	</div>
 </body>
 </html>

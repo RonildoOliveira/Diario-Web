@@ -103,8 +103,8 @@ public class JPAConfiguration {
     	return new ArquivoDAO(sessionFactory);
     }
 	
-	@Bean
-	public StringHttpMessageConverter stringHttpMessageConverter() {
-	    return new StringHttpMessageConverter(Charset.forName("UTF-8"));
-	}
+//	@Bean
+//	public StringHttpMessageConverter stringHttpMessageConverter() {
+//	    return new StringHttpMessageConverter(Charset.forName("UTF-8"));
+//	}
 }
