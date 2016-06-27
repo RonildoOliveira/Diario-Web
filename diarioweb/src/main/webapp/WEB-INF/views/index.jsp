@@ -11,6 +11,8 @@
 <link href='resources/css/foundation-icons.css' rel='stylesheet'
 	type='text/css'>
 
+<link rel="stylesheet" href="resources/css/rn.css">
+
 <script src="resources/js/modernizr.min.js"></script>
 
 <title>Diário WEB</title>
@@ -33,47 +35,52 @@
 				<c:otherwise>
 					<ul class="example-orbit" data-orbit>
 						<!-- Slider -->
-						
-						<c:forEach begin="0" end="4" var="noticia" items="${noticiasRecentes}">
-							<li>
-							<img height="400px" width="1000px" src="/diarioweb/download/${noticia.noticiaId}.html"/>
-							<a href="noticias/exibir?id=${noticia.noticiaId}">${noticia.titulo}</a>
+
+						<c:forEach begin="0" end="4" var="noticia"
+							items="${noticiasRecentes}">
+							<li><img height="400px" width="1000px"
+								src="/diarioweb/download/${noticia.noticiaId}.html" /> <a
+								href="noticias/exibir?id=${noticia.noticiaId}">${noticia.titulo}</a>
 							</li>
 						</c:forEach>
 					</ul>
 				</c:otherwise>
-				
+
 			</c:choose>
 			<hr />
+		
+	
+
+	<div class="footer">
+	</div>
+		<div class="large-4 columns">
+		
+		<strong><center>Quem Somos</center></strong>
+		<hr>
+		<p class="textoNoticia">Somos alunos da disciplina de Engenharia de Software da Universidade Federal do Ceará (UFC) sob a orientação da Prof.ª Diana Braga.</p>
 		</div>
+		
+		<div class="large-4 columns">
+		<strong><center>Fale Conosco</center></strong>
+		<hr>
+		<ul>
+		<li>
+		Ronildo Oliveira <a href="mailto:ronildo.comp@gmail.com">ronildo.comp@gmail.com</a>
+		</li>
+		</ul>
+		</div>
+		
+		<div class="large-4 columns">
+		<strong><center>Publicidade</center></strong>
+		<hr>
+		<p class="textoNoticia">Integer blandit ex in ex rutrum, sed consectetur turpis imperdiet. Curabitur finibus ultrices nisi, id interdum tortor sollicitudin sit amet.</p>
+		</div>
+	
+	</div>
 		<!--  12 columns -->
-
-		<div class="large-12 columns">
-			<!-- 			-----------------------------------------------------           -->
-			<h2>Usuarios</h2>
-
-			<a href="/diarioweb/usuarios/form">Upload</a> <a
-				href="/diarioweb/usuarios/listar">Listar</a>
-				
-			<h2>Arvuios</h2>
-
-			<a href="/diarioweb/arquivos/form">Upload</a> <a
-				href="/diarioweb/arquivos/listar">Listar</a>
-
-			<h2>User</h2>
-			<a href="/diarioweb/usuarios/homeadmin">Home Admin</a> <br>
-
-			<%
-				pageContext.setAttribute("monEnum", TipoUsuario.values());
-			%>
-			<c:forEach var="entry" items="${monEnum}">
-				<option>${entry.nomeTipoUsuario}</option>
-			</c:forEach>
-			<!-- 			-----------------------------------------------------           -->
-		</div>
 	</div>
 	<!-- ROWS -->
-
+	
 	<script src="resources/js/jquery-2.1.4.min.js"></script>
 	<script src="resources/js/foundation.min.js"></script>
 	<script>

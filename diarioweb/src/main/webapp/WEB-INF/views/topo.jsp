@@ -24,6 +24,7 @@
 		<div class="large-9 columns">
 			<ul class="right button-group">
 				<li><a href="/diarioweb/usuarios/login" class="button">Login</a></li>
+				<li><a href="/diarioweb/usuarios/homeadmin" class="success button">Admin</a></li>
 			</ul>
 		</div>
 		<!--  topo  logo-->

@@ -12,6 +12,7 @@
 <body>
 	<%@ include file="../topo.jsp"%>
 	<div class="row">
+	
 		<div class="large-6 columns">
 			<div class="panel">
 				<h3>Notícias</h3>
@@ -34,6 +35,23 @@
 			</div>
 		</div>
 
+		<div class="large-6 columns">
+			<div class="panel">
+				<h3>Usuários</h3>
+				<ul>
+					<li><a href="/diarioweb/usuarios/listar">Listar Todas os
+							Usuários</a></li>
+					<li><a href="/diarioweb/usuarios/form">Cadastrar Usuários</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="large-6 columns">
+			<div class="panel">
+				<h3></h3>
+				
+			</div>
+		</div>
 	</div>
 </body>
 </html>

@@ -1,5 +1,4 @@
 .imagemNoticia{
-	
 	max-width: 333px;
     height: auto;
 	float:left;
@@ -7,6 +6,5 @@
 }
 
 .textoNoticia{
-	
 	text-align:justify;
 }

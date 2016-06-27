@@ -59,7 +59,7 @@ public class NoticiaController {
 
 		noticia.setSecao(secaoDAO.getSecao(noticia.getSecaoId()));
 		noticiaDAO.inserir(noticia);
-		return "noticias/ok";
+		return "redirect:noticias/form";
 	}
 
 	@RequestMapping("/noticias/listar")
