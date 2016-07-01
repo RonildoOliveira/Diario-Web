@@ -1,7 +1,5 @@
 package ufc.web.diario.controller;
 
-
-
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -22,81 +20,73 @@ import ufc.web.diario.models.Classificado;
 import ufc.web.diario.models.RegraUsuario;
 import ufc.web.diario.models.Usuario;
 
-
 @Transactional
 @Controller
 public class ClassificadoController {
 
 	@Autowired
-	private ClassificadoDAO classificadoDao;
+	private ClassificadoDAO classificadoDAO;
 	
 	@Autowired
-	private UsuarioDAO usuarioDao;
+	private UsuarioDAO usuarioDAO;
 	
 	@Autowired
-	private RegraDAO roleDao;
+	private RegraDAO roleDAO;
 	
-    @RequestMapping("formularioClassificado")
+    @RequestMapping("classificados/form")
     public String formularioClassificado(Model model){
 
-    	List<RegraUsuario> regras = roleDao.listar();
-    	model.addAttribute("regras", regras);
-    	
-    	List<Classificado> classificados = this.classificadoDao.listar();
-    	model.addAttribute("classificados", classificados);
-       
+    	model.addAttribute("regras", roleDAO.listar());
+    	model.addAttribute("classificados", classificadoDAO.listar());
 		
-    	return "/classificado/formulario_classificado";
+    	return "/classificados/form";
     }
     
     @RequestMapping("adicionarClassificado")
-    public String adicionarClassificado(Classificado c, HttpSession session){
+    public String adicionarClassificado(Classificado classificado, HttpSession session){
     	
     	Usuario usuario = (Usuario) session.getAttribute("usuario");
         
-        List<Classificado> classificados = classificadoDao.listar();        
-        
-        for (Classificado cass : classificados) {
-        	if(cass.equals(c) ){
-            	return "redirect:formularioClassificado";
+        for (Classificado cl : classificadoDAO.listar()) {
+        	if(cl.equals(classificado) ){
+            	return "redirect:/classificados/form";
             }
 		}
         
-        
         Timestamp data = new Timestamp(System.currentTimeMillis());
-        c.setData_oferta(data);
+        classificado.setData_oferta(data);
         float oferta = 0;
-        c.setMelhor_oferta(oferta);
+        classificado.setMelhor_oferta(oferta);
+        
         // Não possuo um autor de oferta ao inserir um Usuário. Porém o cara que cadastrou é responsável por tudo no cadastro
-        c.setAutorOferta(usuarioDao.getUserLogin(usuario.getLogin()));
+        classificado.setAutorOferta(usuarioDAO.getUserLogin(usuario.getLogin()));
         
-        this.classificadoDao.inserir(c);  	
+        this.classificadoDAO.inserir(classificado);  	
         
-    	return "/classificado/listar_classificados"; // página de sucesso caso ele seja a maior oferta..
+    	return "/classificados/listar"; // página de sucesso caso ele seja a maior oferta..
     }
     
-    @RequestMapping("classificado/listar_classificados")
+    @RequestMapping("classificados/listar")
     public String listarClassificado(Model model, HttpSession session){
     	
     	// Pegando o Usuário que está logado
     	Usuario usuario = (Usuario) session.getAttribute("usuario");
     	
-    	List<Classificado> classificados = this.classificadoDao.listar();
-    	model.addAttribute("classificados", classificados);
+    	model.addAttribute("classificados", classificadoDAO.listar());
         
     	// Atibuindo o Usuário..
     	model.addAttribute("usuario", usuario);
 
-    	return "/classificado/listar_classificados"; 
+    	return "/classificados/listar"; 
     }
     
-    @RequestMapping("/classificado")
+    @RequestMapping("/classificados")
     public String realizarCompra(Model model, float oferta, Classificado classificado, HttpSession session){
     	
     	
     	Usuario usuario = (Usuario) session.getAttribute("usuario");
     	
-    	Classificado cas = classificadoDao.getCass(classificado.getClassificadoId());
+    	Classificado cas = classificadoDAO.getCass(classificado.getClassificadoId());
     	
     	
     	if (usuario != null && usuario.getRegraId() == 1) {
@@ -104,43 +94,43 @@ public class ClassificadoController {
 			   if (oferta > cas.getPreco() && oferta > cas.getMelhor_oferta() ) {
 				   cas.setData_oferta(new Timestamp(System.currentTimeMillis()));
 				   cas.setMelhor_oferta(oferta);
-				   cas.setAutorOferta(usuarioDao.getUserLogin(usuario.getLogin()));
+				   cas.setAutorOferta(usuarioDAO.getUserLogin(usuario.getLogin()));
 				   
-				   return "redirect:exibirClassificado?id="+cas.getClassificadoId();
+				   return "redirect:/classificado/exibir?id="+cas.getClassificadoId();
 			   }
 		}
         
     	
-    	return "redirect:/classificado/listar_classificados";
+    	return "redirect:/classificados/listar";
     }
     
-    @RequestMapping(value = "exibirClassificado", params = {"id"},
+    @RequestMapping(value = "classificados/exibir", params = {"id"},
 			method = RequestMethod.GET)
     public String exibirClassificado(Model model, @RequestParam(value = "id") Long id){
     	
     	
-    	fazer_oferta(model, classificadoDao.getCass(id));
-    	model.addAttribute("classificadoResult", classificadoDao.getCass(id));
+    	fazer_oferta(model, classificadoDAO.getCass(id));
+    	model.addAttribute("classificadoResult", classificadoDAO.getCass(id));
     	
-    	return "/classificado/exibir_classificado";
+    	return "/classificados/exibir";
     }
     
-    @RequestMapping("/classificado/fazer_oferta")
+    @RequestMapping("/classificados/ofertar")
     public String fazer_oferta(Model model, Classificado classificado){
     	model.addAttribute("classificado", classificado);
-    	return "/classificado";
+    	return "/classificados";
     }
     
     @RequestMapping("alterarClassificado")
     public String alterarClassificado(Classificado c){
-    	this.classificadoDao.alterar(c);
-    	return "redirect:listarClassificado";
+    	this.classificadoDAO.alterar(c);
+    	return "redirect:/classificados/listar";
     }
     
     @RequestMapping("excluirClassificado")
     public String excluirClassificado(Classificado c){
-    	this.classificadoDao.remover(c);
-    	return "redirect:listarClassificado";
+    	this.classificadoDAO.remover(c);
+    	return "redirect:/classificados/listar";
     }
 
     

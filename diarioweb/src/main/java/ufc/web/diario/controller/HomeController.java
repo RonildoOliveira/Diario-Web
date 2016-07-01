@@ -25,24 +25,20 @@ public class HomeController {
 	
 	
 	@RequestMapping("/")
-	public String index(Model model, HttpSession session) {
-		session.invalidate();
-		//remover
-		List<Noticia> noticias = this.noticiaDAO.listar();
-		model.addAttribute("noticiasRecentes", noticias);
+	public String index(Model model) {
+
+		model.addAttribute("noticiasRecentes", noticiaDAO.listar());
+		model.addAttribute("secoes", secaoDAO.listar());
 		
-		List<Secao> secoes = this.secaoDAO.listar();
-		model.addAttribute("secoes", secoes);
 		return "index";
 	}
 	
-	@RequestMapping("/usuarios/homeadmin")
+	@RequestMapping("usuarios/homeadmin")
 	public String home(Model model) {
-		List<Noticia> noticias = this.noticiaDAO.listar();
-		model.addAttribute("noticiasRecentes", noticias);
 		
-		List<Secao> secoes = this.secaoDAO.listar();
-		model.addAttribute("secoes", secoes);
+		model.addAttribute("noticiasRecentes", noticiaDAO.listar());
+		model.addAttribute("secoes", secaoDAO.listar());
+		
 		return "/usuarios/homeadmin";
 	}
 }

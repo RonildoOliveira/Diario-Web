@@ -2,9 +2,10 @@
 	max-width: 333px;
     height: auto;
 	float:left;
-	margin:0 20px 10px 0;
+	margin:15px 20px 10px 0;
 }
 
 .textoNoticia{
 	text-align:justify;
+	margin-top: 10px;
 }

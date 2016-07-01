@@ -51,7 +51,7 @@
 		<!-- Visualização de Classificados -->
          <div class="large-6 columns">
 			<div class="panel">
-				<ul> <li><a href="classificado/listar_classificados">Visualizar Classificados</a></li> </ul> 
+				<a href="classificados/listar">CLASSIFICADOS</a> 
 			</div>
 	 	 </div>
 	 	 <div class="large-6 columns">

@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -22,54 +23,42 @@
 
 	<div class="row">
 		<div class="large-12 columns">
-		
-		
-
-				<table class="responsive">
+			
+			<c:if test="${usuario.getRegraId() == 2 ||
+			usuario.getRegraId() == 3}">
+			
+			<table class="responsive">
+				<tr>
+					<td><strong>ID:</strong></td>
+					<td><strong>TÍTULO:</strong></td>
+					<td><strong>TEXTO:</strong></td>
+					<td><strong>PUBLICADO EM:</strong></td>
+					<td><strong>IMAGEM:</strong></td>
+					<td><strong><font color="red">CRUD:</font></strong></td>
+				</tr>
+				<c:forEach var="noticia" items="${noticias}">
 					<tr>
-						<td><strong>ID:</strong></td>
-						<td><strong>TÍTULO:</strong></td>
-						<td><strong>TEXTO:</strong></td>
-						<td><strong>PUBLICADO EM:</strong></td>
-						<td><strong>IMAGEM:</strong></td>
-						<td><strong><font color="red">CRUD:</font></strong></td>
-					</tr>
-					<c:forEach var="noticia" items="${noticias}">
-						<tr>
-							<td>${noticia.noticiaId}</td>
-							<td><a href="/diarioweb/noticias/exibir?id=${noticia.noticiaId}">${fn:substring(noticia.titulo, 0, 50)}</a></td>
-							<td>${fn:substring(noticia.texto, 0, 100)}</td>
-							<td>${noticia.dataNoticia}</td>
-							<td><img height="50px" width="50px"
-								src="/diarioweb/download/${noticia.noticiaId}.html"></td>
-							<!-- Editor pode apagar -->
-							<c:if test="${usuario != null }">
-        						<c:forEach var="regra" items="${usuario.regras }" >		
-									<c:if test="${regra.nome == 'Editor'}">
-					                  <c:if test="${usuario.getRegraId() == 2 }">	
-										<td><a href="/diarioweb/noticias?id=${noticia.noticiaId }">
-											<img height="16px" width="16px" alt=""
-											src="/diarioweb/resources/img/delete.png">
-										</a></td>
-									  </c:if>                                             
-					                </c:if>
-					                <!-- Jornalista pode Editar  -->
-					                <c:if test="${regra.nome == 'Jornalista'}">
-					                  <c:if test="${usuario.getRegraId() == 3 }">	
-										<td><a href="/diarioweb/noticias?id=${noticia.noticiaId }">
-											<img height="16px" width="16px" alt=""
-											src="/diarioweb/resources/img/delete.png">
-										</a></td>
-									  </c:if>                                             
-					                </c:if>
-					              </c:forEach>
-         					 </c:if> 
-							
-							
+						<td>${noticia.noticiaId}</td>
+						<td><a
+							href="/diarioweb/noticias/exibir?id=${noticia.noticiaId}">${fn:substring(noticia.titulo, 0, 50)}</a></td>
+						<td>${fn:substring(noticia.texto, 0, 100)}</td>
+						<td>${noticia.dataNoticia}</td>
+						<td><img height="50px" width="50px"
+							src="/diarioweb/download/${noticia.noticiaId}.html"></td>
+										<td><a
+											href="/diarioweb/noticias?id=${noticia.noticiaId }"> <img
+												height="16px" width="16px" alt=""
+												src="/diarioweb/resources/img/delete.png">
+										</a>					
 						</tr>
-					</c:forEach>
-				</table>
-         
+				</c:forEach>
+			</table>
+		</c:if>
+		
+		<c:if test="${usuario.getRegraId() == 1 || usuario == null}">
+			<p>Listagem de Notícias para leitor e usuario Comum</p>
+		</c:if>
+		
 			<%@ include file="../rodape.jsp"%>
 		</div>
 
