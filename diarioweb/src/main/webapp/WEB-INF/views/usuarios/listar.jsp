@@ -34,7 +34,8 @@
 					<td><strong>NOME:</strong></td>
 					<td><strong>LOGIN:</strong></td>
 					<td><strong>E-MAIL:</strong></td>
-					<td><strong><font color="red">CRUD:</font></strong></td>
+					<td><strong>PERFIL</strong></td>
+					<td><strong><font color="red">REMOVER</font></strong></td>
 				</tr>
 				<c:forEach var="usuario" items="${usuarios}">
 					<tr>
@@ -42,8 +43,11 @@
 						<td>${usuario.nome}</td>
 						<td>${usuario.login}</td>
 						<td>${usuario.email}</td>
+						<td><img height="49px" width="49px"
+								src="/diarioweb/profile/${usuario.id}.html"></td>
+								
 						<td><a href="/diarioweb/usuarios?id=${usuario.id}">
-								<img height="16px" width="16px" alt=""
+								<img height="16px" width="16px" title="Remover" alt=""
 								src="/diarioweb/resources/img/delete.png">
 						</a></td>
 					</tr>

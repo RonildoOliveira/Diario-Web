@@ -34,7 +34,7 @@
 					<td><strong>TEXTO:</strong></td>
 					<td><strong>PUBLICADO EM:</strong></td>
 					<td><strong>IMAGEM:</strong></td>
-					<td><strong><font color="red">CRUD:</font></strong></td>
+					<td><strong><font color="red">REMOVER:</font></strong></td>
 				</tr>
 				<c:forEach var="noticia" items="${noticias}">
 					<tr>
@@ -46,8 +46,8 @@
 						<td><img height="50px" width="50px"
 							src="/diarioweb/download/${noticia.noticiaId}.html"></td>
 										<td><a
-											href="/diarioweb/noticias?id=${noticia.noticiaId }"> <img
-												height="16px" width="16px" alt=""
+											href="/diarioweb/noticias?id=${noticia.noticiaId }"> 
+											<img height="16px" width="16px" title="Remover" alt=""
 												src="/diarioweb/resources/img/delete.png">
 										</a>					
 						</tr>

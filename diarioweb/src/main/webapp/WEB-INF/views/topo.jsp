@@ -36,7 +36,7 @@
 							<li>Bem-Vindo(a) ${usuario.login}</li>
 							<li><img height="49px" width="49px"
 								src="/diarioweb/profile/${usuario.id}.html"></li>
-							<li><a href="/diarioweb/" class="button">Sair</a></li>
+							<li><a href="/diarioweb/usuarios/sair" class="button">Sair</a></li>
 						</ul>
 					
 				</c:if>
@@ -52,7 +52,7 @@
 
 					<li class="name">
 						<h1>
-							<a href="/diarioweb/">Home</a>
+							<a href="/diarioweb/" title="Inicio">Home</a>
 						</h1>
 					</li>
 

@@ -85,8 +85,8 @@
 							<div class="panel">
 								<h3>Classificado</h3>
 								<ul>
-									<li><a href="../listarClassificado">Listar Classificados</a></li>
-									<li><a href="../formularioClassificado">Cadastrar Classificado</a></li>
+									<li><a href="/diarioweb/classificados/listar">Listar Classificados</a></li>
+									<li><a href="/diarioweb/classificados/form">Cadastrar Classificado</a></li>
 								</ul>
 							</div>
 						</div>
@@ -129,7 +129,7 @@
 							<div class="panel">
 								<h3>Classificado</h3>
 								<ul>
-									<li><a href="/diarioweb/classificado/listar_classificados">Listar Classificados</a></li>
+									<li><a href="/diarioweb/classificados/listar">Listar Classificados</a></li>
 								</ul>
 							</div>
 						</div>		
