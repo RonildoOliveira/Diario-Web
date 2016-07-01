@@ -13,14 +13,14 @@
 <script src="../resources/js/modernizr.min.js"></script>
 <script src="../resources/js/rn.js" charset="utf-8"></script>
 
-<title>Cadastrar Notícia</title>
+<title>Cadastrar Classificado</title>
 </head>
 <body>
 
 	<%@ include file="../topo.jsp"%>
 
 	<div class="row">
-		<form id="formNot" method="post" action="/diarioweb/noticias"
+		<form id="formNot" method="post" action="adicionarClassificado"
 			enctype="multipart/form-data">
 			<div class="large-6 columns">
 				<div class="panel">
@@ -31,51 +31,29 @@
 
 			<div class="large-6 columns">
 				<div class="panel">
-					<p>Subtítulo:</p>
-					<input type="text" name="subtitulo" required />
-				</div>
-			</div>
-
-			<div class="large-12 columns">
-				<div class="panel">
 					<p>Texto:</p>
-					<textarea rows="10" name="texto" required></textarea>
+					<textarea rows="4" name="texto" required></textarea>
+				</div>
+			</div>
+			
+			<div class="large-6 columns">
+				<div class="panel">
+					<p>Preço Inicial:</p>
+					<input type="text" name="preco" required />
 				</div>
 			</div>
 
 			<div class="large-6 columns">
 				<div class="panel">
-					<p>Data da Noticia:</p>
-					<input id="data" type="date" name="data" required />
+					<p>Telefone:</p>
+					<input type="text" name="telefone" required />
 				</div>
-			</div>
-
-			<div class="large-6 columns">
-				<div class="panel">
-					<p>Seção:</p>
-					<select id="comboSecao" name="secaoId">
-						<c:forEach var="secao" items="${secoes}">
-							<option value="${secao.secaoId}">${secao.titulo}</option>
-						</c:forEach>
-					</select>
-				</div>
-			</div>
-
-			<div class="large-6 columns">
-				Nome arqvuio: <input type="text" nome="nomeArquivo" />
-			</div>
-			<div class="large-6 columns">
-
-				Escolha uma imagem: <input type="file" name="file" size="50" />
-
 			</div>
 
 			<div class="large-12 medium-12 columns">
 				<div class="panel">
-					<center>
 						<input class="success button" id="cadNot" type="submit"
-							value="Cadastrar Notícia" />
-					</center>
+							value="Cadastrar Classificado" />
 				</div>
 				<%@ include file="../rodape.jsp"%>
 			</div>

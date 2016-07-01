@@ -41,9 +41,9 @@ public class RegraDAO {
 		return this.manager.find(RegraUsuario.class, id); // Criar um novo id
 	}
 	
-	public Long getRoleNome(String nome){
+	public Long getRegraNome(String nome){
 		
-		String hql = " SELECT r FROM REGRA r WHERE r.regra = :nome"; // 
+		String hql = " SELECT r FROM REGRA r WHERE r.nome = :nome"; // 
 		
 		TypedQuery<RegraUsuario> query = this.manager.createQuery(hql, RegraUsuario.class);
 		query.setParameter("nome", nome).getResultList();
@@ -52,5 +52,18 @@ public class RegraDAO {
 		
 		return regra.getRegraId();	
 	
+	}
+	
+	public List<RegraUsuario> usuarioRegras(Long id_usuario){ // Em hql utiliza-se da entidade ou seja da classe da aplicação e não da tabela do banco, Mas defini que usariam da tabela
+		
+		// Uma consulta usando JOIN FETCH nesse caso pega todos os papeis do usuário passado. 
+		String hql = " SELECT r FROM REGRA r JOIN FETCH  r.usuarioList u WHERE u.id = :id_usuario"; // 
+	
+		TypedQuery<RegraUsuario> query = this.manager.createQuery(hql, RegraUsuario.class);
+		query.setParameter("id_usuario", id_usuario).getResultList();
+		List<RegraUsuario> regraUsuario = query.getResultList();
+		
+		return regraUsuario;
+		
 	}
 }

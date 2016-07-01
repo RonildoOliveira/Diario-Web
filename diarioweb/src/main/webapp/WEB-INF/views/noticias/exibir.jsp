@@ -26,30 +26,38 @@
 	<div class="large-12 columns">
 				
 			<h3>${noticiaResult.titulo}</h3>
-			<small>${noticiaResult.dataNoticia}</small>
+			<small>Publicada em: ${noticiaResult.dataNoticia} por ${noticiaResult.autorNoticia.nome} </small>
 			<div class="large-12w columns">
 				<img class="imagemNoticia" src="/diarioweb/download/${noticiaResult.noticiaId}.html">
 				<p class="textoNoticia">${noticiaResult.texto}</p>
 			</div>
+			
+			<c:if test="${usuario != null }">
+        	  <c:forEach var="regra" items="${usuario.regras }" >		
+				<c:if test="${regra.nome == 'Leitor'}">
+				   <c:if test="${usuario.getRegraId() == 1 }">  
 
-			<%@ include file="../comentarios/form.jsp"%>
+						<%@ include file="../comentarios/form.jsp"%>
+			
+						<h5>
+							<strong>Comentários</strong>
+						</h5>
+						<c:forEach var="comentario" items="${comentarios}">
+							<div class="panel">
+								<p>
+								   <b>${comentario.autorComentario.nome }</b> <br/>
+									${comentario.texto}
+								</p>
+							</div>
+						</c:forEach>
+					</c:if>
+				</c:if>
+			   </c:forEach>
+			  </c:if>
 
-			<h5>
-				<strong>Comentários</strong>
-			</h5>
-			<c:forEach var="comentario" items="${comentarios}">
-				<div class="panel">
-					<p>${comentario.texto}</p>
-				</div>
-			</c:forEach>
-
-			<div class="primary callout">
-				<p>
-					<a href="/diarioweb/" class="button">Voltar</a>
-				</p>
-			</div>
+			<%@ include file="../rodape.jsp"%>
 		</div>
-	<%@ include file="../footer.jsp"%>
+
 	</div>
 
 </body>

@@ -30,9 +30,21 @@
 				<hr>
 				<ul style="list-style: none;">
 					<li>
+					<a href="#">
+					Antônio Airton</a></li>
+					
+					<li>
+					<a href="#">
+					Crislânio Macedo</a></li>
+					
+					<li>
+					<a href="#">
+					Dieinison Jack</a></li>
+					
+					<li>
 					<a href="mailto:crislanio.ufc@gmail.com">
-					Crislânio Macedo</a>
-					</li>
+					Macilio Ferreira</a></li>
+					
 					<li><a href="mailto:ronildo.comp@gmail.com">
 					Ronildo Oliveira</a></li>
 				</ul>

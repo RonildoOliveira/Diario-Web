@@ -2,6 +2,8 @@ package ufc.web.diario.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,15 +25,24 @@ public class HomeController {
 	
 	
 	@RequestMapping("/")
-	public String index(Model model) {
-		
+	public String index(Model model, HttpSession session) {
+		session.invalidate();
+		//remover
 		List<Noticia> noticias = this.noticiaDAO.listar();
 		model.addAttribute("noticiasRecentes", noticias);
 		
 		List<Secao> secoes = this.secaoDAO.listar();
 		model.addAttribute("secoes", secoes);
-		
-		System.out.println("Home Page");
 		return "index";
+	}
+	
+	@RequestMapping("/usuarios/homeadmin")
+	public String home(Model model) {
+		List<Noticia> noticias = this.noticiaDAO.listar();
+		model.addAttribute("noticiasRecentes", noticias);
+		
+		List<Secao> secoes = this.secaoDAO.listar();
+		model.addAttribute("secoes", secoes);
+		return "/usuarios/homeadmin";
 	}
 }

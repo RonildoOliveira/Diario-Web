@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
+
 @Entity(name = "COMENTARIO")
 @Table(name = "COMENTARIO")
 public class Comentario {
@@ -29,6 +31,11 @@ public class Comentario {
 	@ManyToOne(optional = false) //false
 	@JoinColumn(name = "noticia_id", referencedColumnName = "noticia_id")
 	private Noticia noticiaDeOrigem;
+	
+	// Várias Comentarios podem ter o mesmo autor
+	@ManyToOne(optional = false, cascade = CascadeType.ALL)
+	@JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
+	private Usuario autorComentario;
 
 	public Long getComentId() {
 		return comentId;
@@ -60,6 +67,14 @@ public class Comentario {
 
 	public void setNoticiaDeOrigem(Noticia noticiaDeOrigem) {
 		this.noticiaDeOrigem = noticiaDeOrigem;
+	}
+	
+	public Usuario getAutorComentario() {
+		return autorComentario;
+	}
+
+	public void setAutorComentario(Usuario autorComentario) {
+		this.autorComentario = autorComentario;
 	}
 
 	

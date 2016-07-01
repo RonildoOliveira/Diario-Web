@@ -10,14 +10,13 @@
 <script src="../resources/js/modernizr.min.js"></script>
 
 <script src="../resources/js/rn.js" charset="utf-8"></script>
-<title>Diário WEB - Cadastro de Usuários</title>
+<title>Diário WEB - Cadastro de Jornalista</title>
 </head>
 <body>
 	<%@ include file="../topo.jsp"%>
 
 	<div class="row">
-		<form method="post" action="inserirUsuario" onsubmit="formUsuario()"
-		enctype="multipart/form-data">
+		<form method="post" action="adicionarJornalista" onsubmit="formJornalista()">
 
 			<div class="large-6 columns">
 				<div class="panel">
@@ -46,29 +45,18 @@
 					<input type="password" name="senha" required>
 				</div>
 			</div>
-			
-			<div class="large-6 columns">
-				Nome arqvuio: <input type="text" nome="nomeArquivo" required/>
-			</div>
-			<div class="large-6 columns">
 
-				Escolha uma imagem: <input type="file" name="file" size="50" required/>
-
-			</div>
-			
 			<div class="large-12 columns">
 				<div class="panel">
 					<center>
 						<input class="success button" type="submit" value="Cadastrar" />
 					</center>
-				</div>
+					<%@ include file="../rodape.jsp"%>
+				</div>				
 			</div>
+			
 		</form>
-		<div class="large-12 medium-12 columns">
-			<p>
-				<a href="/diarioweb/" class="button">Voltar</a>
-			</p>
-		</div>
+		
 	</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -8,12 +8,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="../resources/css/normalize.min.css">
-<link rel="stylesheet" href="../resources/css/foundation.min.css">
-<link href='../resources/css/foundation-icons.css' rel='stylesheet'
-	type='text/css'>
+<link rel="stylesheet"
+	href="../resources/css/normalize.min.css">
+<link rel="stylesheet"
+	href="../resources/css/foundation.min.css">
+<link
+	href='../resources/css/foundation-icons.css'
+	rel='stylesheet' type='text/css'>
 
-<script src="../resources/js/modernizr.min.js"></script>
+<script
+	src="../resources/js/modernizr.min.js"></script>
 
 <title>Diário WEB - Todas os Usuários</title>
 </head>
@@ -21,8 +25,8 @@
 
 	<%@ include file="../topo.jsp"%>
 
-	<div class="row">
-		<div class="large-12 columns">
+	<div class= "row">
+	<div class="large-12 columns">
 
 			<table border="2">
 				<tr>
@@ -38,21 +42,17 @@
 						<td>${usuario.nome}</td>
 						<td>${usuario.login}</td>
 						<td>${usuario.email}</td>
-						<td><a href="/diarioweb/usuarios?id=${usuario.id}"> <img
-								height="16px" width="16px" alt=""
+						<td><a href="/diarioweb/usuarios?id=${usuario.id}">
+								<img height="16px" width="16px" alt=""
 								src="/diarioweb/resources/img/delete.png">
 						</a></td>
 					</tr>
 				</c:forEach>
 			</table>
-
-			<div class="panel">
-				<p>
-					<a href="/diarioweb/" class="button">Voltar</a>
-				</p>
-			</div>
+			<%@ include file="../rodape.jsp"%>
 		</div>
-		<%@ include file="../footer.jsp"%>
-	</div>
+		
+</div>
+
 </body>
 </html>

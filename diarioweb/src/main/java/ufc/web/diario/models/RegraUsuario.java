@@ -25,7 +25,7 @@ public class RegraUsuario {
 
 	//colocar cascade
 	@ManyToMany(mappedBy = "regras" , fetch = FetchType.LAZY)
-	private List<Usuario> usuarioList;
+	private List<Usuario> usuarioList; 
 	
 	
 	public List<Usuario> getUsuarioList() {

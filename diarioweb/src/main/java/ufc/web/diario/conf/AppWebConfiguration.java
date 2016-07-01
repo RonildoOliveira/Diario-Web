@@ -11,6 +11,7 @@ import ufc.web.diario.controller.ArquivoController;
 import ufc.web.diario.controller.HomeController;
 import ufc.web.diario.controller.UsuarioController;
 import ufc.web.diario.dao.ArquivoDAO;
+import ufc.web.diario.dao.ClassificadoDAO;
 import ufc.web.diario.dao.ComentarioDAO;
 import ufc.web.diario.dao.NoticiaDAO;
 import ufc.web.diario.dao.RegraDAO;
@@ -26,7 +27,8 @@ import ufc.web.diario.dao.SecaoDAO;
 		ArquivoController.class,
 		NoticiaDAO.class,
 		ComentarioDAO.class,
-		SecaoDAO.class
+		SecaoDAO.class,
+		ClassificadoDAO.class
 })
 public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 

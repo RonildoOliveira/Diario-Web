@@ -3,12 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="../resources/css/normalize.min.css">
-<link rel="stylesheet" href="../resources/css/foundation.min.css">
-<link href='../resources/css/foundation-icons.css' rel='stylesheet'
-	type='text/css'>
+<link rel="stylesheet"
+	href="../resources/css/normalize.min.css">
+<link rel="stylesheet"
+	href="../resources/css/foundation.min.css">
+<link
+	href='../resources/css/foundation-icons.css'
+	rel='stylesheet' type='text/css'>
 
-<script src="../resources/js/modernizr.min.js"></script>
+<script
+	src="../resources/js/modernizr.min.js"></script>
 <script src="../resources/responsive-tables.js"></script>
 
 <title>Listar todas as seções</title>
@@ -32,21 +36,24 @@
 						<td><a
 							href="/diarioweb/noticias/listarsec?id=${secao.secaoId}">${fn:substring(secao.titulo, 0, 50)}</a></td>
 						<td>${fn:substring(secao.descricao, 0, 100)}</td>
-						<td><a href="/diarioweb/secoes?id=${secao.secaoId }"> <img
-								height="16px" width="16px" alt=""
-								src="/diarioweb/resources/img/delete.png">
-						</a></td>
+						<c:if test="${usuario != null }">
+        				  <c:forEach var="regra" items="${usuario.regras }" >		
+							<c:if test="${regra.nome == 'Editor'}">
+					            <c:if test="${usuario.getRegraId() == 2 }">
+									<td><a href="/diarioweb/secoes?id=${secao.secaoId }">
+											<img height="16px" width="16px" alt=""
+											src="/diarioweb/resources/img/delete.png">
+									</a></td>
+									</c:if>
+								</c:if>
+						  </c:forEach>
+					     </c:if>
 					</tr>
 				</c:forEach>
 			</table>
-
-			<div class="panel">
-				<p>
-					<a href="/diarioweb/" class="button">Voltar</a>
-				</p>
-			</div>
+			<%@ include file="../rodape.jsp"%>
 		</div>
-		<%@ include file="../footer.jsp"%>
+
 	</div>
 </body>
 </html>

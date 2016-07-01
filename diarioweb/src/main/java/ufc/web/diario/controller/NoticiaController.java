@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,11 @@ import ufc.web.diario.dao.ArquivoDAO;
 import ufc.web.diario.dao.ComentarioDAO;
 import ufc.web.diario.dao.NoticiaDAO;
 import ufc.web.diario.dao.SecaoDAO;
+import ufc.web.diario.dao.UsuarioDAO;
 import ufc.web.diario.models.Arquivo;
 import ufc.web.diario.models.Noticia;
 import ufc.web.diario.models.Secao;
+import ufc.web.diario.models.Usuario;
 
 @Controller
 @Transactional
@@ -38,6 +41,9 @@ public class NoticiaController {
 
 	@Autowired
 	private ComentarioDAO comentarioDAO;
+	
+	@Autowired
+	private UsuarioDAO usuarioDAO;
 
 	@Autowired
 	private ArquivoDAO arquivoDAO;
@@ -51,15 +57,18 @@ public class NoticiaController {
 	@RequestMapping(value="/noticias", method = RequestMethod.POST)
 	public String save(Noticia noticia,
 			@ModelAttribute("document") Arquivo arquivo,
-			@RequestParam("file") MultipartFile file) throws IOException {
-
+			@RequestParam("file") MultipartFile file, HttpSession session) throws IOException {
+		
+		Usuario user = (Usuario) session.getAttribute("usuario");
+		
 		noticia.setNomeArquivo(file.getOriginalFilename());        
 		noticia.setTipoArquivo(file.getContentType());
 		noticia.setConteudoArquivo(file.getBytes());
-
+		noticia.setAutorNoticia(usuarioDAO.getUserId(user.getId()));
 		noticia.setSecao(secaoDAO.getSecao(noticia.getSecaoId()));
+		
 		noticiaDAO.inserir(noticia);
-		return "redirect:noticias/form";
+		return "redirect:noticias/listar";
 	}
 
 	@RequestMapping("/noticias/listar")
@@ -102,7 +111,6 @@ public class NoticiaController {
 
 		Secao secao = new Secao();
 
-		System.out.println("HUE------");
 		for (Noticia noticia : noticias) {
 			if(noticia.getSecaoId() == id){
 				noticiaResult.add(noticia);
@@ -119,11 +127,23 @@ public class NoticiaController {
 
 	@RequestMapping(value = "/noticias", params = {"id"},
 			method = RequestMethod.GET)
-	public String excluirNoticia(Model model, @RequestParam(value = "id") Long id){
+	public String excluirNoticia(Model model, @RequestParam(value = "id") Long id, HttpSession session){
 		
-		noticiaDAO.remover(noticiaDAO.getNoticia(id));
+		Noticia noticia = noticiaDAO.getNoticia(id);
+		Usuario user = (Usuario) session.getAttribute("usuario");
 		
-		return "redirect:noticias/listar";
+		if(user.getNome().equals(noticia.getAutorNoticia().getNome()) && user.getRegraId() == 3){ // Jornalista
+			
+			noticia.setAutorNoticia(null);
+			noticiaDAO.remover(noticia);
+			return "redirect:noticias/listar";
+		}else if(user.getRegraId() == 2){ // Editor
+			noticiaDAO.remover(noticia);
+			return "redirect:noticias/listar";
+		}else{
+			return "404";
+		}
+
 	}
 	
 	@RequestMapping("/download/{arquivoId}")
@@ -137,5 +157,6 @@ public class NoticiaController {
 		FileCopyUtils.copy(noticiaDAO.getNoticia(arquivoId).getConteudoArquivo(), response.getOutputStream());
 
 		return null;
-	}
+	}	
+	
 }

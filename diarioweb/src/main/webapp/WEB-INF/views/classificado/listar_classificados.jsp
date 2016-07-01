@@ -21,25 +21,19 @@
 	<%@ include file="../topo.jsp"%>
 	<div class="row">
 		<div class="large-12 columns">
-			<h3>${secao.titulo}</h3>
-			<h6>${secao.descricao}</h6>
 			
-			<c:if test="${fn:length(noticias) le 0}">
-				<%@ include file="../404.jsp"%>
-			</c:if>
-			
-			<c:forEach var="noticia" items="${noticias}">
+			<c:forEach var="classificado" items="${classificados}">
 				<div class="panel">
-					<h3>
-						<a href="/diarioweb/noticias/exibir?id=${noticia.noticiaId}">${noticia.titulo}</a>
-					</h3>
-					<h6>${noticia.dataNoticia}</h6>
-					<p>${fn:substring(noticia.texto, 0, 100)}</p>
+					<table>
+						<tr>  
+							<td> <a href="exibirClassificado?id=${classificado.classificadoId}"> ${classificado.titulo }</a> </td>
+						</tr>
+					</table>
 				</div>
 			</c:forEach>
-
 			<%@ include file="../rodape.jsp"%>
 		</div>
 	</div>
+	
 </body>
 </html>

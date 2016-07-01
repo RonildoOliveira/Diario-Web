@@ -16,16 +16,30 @@
 	<div class="row">
 		<div class="large-3 columns">
 			<!--  topo  logo-->
-			<a href="/diarioweb/"> <img
+			 
+			<img
 				src="/diarioweb/resources/img/dweb_logo.png" />
-			</a>
+			
 		</div>
 
 		<div class="large-9 columns">
-			<ul class="right button-group">
-				<li><a href="/diarioweb/usuarios/login" class="button">Login</a></li>
-				<li><a href="/diarioweb/usuarios/homeadmin" class="success button">Admin</a></li>
-			</ul>
+			
+				<c:if test="${usuario == null }">
+				<ul class="right button-group">
+					<li><a href="formularioLogin" class="button">Login</a></li>
+					<li><a href="formularioUsuario" class="success button">Cadastrar-se</a></li>
+				</ul>
+				</c:if>
+				<c:if test="${usuario != null }">
+					
+						<ul class="right button-group">
+							<li>Bem-Vindo(a) ${usuario.login}</li>
+							<li><img height="49px" width="49px"
+								src="/diarioweb/profile/${usuario.id}.html"></li>
+							<li><a href="/diarioweb/" class="button">Sair</a></li>
+						</ul>
+					
+				</c:if>
 		</div>
 		<!--  topo  logo-->
 

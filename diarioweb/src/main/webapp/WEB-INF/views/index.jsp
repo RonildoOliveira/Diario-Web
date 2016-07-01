@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet" href="resources/css/normalize.min.css">
 <link rel="stylesheet" href="resources/css/foundation.min.css">
@@ -47,13 +46,29 @@
 				</c:otherwise>
 
 			</c:choose>
-		</div>
+			<hr />
+		
+		<!-- Visualização de Classificados -->
+         <div class="large-6 columns">
+			<div class="panel">
+				<ul> <li><a href="classificado/listar_classificados">Visualizar Classificados</a></li> </ul> 
+			</div>
+	 	 </div>
+	 	 <div class="large-6 columns">
+			<div class="panel">
+				<ul> <li><a href="/diarioweb/noticias/listar">Visualizar Noticias</a></li> </ul> 
+			</div>
+	 	 </div>	
+	
+	<%@ include file="footer.jsp"%>
+	
+	</div>
 		<!--  12 columns -->
 		
-		<%@ include file="footer.jsp"%>
+		
 	</div>
 	<!-- ROWS -->
-
+	
 	
 	
 	<script src="resources/js/jquery-2.1.4.min.js"></script>

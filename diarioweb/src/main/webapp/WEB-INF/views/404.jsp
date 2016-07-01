@@ -15,12 +15,12 @@
 
 	<div class="row">
 		<div class="large-12 columns">
-			<center>
-				<h1>404</h1>
-				<h4>Nenhum Resultado Encontrado</h4>
-			</center>
+		<center>
+			<h1>404</h1>
+			<h4>Nenhum Resultado Encontrado</h4>
+		</center>
 		</div>
 	</div>
-
+	
 </body>
 </html>

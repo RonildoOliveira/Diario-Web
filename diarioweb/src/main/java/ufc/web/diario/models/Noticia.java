@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +19,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 import org.hibernate.annotations.Type;
+
 
 @Entity(name = "NOTICIA")
 @Table(name = "NOTICIA")
@@ -56,6 +56,11 @@ public class Noticia {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "secao_id", referencedColumnName = "secao_id") // ID_SECAO referencia ID
 	private Secao secao;
+	
+	// Várias Notícias podem ter o mesmo autor
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "autor_id", referencedColumnName = "usuario_id")
+	private Usuario autorNoticia;
     
 	/******************/
 	@Column(name = "NOME_ARQUIVO")
@@ -70,6 +75,14 @@ public class Noticia {
 
 	public String getNomeArquivo() {
 		return nomeArquivo;
+	}
+
+	public Usuario getAutorNoticia() {
+		return autorNoticia;
+	}
+
+	public void setAutorNoticia(Usuario autorNoticia) {
+		this.autorNoticia = autorNoticia;
 	}
 
 	public void setNomeArquivo(String nomeArquivo) {
