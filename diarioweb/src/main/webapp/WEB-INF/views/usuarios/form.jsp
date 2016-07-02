@@ -16,7 +16,7 @@
 	<%@ include file="../topo.jsp"%>
 
 	<div class="row">
-		<form method="post" action="inserirUsuario" onsubmit="formUsuario()"
+		<form method="get" action="form" onsubmit="formUsuario()"
 		enctype="multipart/form-data">
 
 			<div class="large-6 columns">

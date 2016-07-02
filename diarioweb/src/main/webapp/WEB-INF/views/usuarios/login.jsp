@@ -23,7 +23,7 @@
 <%@ include file="../topo.jsp"%>
 
 	<div class="row">
-		<form method="post" action="/diarioweb/usuarios/login">
+		<form method="get" action="/diarioweb/usuarios/login">
 			<div class="large-6 columns">
 				<div class="panel">
 					Login:

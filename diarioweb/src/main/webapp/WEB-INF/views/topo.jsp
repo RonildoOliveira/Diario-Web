@@ -26,8 +26,8 @@
 			
 				<c:if test="${usuario == null }">
 				<ul class="right button-group">
-					<li><a href="formularioLogin" class="button">Login</a></li>
-					<li><a href="formularioUsuario" class="success button">Cadastrar-se</a></li>
+					<li><a href="login" class="button">Login</a></li>
+					<li><a href="form" class="success button">Cadastrar-se</a></li>
 				</ul>
 				</c:if>
 				<c:if test="${usuario != null }">

@@ -18,7 +18,79 @@
 </head>
 <body>
 
-	<%@ include file="topo.jsp"%>
+	<!-- Topo -->
+	<div class="row">
+		<div class="large-3 columns">
+			<!--  topo  logo-->
+			 
+			<img
+				src="/diarioweb/resources/img/dweb_logo.png" />
+			
+		</div>
+
+		<div class="large-9 columns">
+			
+				<c:if test="${usuario == null }">
+				<ul class="right button-group">
+					<li><a href="usuarios/login" class="button">Login</a></li>
+					<li><a href="usuarios/form" class="success button">Cadastrar-se</a></li>
+				</ul>
+				</c:if>
+				<c:if test="${usuario != null }">
+					
+						<ul class="right button-group">
+							<li>Bem-Vindo(a) ${usuario.login}</li>
+							<li><img height="49px" width="49px"
+								src="/diarioweb/profile/${usuario.id}.html"></li>
+							<li><a href="/diarioweb/usuarios/sair" class="button">Sair</a></li>
+						</ul>
+					
+				</c:if>
+		</div>
+		<!--  topo  logo-->
+
+
+		<div class="large-12 columns">
+			<!--  menu bar -->
+
+			<nav class="top-bar" data-topbar>
+				<ul class="title-area">
+
+					<li class="name">
+						<h1>
+							<a href="/diarioweb/" title="Inicio">Home</a>
+						</h1>
+					</li>
+
+					<li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a>
+					</li>
+				</ul>
+
+				<section class="top-bar-section">
+					<ul class="left">
+						<c:forEach var="secao" items="${secoes}">
+							<li><a
+								href="/diarioweb/noticias/listarsec?id=${secao.secaoId}"
+								title="${secao.descricao}"> ${secao.titulo} </a></li>
+						</c:forEach>
+					</ul>
+
+					<ul class="right">
+						<li class="search">
+							<form>
+								<input type="search">
+							</form>
+						</li>
+
+						<li class="has-button"><a class="small button" href="#">Search</a>
+						</li>
+					</ul>
+				</section>
+			</nav>
+		</div>
+		<!-- large-12 columns menu bar -->
+	</div>
+	<!-- row  -->
 
 	<!-- 	https://developers.facebook.com/docs/plugins/page-plugin -->
 	<!-- 	https://twitter.com/settings/widgets/592398058639499266/edit?notice=WIDGET_UPDATED -->
@@ -56,7 +128,7 @@
 	 	 </div>
 	 	 <div class="large-6 columns">
 			<div class="panel">
-				<ul> <li><a href="/diarioweb/noticias/listar">Visualizar Noticias</a></li> </ul> 
+				<ul> <li><a href="noticias/listar">Visualizar Noticias</a></li> </ul> 
 			</div>
 	 	 </div>	
 	

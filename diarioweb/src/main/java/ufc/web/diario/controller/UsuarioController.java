@@ -46,16 +46,15 @@ public class UsuarioController {
 	private SecaoDAO secaoDAO;
 	
 	// Controlador Login
-	@RequestMapping("formularioLogin") // Login
+	@RequestMapping("/usuarios/login")
 	public String formularioLogin(Model model){
 		List<RegraUsuario> regras = regraDAO.listar();
 		model.addAttribute("regras", regras);
-		return "/usuarios/login";
+		return "usuarios/login";
 	}
 	
-	@RequestMapping("usuarios/login")
-	public String efetuarLogin(Usuario user, HttpSession session, Model model){
- 
+	@RequestMapping(value = "/usuarios/login" , params = {"senha"}, method = RequestMethod.GET)
+	public String efetuarLogin(Usuario user, HttpSession session, Model model){ 
 		// Criando instância da classe para criptografar a senha do usuario
 		Criptografar crip = new Criptografar();
 		
@@ -135,27 +134,29 @@ public class UsuarioController {
         			return "/usuarios/homeadmin";
         			
         		}else{
-        	        return "redirect:formularioLogin";		
+        	        return "redirect:/usuarios/login";		
         		}
 
     		}
     		
 		}
 		
-        return "redirect:formularioLogin";		
+        return "redirect:/usuarios/login";		
         
 	}	
 	
 	// Controlador Usuário 	
-	 @RequestMapping("formularioUsuario") // Cadastro
+	 @RequestMapping("/usuarios/form") // Cadastro
 	 public String formularioUsuario(){
+		 System.out.println("SOLTa");
 		 return "/usuarios/form";
 	 }
 	 
-	 @RequestMapping("inserirUsuario")
+	 @RequestMapping(value = "/usuarios/form", params = ("file"), method = RequestMethod.GET)
 	 public String inserirUsuario(Usuario usuario, 
 				@RequestParam("file") MultipartFile file, HttpSession session) throws IOException {
 		 
+		 System.out.println("SOLTO");
 		 // Criando instância da classe para criptografar a senha do usuario
 		 Criptografar crip = new Criptografar();
 		 // Pegando senha passada do usuário para criptografar
@@ -183,9 +184,11 @@ public class UsuarioController {
 		 usuario.setConteudoArquivo(file.getBytes());
 		 usuario.setTipoArquivo(file.getContentType());
 			
-		 this.usuarioDAO.adicionar(usuario); 	 
+		 this.usuarioDAO.adicionar(usuario); 
+		 
+		 System.out.println("HERE_____________!!!!");
 	
-		 return "redirect:formularioLogin";     
+		 return "redirect:/usuarios/login";     
 	 
 	 }
      
