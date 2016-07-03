@@ -66,7 +66,7 @@
 								<h3>Notícia</h3>
 								<ul>
 									<li><a href="/diarioweb/noticias/listar">Listar Notícias</a></li>
-									<li><a href="../formularioJornalista">Cadastrar Jornalista</a></li>
+									<li><a href="/diarioweb/usuarios/formulario_jornalista">Cadastrar Jornalista</a></li>
 								</ul>
 							</div>
 						</div>

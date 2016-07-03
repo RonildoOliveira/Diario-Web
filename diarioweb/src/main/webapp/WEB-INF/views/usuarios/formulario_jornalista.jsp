@@ -16,7 +16,8 @@
 	<%@ include file="../topo.jsp"%>
 
 	<div class="row">
-		<form method="post" action="adicionarJornalista" onsubmit="formJornalista()">
+		<form method="post" action="/diarioweb/usuarios/formulario_jornalista" onsubmit="formJornalista()"
+		enctype="multipart/form-data">
 
 			<div class="large-6 columns">
 				<div class="panel">
@@ -44,6 +45,12 @@
 					<p>Senha:</p>
 					<input type="password" name="senha" required>
 				</div>
+			</div>
+			
+			<div class="large-6 columns">
+
+				Selecione uma foto: <input type="file" name="file" size="50" required/>
+
 			</div>
 
 			<div class="large-12 columns">

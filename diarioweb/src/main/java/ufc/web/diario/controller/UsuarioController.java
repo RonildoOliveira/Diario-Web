@@ -105,7 +105,7 @@ public class UsuarioController {
     			return "/usuarios/homeadmin";
     			
     		}else{
-    	        //return "redirect:formularioLogin";
+
     			// Usuario cadastrado manualmente
         		if(userRef.getSenha().equals(senha) && id_regras.contains(regraId) && regraId == 1){
                     userRef.setRegraId(regraId);          
@@ -148,15 +148,14 @@ public class UsuarioController {
 	// Controlador Usuário 	
 	 @RequestMapping("/usuarios/form") // Cadastro
 	 public String formularioUsuario(){
-		 System.out.println("SOLTa");
 		 return "/usuarios/form";
 	 }
 	 
-	 @RequestMapping(value = "/usuarios/form", params = ("file"), method = RequestMethod.GET)
+	 @RequestMapping(value = "/usuarios/form", headers=("content-type=multipart/*") , 
+			 params = {"senha"}, method = RequestMethod.POST)
 	 public String inserirUsuario(Usuario usuario, 
 				@RequestParam("file") MultipartFile file, HttpSession session) throws IOException {
 		 
-		 System.out.println("SOLTO");
 		 // Criando instância da classe para criptografar a senha do usuario
 		 Criptografar crip = new Criptografar();
 		 // Pegando senha passada do usuário para criptografar
@@ -185,26 +184,11 @@ public class UsuarioController {
 		 usuario.setTipoArquivo(file.getContentType());
 			
 		 this.usuarioDAO.adicionar(usuario); 
-		 
-		 System.out.println("HERE_____________!!!!");
-	
+		 	
 		 return "redirect:/usuarios/login";     
 	 
 	 }
      
-	 @RequestMapping("/profile/{arquivoId}")
-		public String download(@PathVariable("arquivoId")
-		Long arquivoId, HttpServletResponse response) throws IOException {
-
-			
-			response.setContentLength(usuarioDAO.getUserId(arquivoId).getConteudoArquivo().length);
-			response.setHeader("Content-Disposition","attachment; filename=\"" + 
-			usuarioDAO.getUserId(arquivoId).getNomeArquivo() +"\"");
-
-			FileCopyUtils.copy(usuarioDAO.getUserId(arquivoId).getConteudoArquivo(), response.getOutputStream());
-
-			return null;
-		} 
 	 @RequestMapping("usuarios/listar")
 	 public String listarUsuario(Model model){
 		
@@ -234,14 +218,14 @@ public class UsuarioController {
 
 	 // Controlador de Cadastro de Jornalista
 	 
-	 @RequestMapping("formularioJornalista")
+	 @RequestMapping("/usuarios/formulario_jornalista")
 	 public String formularioJornalista(){
 		return "/usuarios/formulario_jornalista"; 
 	 }
 	 
-	 @RequestMapping(value= "adicionarJornalista", method=RequestMethod.POST)
-	 public String adicionarJornalista(Usuario usuario, HttpSession session){
-		
+	 @RequestMapping(value = "/usuarios/formulario_jornalista", headers=("content-type=multipart/*") , 
+			 params = {"senha"}, method = RequestMethod.POST)
+	 public String adicionarJornalista(Usuario usuario, @RequestParam("file") MultipartFile file, HttpSession session) throws IOException{
 		 // Criando instância da classe para criptografar a senha do usuario
 		 Criptografar crip = new Criptografar();
 		 
@@ -267,10 +251,14 @@ public class UsuarioController {
 			 	 
 				 // Alterando a senha do usuario
 				 usuario.setSenha(senha_criptografada);
+				 
+				 usuario.setNomeArquivo(file.getOriginalFilename());        
+		 		 usuario.setConteudoArquivo(file.getBytes());
+		 		 usuario.setTipoArquivo(file.getContentType());
 			 	 
 			 	 this.usuarioDAO.alterar(usuario);
 			 	 
-			 	 return "/usuarios/homeadmin";   
+			 	 return "/usuarios/formulario_jornalista";   
 
 		  }else{	 // Caso em que o Usuário não está no banco, atualiza os papéis do usuário e inseri o mesmo
 	
@@ -285,9 +273,13 @@ public class UsuarioController {
 	 			 // Alterando a senha do usuario
 	 			 usuario.setSenha(senha_criptografada);
 	 			 
+	 			 usuario.setNomeArquivo(file.getOriginalFilename());        
+	 			 usuario.setConteudoArquivo(file.getBytes());
+	 			 usuario.setTipoArquivo(file.getContentType());
+	 			 
 		         this.usuarioDAO.adicionar(usuario); 
 		
-		         return "/usuarios/homeadmin";  
+		         return "/usuarios/formulario_jornalista";  
 	       }
 	 }
 	 
@@ -306,4 +298,18 @@ public class UsuarioController {
 		 return "index";
 	 
 	 }
+
+	 @RequestMapping("/profile/{arquivoId}")
+	 public String download(@PathVariable("arquivoId")
+	 Long arquivoId, HttpServletResponse response) throws IOException {
+		 
+		 
+		 response.setContentLength(usuarioDAO.getUserId(arquivoId).getConteudoArquivo().length);
+		 response.setHeader("Content-Disposition","attachment; filename=\"" + 
+				 usuarioDAO.getUserId(arquivoId).getNomeArquivo() +"\"");
+		 
+		 FileCopyUtils.copy(usuarioDAO.getUserId(arquivoId).getConteudoArquivo(), response.getOutputStream());
+		 
+		 return null;
+	 } 
 }

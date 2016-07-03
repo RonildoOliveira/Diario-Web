@@ -75,7 +75,7 @@ public class NoticiaController {
 	public String listarNoticia(Model model){
 		model.addAttribute("noticias", noticiaDAO.listar());
 		model.addAttribute("secoes",secaoDAO.listar());
-		return "noticias/listar";
+		return "/noticias/listar";
 	}	
 
 	@RequestMapping(value = "/noticias/exibir", params = {"id"},
