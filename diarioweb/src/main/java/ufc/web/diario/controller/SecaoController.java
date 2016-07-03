@@ -1,7 +1,5 @@
 package ufc.web.diario.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,34 +20,26 @@ public class SecaoController {
 	@Autowired
 	private SecaoDAO secaoDAO;
 
-
 	@RequestMapping("/secoes/form")
 	public String formularioSecao(){
 		return "secoes/form";
 	}
 
-
 	@RequestMapping("/secoes")
-	public String adicionarSecao(Secao s, HttpSession session){
-		this.secaoDAO.inserir(s);
+	public String adicionarSecao(Secao secao, HttpSession session){
+		secaoDAO.inserir(secao);
 		return "redirect:secoes/form";
 	}
 
 	@RequestMapping("/secoes/listar")
 	public String verCategorias (Model model){
-
-		List<Secao> secoes = this.secaoDAO.listar();
-		model.addAttribute("secoes", secoes);
-
+		model.addAttribute("secoes", secaoDAO.listar());
 		return "secoes/listar";
 	}
 	
-	@RequestMapping(value = "/secoes", params = {"id"},
-			method = RequestMethod.GET)
+	@RequestMapping(value = "/secoes", params = {"id"}, method = RequestMethod.GET)
 	public String excluirNoticia(Model model, @RequestParam(value = "id") Long id){
-		
 		secaoDAO.remover(secaoDAO.getSecao(id));
-		
 		return "redirect:secoes/listar";
 	}
 }

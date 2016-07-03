@@ -2,7 +2,6 @@ package ufc.web.diario.controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,9 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ufc.web.diario.dao.ClassificadoDAO;
 import ufc.web.diario.dao.RegraDAO;
 import ufc.web.diario.dao.UsuarioDAO;
-import ufc.web.diario.models.Arquivo;
 import ufc.web.diario.models.Classificado;
-import ufc.web.diario.models.RegraUsuario;
 import ufc.web.diario.models.Usuario;
 
 @Transactional

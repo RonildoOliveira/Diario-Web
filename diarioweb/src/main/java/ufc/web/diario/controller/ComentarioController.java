@@ -1,7 +1,5 @@
 package ufc.web.diario.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -40,8 +38,7 @@ public class ComentarioController {
 
 	@RequestMapping("/comentarios/listar")
 	public String listarUsuario(Model model){
-		List<Comentario> comentarios = this.comentarioDAO.listar();
-		model.addAttribute("comentarios", comentarios);		
+		model.addAttribute("comentarios", comentarioDAO.listar());		
 		return "comentarios/listar";
 	}	
 

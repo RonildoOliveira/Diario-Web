@@ -48,8 +48,7 @@ public class UsuarioController {
 	// Controlador Login
 	@RequestMapping("/usuarios/login")
 	public String formularioLogin(Model model){
-		List<RegraUsuario> regras = regraDAO.listar();
-		model.addAttribute("regras", regras);
+		model.addAttribute("regras", regraDAO.listar());
 		return "usuarios/login";
 	}
 	

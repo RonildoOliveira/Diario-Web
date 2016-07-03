@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +23,6 @@ import ufc.web.diario.dao.ComentarioDAO;
 import ufc.web.diario.dao.NoticiaDAO;
 import ufc.web.diario.dao.SecaoDAO;
 import ufc.web.diario.dao.UsuarioDAO;
-import ufc.web.diario.models.Arquivo;
 import ufc.web.diario.models.Noticia;
 import ufc.web.diario.models.Secao;
 import ufc.web.diario.models.Usuario;
@@ -81,8 +79,6 @@ public class NoticiaController {
 			method = RequestMethod.GET)
 	public String exibirNoticia(Model model, @RequestParam(value = "id") Long id){
 
-	
-
 		comentar(model, noticiaDAO.getNoticia(id));
 
 		model.addAttribute("noticiaResult", noticiaDAO.getNoticia(id));
@@ -105,7 +101,6 @@ public class NoticiaController {
 	public String exibirNoticiaPorSecao(Model model, @RequestParam(value = "id") int id){
 
 		List<Noticia> noticias = this.noticiaDAO.listar();
-
 		List<Noticia> noticiaResult = new ArrayList<Noticia>();
 
 		Secao secao = new Secao();
@@ -125,14 +120,13 @@ public class NoticiaController {
 	}
 
 	@RequestMapping(value = "/noticias", params = {"id"},
-			method = RequestMethod.GET)
+			method = RequestMethod.GET) 
 	public String excluirNoticia(Model model, @RequestParam(value = "id") Long id, HttpSession session){
 		
 		Noticia noticia = noticiaDAO.getNoticia(id);
 		Usuario user = (Usuario) session.getAttribute("usuario");
 		
 		if(user.getNome().equals(noticia.getAutorNoticia().getNome()) && user.getRegraId() == 3){ // Jornalista
-			
 			noticia.setAutorNoticia(null);
 			noticiaDAO.remover(noticia);
 			return "redirect:noticias/listar";
