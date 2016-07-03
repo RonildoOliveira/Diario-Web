@@ -49,7 +49,11 @@
 					<input type="text" name="telefone" required />
 				</div>
 			</div>
-
+			
+			<div class="large-6 columns">
+				Escolha uma imagem: <input type="file" name="file" size="50" />
+			</div>
+			
 			<div class="large-12 medium-12 columns">
 				<div class="panel">
 						<input class="success button" id="cadNot" type="submit"

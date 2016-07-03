@@ -61,9 +61,9 @@
 				</div>
 			</div>
 
-			<div class="large-6 columns">
-				Nome arqvuio: <input type="text" nome="nomeArquivo" />
-			</div>
+<!-- 			<div class="large-6 columns"> -->
+<!-- 				Nome arqvuio: <input type="text" nome="nomeArquivo" /> -->
+<!-- 			</div> -->
 			<div class="large-6 columns">
 
 				Escolha uma imagem: <input type="file" name="file" size="50" />

@@ -23,13 +23,13 @@
 	
 			<c:forEach var="classificado" items="${classificados}">
 			<div class="row">
-				<div class="large-4 columns">
-					
+				<div class="large-6 columns">
+					<img height="100px" width="100px"
+							src="/diarioweb/downloadcl/${classificado.classificadoId}.html">
 						<a href="/diarioweb/classificados/exibir?id=${classificado.classificadoId}"> ${classificado.titulo}</a>
-					
 				</div>
 				
-				<div class="large-6 columns">
+				<div class="large-4 columns">
 					<p>${classificado.texto}</p>
 				</div>
 				

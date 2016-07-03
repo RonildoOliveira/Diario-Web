@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -41,7 +42,47 @@ public class Classificado {
 	@Column (name = ("DATA_OFERTA"), nullable = false)
 	private Timestamp data_oferta;
 	
+	/******************/
+	@Column(name = "NOME_ARQUIVO")
+	private String nomeArquivo;
+	
+	@Lob
+	@Column(name = "DADO_ARQUIVO")	
+	private byte[] conteudoArquivo;
+	
+	@Column(name="TIPO_ARQUIVO")
+	private String tipoArquivo;
 
+	public String getNomeArquivo() {
+		return nomeArquivo;
+	}
+
+	public void setNomeArquivo(String nomeArquivo) {
+		this.nomeArquivo = nomeArquivo;
+	}
+
+	public byte[] getConteudoArquivo() {
+		return conteudoArquivo;
+	}
+
+
+	public void setConteudoArquivo(byte[] conteudoArquivo) {
+		this.conteudoArquivo = conteudoArquivo;
+	}
+
+
+	public String getTipoArquivo() {
+		return tipoArquivo;
+	}
+
+
+	public void setTipoArquivo(String tipoArquivo) {
+		this.tipoArquivo = tipoArquivo;
+	}
+
+
+	/******************/
+	
 	// Relacionamentos
 	
 	// Vários pedidos em um classificado pode ter só um autor
@@ -53,8 +94,6 @@ public class Classificado {
 	public Long getClassificadoId() {
 		return classificadoId;
 	}
-
-
 
 	public void setClassificadoId(Long classificadoId) {
 		this.classificadoId = classificadoId;
@@ -114,25 +153,6 @@ public class Classificado {
 
 	public void setAutorOferta(Usuario autorOferta) {
 		this.autorOferta = autorOferta;
-	}
-
-
-
-	// To String
-	@Override
-	public String toString() {
-	
-		StringBuffer sb = new StringBuffer();
-		sb.append("ID: " + classificadoId);
-		sb.append("Titulo: " + titulo);
-		sb.append("Texto: " + texto);
-		sb.append("Preço: " + preco);
-		sb.append("Telefone: " + telefone);
-		sb.append("Melhor Oferta: " + melhor_oferta);
-		sb.append("Data da Oferta: " + data_oferta);
-	//	sb.append("Autor da Oferta: " + autorOferta.getNome());		
-		
-		return sb.toString();
 	}
 	
 }

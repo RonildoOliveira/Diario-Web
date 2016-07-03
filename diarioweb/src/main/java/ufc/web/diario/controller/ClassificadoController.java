@@ -1,21 +1,28 @@
 package ufc.web.diario.controller;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import ufc.web.diario.dao.ClassificadoDAO;
 import ufc.web.diario.dao.RegraDAO;
 import ufc.web.diario.dao.UsuarioDAO;
+import ufc.web.diario.models.Arquivo;
 import ufc.web.diario.models.Classificado;
 import ufc.web.diario.models.RegraUsuario;
 import ufc.web.diario.models.Usuario;
@@ -42,8 +49,9 @@ public class ClassificadoController {
     	return "/classificados/form";
     }
     
-    @RequestMapping("adicionarClassificado")
-    public String adicionarClassificado(Classificado classificado, HttpSession session){
+    @RequestMapping("classificados/adicionarClassificado")
+    public String adicionarClassificado(Classificado classificado,
+		@RequestParam("file") MultipartFile file, HttpSession session) throws IOException {
     	
     	Usuario usuario = (Usuario) session.getAttribute("usuario");
         
@@ -53,6 +61,10 @@ public class ClassificadoController {
             }
 		}
         
+        classificado.setNomeArquivo(file.getOriginalFilename());        
+        classificado.setTipoArquivo(file.getContentType());
+        classificado.setConteudoArquivo(file.getBytes());
+		
         Timestamp data = new Timestamp(System.currentTimeMillis());
         classificado.setData_oferta(data);
         float oferta = 0;
@@ -65,6 +77,19 @@ public class ClassificadoController {
         
     	return "/classificados/listar"; // página de sucesso caso ele seja a maior oferta..
     }
+    
+    @RequestMapping("/downloadcl/{arquivoId}")
+	public String download(@PathVariable("arquivoId")
+	Long arquivoId, HttpServletResponse response) throws IOException {
+
+		response.setContentType(classificadoDAO.getCass(arquivoId).getTipoArquivo());
+		response.setContentLength(classificadoDAO.getCass(arquivoId).getConteudoArquivo().length);
+		response.setHeader("Content-Disposition","attachment; filename=\"" + classificadoDAO.getCass(arquivoId).getNomeArquivo() +"\"");
+
+		FileCopyUtils.copy(classificadoDAO.getCass(arquivoId).getConteudoArquivo(), response.getOutputStream());
+
+		return null;
+	}
     
     @RequestMapping("classificados/listar")
     public String listarClassificado(Model model, HttpSession session){

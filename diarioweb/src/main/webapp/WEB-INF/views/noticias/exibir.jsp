@@ -44,6 +44,8 @@
 						</h5>
 						<c:forEach var="comentario" items="${comentarios}">
 							<div class="panel">
+								<img class="imagemNoticia" height="49px" width="49px"
+								src="/diarioweb/profile/${comentario.autorComentario.id}.html">
 								<p>
 								   <b>${comentario.autorComentario.nome }</b> <br/>
 									${comentario.texto}

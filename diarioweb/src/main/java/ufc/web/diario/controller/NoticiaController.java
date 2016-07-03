@@ -56,7 +56,6 @@ public class NoticiaController {
 
 	@RequestMapping(value="/noticias", method = RequestMethod.POST)
 	public String save(Noticia noticia,
-			@ModelAttribute("document") Arquivo arquivo,
 			@RequestParam("file") MultipartFile file, HttpSession session) throws IOException {
 		
 		Usuario user = (Usuario) session.getAttribute("usuario");

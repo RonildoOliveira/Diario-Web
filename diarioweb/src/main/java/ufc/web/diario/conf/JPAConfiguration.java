@@ -56,7 +56,7 @@ public class JPAConfiguration {
 		dataSource.setUrl("jdbc:mysql://localhost:3306/diario"+UTF);
 		
 		dataSource.setUsername("root");
-		dataSource.setPassword("macilio");
+		dataSource.setPassword("root");
 		dataSource.addConnectionProperty("characterEncoding", "UTF-8"); // make sure utf-8 charset
 		return dataSource;
 	}
