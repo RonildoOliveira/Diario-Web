@@ -56,7 +56,7 @@ public class UsuarioController {
 	public String efetuarLogin(Usuario user, HttpSession session, Model model){ 
 		// Criando instância da classe para criptografar a senha do usuario
 		Criptografar crip = new Criptografar();
-		
+
 		// Pegando senha passada do usuário para criptografar
 		String senha = user.getSenha();
 		String senha_criptografada = crip.criptografar(senha);		
@@ -208,80 +208,15 @@ public class UsuarioController {
 		 return "redirect:listarUsuario";
 	 }
 	 
-	 @RequestMapping("excluirUsuario")
+	 @RequestMapping(value = "/usuarios", params = {"id"},
+				method = RequestMethod.GET)
 	 public String excluirUsuario(Usuario user){
 		 
 		 this.usuarioDAO.remover(user);
 		 
-		 return "redirect:listarUsuario";
+		 return "redirect:/usuarios/listar";
 	 }
 
-	 // Controlador de Cadastro de Jornalista
-	 
-	 @RequestMapping("/usuarios/formulario_jornalista")
-	 public String formularioJornalista(){
-		return "/usuarios/formulario_jornalista"; 
-	 }
-	 
-	 @RequestMapping(value = "/usuarios/formulario_jornalista", headers=("content-type=multipart/*") , 
-			 params = {"senha"}, method = RequestMethod.POST)
-	 public String adicionarJornalista(Usuario usuario, @RequestParam("file") MultipartFile file, HttpSession session) throws IOException{
-		 // Criando instância da classe para criptografar a senha do usuario
-		 Criptografar crip = new Criptografar();
-		 
-		 // Pegando senha passada do usuário para criptografar
-		 String senha = usuario.getSenha();
-		 String senha_criptografada = crip.criptografar(senha);
-		 
-		 Usuario u = usuarioDAO.getUserLogin(usuario.getLogin());
-		 
-		 // Pegando o ID referente ao papel de Jornalista
-		 Long id_ref_jornalista = regraDAO.getRegraNome("Jornalista");
-		 
-		 // Caso em que o Usuário está no banco, atualiza e seta um novo papel
-		  if(u != null){ 
-			  
-			  	RegraUsuario userPapel = regraDAO.getRoleById(id_ref_jornalista); 
-				 List<RegraUsuario> regras = regraDAO.usuarioRegras(u.getId());
-				 regras.add(userPapel);
-				 
-				 usuario.setId(u.getId());
-				 usuario.setRegraId(id_ref_jornalista);
-			 	 usuario.setRegras(regras);
-			 	 
-				 // Alterando a senha do usuario
-				 usuario.setSenha(senha_criptografada);
-				 
-				 usuario.setNomeArquivo(file.getOriginalFilename());        
-		 		 usuario.setConteudoArquivo(file.getBytes());
-		 		 usuario.setTipoArquivo(file.getContentType());
-			 	 
-			 	 this.usuarioDAO.alterar(usuario);
-			 	 
-			 	 return "/usuarios/formulario_jornalista";   
-
-		  }else{	 // Caso em que o Usuário não está no banco, atualiza os papéis do usuário e inseri o mesmo
-	
-   		         RegraUsuario papel = regraDAO.getRoleById(id_ref_jornalista); 
-		         List<RegraUsuario> regras = regraDAO.usuarioRegras(usuario.getId());
-		         regras.add(papel);
-		         
-                 usuario.setRegraId(id_ref_jornalista);
-	 	         usuario.setRegras(regras);
-	 	         
-		 
-	 			 // Alterando a senha do usuario
-	 			 usuario.setSenha(senha_criptografada);
-	 			 
-	 			 usuario.setNomeArquivo(file.getOriginalFilename());        
-	 			 usuario.setConteudoArquivo(file.getBytes());
-	 			 usuario.setTipoArquivo(file.getContentType());
-	 			 
-		         this.usuarioDAO.adicionar(usuario); 
-		
-		         return "/usuarios/formulario_jornalista";  
-	       }
-	 }
 	 
 	 // Caso o usuário queira sair da sua seção atual     
 	 @RequestMapping("/usuarios/sair")

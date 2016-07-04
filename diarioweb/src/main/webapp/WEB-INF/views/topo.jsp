@@ -35,7 +35,7 @@
 						<ul class="right button-group">
 							<li>Bem-Vindo(a) ${usuario.login}</li>
 							<li><img height="49px" width="49px"
-								src="/diarioweb/profile/${usuario.id}.html"></li>
+								src="/diarioweb/profile/${usuario.getId()}.html"></li>
 							<li><a href="/diarioweb/usuarios/sair" class="button">Sair</a></li>
 						</ul>
 					

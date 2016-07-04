@@ -50,7 +50,7 @@
 			
 			<div class="large-6 columns">
 
-				Selecione uma foto: <input type="file" name="file" size="50" required/>
+				Selecione uma foto: <input  type="file" name="file" size="50" required/>
 
 			</div>
 			
