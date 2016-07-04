@@ -126,9 +126,9 @@
 				<a href="classificados/listar">CLASSIFICADOS</a> 
 			</div>
 	 	 </div>
-	 	 <div class="large-6 columns">
+	 	 <div class="large-12 columns">
 			<div class="panel">
-				<ul> <li><a href="noticias/listar">Visualizar Noticias</a></li> </ul> 
+				<%@ include file="manchetes.jsp" %> 
 			</div>
 	 	 </div>	
 	

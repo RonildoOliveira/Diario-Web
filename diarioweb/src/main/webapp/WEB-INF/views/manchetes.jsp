@@ -29,7 +29,7 @@
 
 		</div>
 			
-			<c:forEach var="noticia" items="${noticias}">
+			<c:forEach var="noticia" items="${noticiasRecentes}">
 			<div class="large-4 columns">
 			<img src="/diarioweb/download/${noticia.noticiaId}.html">
 			</div>

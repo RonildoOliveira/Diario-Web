@@ -52,7 +52,7 @@ public class UsuarioController {
 		return "usuarios/login";
 	}
 	
-	@RequestMapping(value = "/usuarios/login" , params = {"senha"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/usuarios/login" , params = {"senha"}, method = RequestMethod.POST)
 	public String efetuarLogin(Usuario user, HttpSession session, Model model){ 
 		// Criando instância da classe para criptografar a senha do usuario
 		Criptografar crip = new Criptografar();
@@ -89,7 +89,7 @@ public class UsuarioController {
     			List<Secao> secoes = this.secaoDAO.listar();
     			model.addAttribute("secoes", secoes);
     			
-    			return "index";
+    			return "/usuarios/logado";
     		
     		} else if(userRef.getSenha().equals(senha_criptografada) && id_regras.contains(regraId) && regraId != 1){   		
     			session.setAttribute("usuario", userRef);
@@ -118,7 +118,8 @@ public class UsuarioController {
         			List<Secao> secoes = this.secaoDAO.listar();
         			model.addAttribute("secoes", secoes);
         			
-        			return "index";
+        			return "/usuarios/login"; // Coloquei um processo de redirecionamento nela.. Só foi necessário o 
+        			// caso do leitor. O homeadmin não teve problema com o css e js.
         		
         		} else if(userRef.getSenha().equals(senha) && id_regras.contains(regraId) && regraId != 1){   		
         			session.setAttribute("usuario", userRef);
@@ -294,7 +295,7 @@ public class UsuarioController {
 		 List<Secao> secoes = this.secaoDAO.listar();
 		 model.addAttribute("secoes", secoes);
 		 
-		 return "index";
+		 return "/usuarios/sair";
 	 
 	 }
 

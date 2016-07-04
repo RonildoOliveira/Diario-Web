@@ -51,6 +51,7 @@ public class ClassificadoController {
     	
     	Usuario usuario = (Usuario) session.getAttribute("usuario");
         
+    	// Caso em que o editor tenta adicionar um classificado que já existe.
         for (Classificado cl : classificadoDAO.listar()) {
         	if(cl.equals(classificado) ){
             	return "redirect:/classificados/form";
