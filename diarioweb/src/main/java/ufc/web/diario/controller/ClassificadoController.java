@@ -21,6 +21,7 @@ import ufc.web.diario.dao.ClassificadoDAO;
 import ufc.web.diario.dao.RegraDAO;
 import ufc.web.diario.dao.UsuarioDAO;
 import ufc.web.diario.models.Classificado;
+import ufc.web.diario.models.Noticia;
 import ufc.web.diario.models.Usuario;
 
 @Transactional
@@ -79,7 +80,7 @@ public class ClassificadoController {
         
         this.classificadoDAO.inserir(classificado);  	
         
-    	return "/classificados/listar"; // página de sucesso caso ele seja a maior oferta..
+    	return "redirect:/classificados/listar"; // página de sucesso caso ele seja a maior oferta..
     }
     
     @RequestMapping("/downloadcl/{arquivoId}")
@@ -153,9 +154,23 @@ public class ClassificadoController {
     	return "redirect:/classificados/listar";
     }
     
-    @RequestMapping("excluirClassificado")
-    public String excluirClassificado(Classificado c){
-    	this.classificadoDAO.remover(c);
+    @RequestMapping(value = "/classificados", params = {"id"},
+			method = RequestMethod.GET) 
+    public String excluirClassificado(Model model,
+    		@RequestParam(value = "id") Long id, HttpSession session){
+    	
+    	Classificado classificado = classificadoDAO.getCass(id);
+    	
+    	if(session.getAttribute("usuario") == null){
+			return "404";
+		}
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		if(usuario.getRegraId() != 2)
+			return "404";
+		
+		classificado.setAutorOferta(null);
+    	this.classificadoDAO.remover(classificado);
+    	
     	return "redirect:/classificados/listar";
     }
 

@@ -138,7 +138,8 @@ public class NoticiaController {
 		Noticia noticia = noticiaDAO.getNoticia(id);
 		Usuario user = (Usuario) session.getAttribute("usuario");
 		
-		if(user.getNome().equals(noticia.getAutorNoticia().getNome()) && user.getRegraId() == 3){ // Jornalista
+		if(user.getNome().equals(noticia.getAutorNoticia().getNome()) && 
+				user.getRegraId() == 3){ // Jornalista
 			noticia.setAutorNoticia(null);
 			noticiaDAO.remover(noticia);
 			return "redirect:noticias/listar";

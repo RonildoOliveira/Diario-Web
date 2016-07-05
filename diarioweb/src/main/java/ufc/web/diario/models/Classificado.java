@@ -86,7 +86,7 @@ public class Classificado {
 	// Relacionamentos
 	
 	// Vários pedidos em um classificado pode ter só um autor
-	@ManyToOne(optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(optional = false, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "autor_id", referencedColumnName = "usuario_id")
 	private Usuario autorOferta;
 	
