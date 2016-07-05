@@ -27,7 +27,7 @@
 			<c:if test="${usuario.getRegraId() == 2 ||
 			usuario.getRegraId() == 3}">
 			
-			<table class="responsive">
+			<table class="responsive" width="100%">
 				<tr>
 					<td><strong>ID:</strong></td>
 					<td><strong>TÍTULO:</strong></td>
@@ -47,7 +47,7 @@
 						<td><img height="50px" width="50px"
 							src="/diarioweb/download/${noticia.noticiaId}.html"></td>
 						<td><img title="${usuario.id}" class="imagemNoticia" height="32px" width="32px"
-								src="/diarioweb/profile/${usuario.id}.html">
+								src="/diarioweb/profile/${noticia.autorNoticia.id}.html">
 						</td>
 						<td><a
 							href="/diarioweb/noticias?id=${noticia.noticiaId }"> 
@@ -60,7 +60,24 @@
 		</c:if>
 		
 		<c:if test="${usuario.getRegraId() == 1 || usuario == null}">
-			<p>Listagem de Notícias para leitor e usuario Comum</p>
+			
+			<c:forEach var="noticia" items="${noticias}">
+			<div class="large-4 columns">
+			<img src="/diarioweb/download/${noticia.noticiaId}.html">
+			</div>
+			
+			<div class="large-8 columns">
+				<div class="panel">
+				<strong>
+				<a href="/diarioweb/noticias/exibir?id=${noticia.noticiaId}">${noticia.titulo}</a>
+				</strong>
+				<br>		
+					<small>${noticia.dataNoticia}</small>
+					<p>${fn:substring(noticia.texto, 0, 100)}...<a href="/diarioweb/noticias/exibir?id=${noticia.noticiaId}">Leia Mais</a></p>
+				</div>
+			</div>
+			
+			</c:forEach>
 		</c:if>
 		
 			<%@ include file="../rodape.jsp"%>

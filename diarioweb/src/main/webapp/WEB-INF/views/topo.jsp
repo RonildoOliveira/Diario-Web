@@ -76,7 +76,7 @@
 							</form>
 						</li>
 
-						<li class="has-button"><a class="small button" href="#">Search</a>
+						<li class="has-button"><a class="small button">Search</a>
 						</li>
 					</ul>
 				</section>

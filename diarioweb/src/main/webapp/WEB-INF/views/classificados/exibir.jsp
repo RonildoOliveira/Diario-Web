@@ -23,36 +23,42 @@
 	<div class="row">
 		<div class="large-12 columns">
 
-			<table>
-
+			<table class="responsive" width="100%">
 				<tr>
-					<td><strong>TÍTULO</strong></td>
-					<td><h3>${classificadoResult.titulo }</h3></td>
+					<td>
+					<img height="200px" width="200px"
+							src="/diarioweb/downloadcl/${classificadoResult.classificadoId}.html">
+					</td>
+					<td></td>
 				</tr>
 				<tr>
-					<td><strong>TEXTO:</strong></td>
-					<td><h4>${classificadoResult.texto }</h4></td>
+					<td><strong>Título:</strong></td>
+					<td>${classificadoResult.titulo }</td>
 				</tr>
 				<tr>
-					<td><strong>PREÇO INICIAL:</strong></td>
+					<td><strong>Descrição:</strong></td>
+					<td><p>${classificadoResult.texto }</p></td>
+				</tr>
+				<tr>
+					<td><strong>Preço:</strong></td>
 					<td>${classificadoResult.preco }</td>
 				</tr>
 				<tr>
-					<td><strong>TELEFONE:</strong></td>
+					<td><strong>Telefone:</strong></td>
 					<td>${classificadoResult.telefone }</td>
 				</tr>
+<!-- 				<tr> -->
+<!-- 					<td><strong>Oferta:</strong></td> -->
+<%-- 					<td>${classificadoResult.melhor_oferta }</td> --%>
+<!-- 				</tr> -->
 				<tr>
-					<td><strong>MELHOR OFERTA:</strong></td>
-					<td>${classificadoResult.melhor_oferta }</td>
-				</tr>
-				<tr>
-					<td><strong>DATA DA OFERTA:</strong></td>
+					<td><strong>Data:</strong></td>
 					<td>${classificadoResult.data_oferta }</td>
 				</tr>
 
 				<c:if test="${not empty classificadoResult.autorOferta }">
 					<tr>
-						<td><strong>AUTOR DA OFERTA:</strong></td>
+						<td><strong>Ofertado por:</strong></td>
 						<td>${classificadoResult.autorOferta.nome }</td>
 					</tr>
 				</c:if>
@@ -61,7 +67,7 @@
 					<c:if test="${regra.nome == 'Leitor' }">
 						<c:if test="${usuario.getRegraId() == 1 }">
 							<tr>
-								<td><strong><font color="red">CRUD:</font></strong></td>
+								<td></td>
 								<td><%@ include file="../classificados/ofertar.jsp"%>
 								</td>
 							</tr>

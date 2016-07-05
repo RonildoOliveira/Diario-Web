@@ -22,30 +22,29 @@
 	<div class="row">
 		<div class="large-3 columns">
 			<!--  topo  logo-->
-			 
-			<img
-				src="/diarioweb/resources/img/dweb_logo.png" />
-			
+
+			<img src="/diarioweb/resources/img/dweb_logo.png" />
+
 		</div>
 
 		<div class="large-9 columns">
-			
-				<c:if test="${usuario == null }">
+
+			<c:if test="${usuario == null }">
 				<ul class="right button-group">
 					<li><a href="usuarios/login" class="button">Login</a></li>
 					<li><a href="usuarios/form" class="success button">Cadastrar-se</a></li>
 				</ul>
-				</c:if>
-				<c:if test="${usuario != null }">
-					
-						<ul class="right button-group">
-							<li>Bem-Vindo(a) ${usuario.login}</li>
-							<li><img height="49px" width="49px"
-								src="/diarioweb/profile/${usuario.id}.html"></li>
-							<li><a href="/diarioweb/usuarios/sair" class="button">Sair</a></li>
-						</ul>
-					
-				</c:if>
+			</c:if>
+			<c:if test="${usuario != null }">
+
+				<ul class="right button-group">
+					<li>Bem-Vindo(a) ${usuario.login}</li>
+					<li><img height="49px" width="49px"
+						src="/diarioweb/profile/${usuario.id}.html"></li>
+					<li><a href="/diarioweb/usuarios/sair" class="button">Sair</a></li>
+				</ul>
+
+			</c:if>
 		</div>
 		<!--  topo  logo-->
 
@@ -109,40 +108,50 @@
 
 						<c:forEach begin="0" end="4" var="noticia"
 							items="${noticiasRecentes}">
-							<li><img height="400px" width="1000px"
-								src="/diarioweb/download/${noticia.noticiaId}.html" /> <a
-								href="noticias/exibir?id=${noticia.noticiaId}">${noticia.titulo}</a>
-							</li>
+							<li><a href="noticias/exibir?id=${noticia.noticiaId}"> <img
+									height="400px" width="1000px"
+									src="/diarioweb/download/${noticia.noticiaId}.html" />
+									${noticia.titulo}
+							</a></li>
 						</c:forEach>
 					</ul>
 				</c:otherwise>
 
 			</c:choose>
 			<hr />
-		
-		<!-- Visualização de Classificados -->
-         <div class="large-6 columns">
-			<div class="panel">
-				<a href="classificados/listar">CLASSIFICADOS</a> 
+
+			<!-- Visualização de Classificados -->
+			<div class="large-12 columns">
+				<div class="panel">
+					<center>
+						<a href="classificados/listar"> <img alt="" width="250px"
+							src="/diarioweb/resources/img/hand.jpg">
+							<p>
+								<strong> <a href="classificados/listar">
+										CLASSIFICADOS </a>
+								</strong>
+							</p>
+						</a>
+					</center>
+				</div>
 			</div>
-	 	 </div>
-	 	 <div class="large-12 columns">
-			<div class="panel">
-				<%@ include file="manchetes.jsp" %> 
+			<div class="large-12 columns">
+				<div class="panel">
+					<%@ include file="manchetes.jsp"%>
+				</div>
 			</div>
-	 	 </div>	
-	
-	<%@ include file="footer.jsp"%>
-	
-	</div>
+
+			<%@ include file="footer.jsp"%>
+
+		</div>
 		<!--  12 columns -->
-		
-		
+
+
 	</div>
 	<!-- ROWS -->
-	
-	
-	
+
+
+
 	<script src="resources/js/jquery-2.1.4.min.js"></script>
 	<script src="resources/js/foundation.min.js"></script>
 	<script>

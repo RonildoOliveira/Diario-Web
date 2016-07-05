@@ -23,7 +23,7 @@
 	<div class="row">
 		<div class="large-12 columns">
 
-			<table class="responsive">
+			<table class="responsive" width="100%">
 				<tr>
 					<td><strong>ID:</strong></td>
 					<td><strong>TÍTULO:</strong></td>

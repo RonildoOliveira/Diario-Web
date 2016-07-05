@@ -45,7 +45,7 @@ public class Noticia {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataNoticia;
 	
-	// Um noticia pode ter várias comentários..
+	/** Uma Notícia  tem Vários Comentários **/
 	@OneToMany(mappedBy = "noticiaDeOrigem", targetEntity = Comentario.class, cascade=CascadeType.REMOVE)
 	private List<Comentario> comentarios;
 	

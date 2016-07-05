@@ -45,13 +45,6 @@
 
 			<div class="large-6 columns">
 				<div class="panel">
-					<p>Data da Noticia:</p>
-					<input id="data" type="date" name="data" required />
-				</div>
-			</div>
-
-			<div class="large-6 columns">
-				<div class="panel">
 					<p>Seção:</p>
 					<select id="comboSecao" name="secaoId">
 						<c:forEach var="secao" items="${secoes}">

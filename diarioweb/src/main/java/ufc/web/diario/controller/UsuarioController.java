@@ -190,8 +190,18 @@ public class UsuarioController {
 	 }
      
 	 @RequestMapping("usuarios/listar")
-	 public String listarUsuario(Model model){
-		
+	 public String listarUsuario(Model model, HttpSession session){
+
+		 if(session.getAttribute("usuario") == null){
+			 return "404";
+		 }
+		 
+		 Usuario user = (Usuario) session.getAttribute("usuario");
+		 
+		 if(user.getRegraId() == 1){
+			 return "404";
+		 }
+		 
 		 List<Usuario> users = this.usuarioDAO.listar();
 		 model.addAttribute("usuarios", users);
 		 model.addAttribute("quantidade", users.size());

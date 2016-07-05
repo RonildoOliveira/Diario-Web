@@ -18,3 +18,7 @@ function formSecao() {
 function formUsuario() {
     alert("Usuário cadastrado com sucesso!");
 }
+
+function formJorn() {
+    alert("Jornalista cadastrado com sucesso!");
+}

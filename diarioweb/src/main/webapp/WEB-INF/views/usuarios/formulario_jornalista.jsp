@@ -10,6 +10,7 @@
 <script src="../resources/js/modernizr.min.js"></script>
 
 <script src="../resources/js/rn.js" charset="utf-8"></script>
+
 <title>Diário WEB - Cadastro de Jornalista</title>
 </head>
 <body>
@@ -66,7 +67,8 @@
 	
 
 	<div class="row">
-		<form method="post" action="/diarioweb/usuarios/formulario_jornalista" 	enctype="multipart/form-data">
+		<form method="post" action="/diarioweb/usuarios/formulario_jornalista"
+		 	enctype="multipart/form-data" onsubmit="formJorn()">
 
 			<div class="large-6 columns">
 				<div class="panel">

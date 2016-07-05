@@ -1,6 +1,7 @@
 package ufc.web.diario.controller;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,15 @@ public class NoticiaController {
 	private ArquivoDAO arquivoDAO;
 
 	@RequestMapping(value="/noticias/form", method = RequestMethod.GET)
-	public String form(Model model){
+	public String form(Model model, HttpSession session){
+		
+		if(session.getAttribute("usuario") == null){
+			return "404";
+		}
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		if(usuario.getRegraId() != 3)
+			return "404";
+		
 		model.addAttribute("secoes", secaoDAO.listar());
 		return "noticias/form";
 	}
@@ -63,6 +72,9 @@ public class NoticiaController {
 		noticia.setConteudoArquivo(file.getBytes());
 		noticia.setAutorNoticia(usuarioDAO.getUserId(user.getId()));
 		noticia.setSecao(secaoDAO.getSecao(noticia.getSecaoId()));
+		
+		Timestamp data = new Timestamp(System.currentTimeMillis());
+		noticia.setDataNoticia(data);
 		
 		noticiaDAO.inserir(noticia);
 		return "redirect:noticias/listar";

@@ -16,9 +16,13 @@
 				<img height="30%" width="30%" src="/diarioweb/resources/img/perfil.png">
 				</center>
 				<hr>
-				<p class="textoNoticia">Somos alunos da disciplina de Engenharia
-					de Software da Universidade Federal do Ceará (UFC) sob a orientação
-					da Prof.ª Diana Braga.</p>
+				<p class="textoNoticia">
+				"Somos quem podemos ser sonhos que podemos ter..."
+				<br>
+				"O que temos que ter sempre em mente é 
+				que a consolidação das estruturas garante a contribuição 
+				de um grupo importante na determinação dos níveis 
+				de motivação departamental."</p>
 			</div>
 
 			<div class="large-4 columns">
@@ -29,22 +33,6 @@
 				</center>
 				<hr>
 				<ul style="list-style: none;">
-					<li>
-					<a href="#">
-					Antônio Airton</a></li>
-					
-					<li>
-					<a href="#">
-					Crislânio Macedo</a></li>
-					
-					<li>
-					<a href="#">
-					Dieinison Jack</a></li>
-					
-					<li>
-					<a href="mailto:crislanio.ufc@gmail.com">
-					Macilio Ferreira</a></li>
-					
 					<li><a href="mailto:ronildo.comp@gmail.com">
 					Ronildo Oliveira</a></li>
 				</ul>

@@ -37,8 +37,15 @@ public class ClassificadoController {
 	private RegraDAO roleDAO;
 	
     @RequestMapping("classificados/form")
-    public String formularioClassificado(Model model){
-
+    public String formularioClassificado(Model model, HttpSession session){
+    	
+    	if(session.getAttribute("usuario") == null){
+			return "404";
+		}
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		if(usuario.getRegraId() != 2)
+			return "404";
+		
     	model.addAttribute("regras", roleDAO.listar());
     	model.addAttribute("classificados", classificadoDAO.listar());
 		
@@ -91,12 +98,9 @@ public class ClassificadoController {
     @RequestMapping("classificados/listar")
     public String listarClassificado(Model model, HttpSession session){
     	
-    	// Pegando o Usuário que está logado
     	Usuario usuario = (Usuario) session.getAttribute("usuario");
     	
     	model.addAttribute("classificados", classificadoDAO.listar());
-        
-    	// Atibuindo o Usuário..
     	model.addAttribute("usuario", usuario);
 
     	return "/classificados/listar"; 
