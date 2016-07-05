@@ -81,7 +81,7 @@ public class Usuario {
 
 	/******************/
 	// Regras Usuário
-	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
 	@JoinTable(name = "USUARIO_REGRA", 
 	joinColumns = @JoinColumn(name = "usuario_id" ,referencedColumnName = "usuario_id" ), 
 	inverseJoinColumns = @JoinColumn(name = "regra_id", referencedColumnName = "regra_id" ) )
@@ -89,12 +89,14 @@ public class Usuario {
 	
 	// Comentários
 	// Um usuário pode adicionar várias comentários..
-	@OneToMany(mappedBy = "autorComentario", targetEntity = Comentario.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "autorComentario", targetEntity = Comentario.class, 
+			fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<Comentario> comentarios;
 	
 	// Classificados
 	// Usuário pode ter vários pedido em um classificado
-	@OneToMany(mappedBy = "autorOferta", targetEntity = Classificado.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "autorOferta", targetEntity = Classificado.class, 
+			fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<Classificado> classificados;
 	
 	// Notícias

@@ -2,6 +2,7 @@ package ufc.web.diario.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +25,8 @@ public class RegraUsuario {
 	private String nome;
 
 	//colocar cascade
-	@ManyToMany(mappedBy = "regras" , fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "regras" , fetch = FetchType.LAZY,
+			cascade = CascadeType.REMOVE)
 	private List<Usuario> usuarioList; 
 	
 	
