@@ -12,10 +12,9 @@ Diário Web feito na IDE Eclipse Luna utilizando framework Spring 4, Hibernate 4
 
 ### Screenshots
 
-![Img1](https://s14.postimg.org/sz87hyzql/image08.png "Imagem 1")
+![Img1](https://s14.postimg.org/588tzuzjl/image08.png "Imagem 1")
 
-![Img2](https://s14.postimg.org/yoog2a5wt/image10.png "Imagem 2")
+![Img2](https://s14.postimg.org/95w3p9mcx/image10.png "Imagem 2")
 
-![Img3](https://s14.postimg.org/c196w4qct/image12.png "Imagem 3")
+![Img3](https://s14.postimg.org/am7m7ep9t/image12.png "Imagem 3")
 
-![Img4](https://s14.postimg.org/he2mo03n1/image23.png "Imagem 4")
